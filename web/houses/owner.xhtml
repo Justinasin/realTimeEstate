@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Owner Page</title>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml"> 
+            <P>Welcome to Owner Webpage. You can Add or Edit all your Ads                </P>
+            <!-- Add New Ads-->
+            
+            <p:layout style="min-width:500px;min-height:250px;" >
+         
+      <p:layoutUnit position="west" resizable="false" size="700" minSize="700" maxSize="1500"  >
+            
+        <p:panelGrid columns="2" styleClass="noBorders" >
+ 
+                <h:outputText value="Type" /> 
+                
+               <p:inputText id="Type"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                
+                
+                <h:outputText value="City" /> 
+                         <p:inputText id="City"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                
+                <h:outputText value="Address" /> 
+                        <p:inputText id="Address"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                
+                <h:outputText value="Area SQM" /> 
+                        <p:inputText id="area"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                
+                <h:outputText value="Price JOD" /> 
+                      <p:inputText id="price"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+                
+         <p:commandButton value="Add/Edit"
+           icon="ui-icon-plus"                                  
+           iconPos="#{langBean.styleFloat}"
+
+           style="float:#{langBean.styleFloat}"                                                                                                
+
+           action="owner" />
+               
+ 
+</p:panelGrid>
+      
+        
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+        <p:commandButton value="Add Image"
+           icon="ui-icon-plus"                                  
+           iconPos="#{langBean.styleFloat}"
+
+           style="float:#{langBean.styleFloat}"                                                                                                
+
+           action="owner" />
+       
+      
+    </p:layoutUnit>
+</p:layout>
+            <!-- Property comments  Table--> 
+              <h:form id="manage_events_form">               
+                <p:dataTable id="manage_events_tbl"
+                             class="dataTable_house"
+                             value="#{manageEventsBean.events}"                    
+                             selection="#{manageEventsBean.selectedEvent}"
+                             rowKey="#{event.eventId}"                    
+                             var="event"   
+                             rows="20"     
+                             rowsPerPageTemplate="1,2,3"
+                             dir="#{langBean.dir}"
+                             emptyMessage="#{msgs.no_events}"
+                             paginator="true"
+                             paginatorPosition="top" 
+                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                             >
+
+                    <p:ajax event="rowSelectRadio"
+                            update=":manage_events_form:manage_events_tbl"/>
+
+                    <f:facet name="header" id="header">
+                        Houses on Sales!
+                    </f:facet>
+
+                    <p:column selectionMode="single" style="width:2%"/>
+
+                    <p:column headerText="Type"
+                              style="width:5%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+
+                    <p:column headerText="City"
+                              style="width:5%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+         <p:column headerText="Address"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+                    
+        <p:column headerText="Area"
+                              style="width:5%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+                    
+                            <p:column headerText="Price"
+                              style="width:5%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+                    
+                            <p:column headerText="Ads Date"
+                              style="width:7%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+                    
+   
+                             <p:column headerText="Owner Name"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+                    
+        
+                    <f:facet name="footer">
+                        <p:toolbar style="border: none">
+                            <p:toolbarGroup align="#{languageBean.screenLeft}">
+                                <p:commandButton value="Edit"
+                                                 icon="ui-icon-pencil"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+ 
+                                                 action="owner" />
+
+                                      <p:commandButton value="Delete!"
+                                                 icon="ui-icon-minus"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+ 
+                                                 action="owner" />
+                                                                
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </f:facet>
+                </p:dataTable>
+ 
+              
+            </h:form>
+        </ui:decorate>
+    </h:body>
+</html>
+

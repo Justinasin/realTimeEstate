@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Property Details</title>
+    </h:head>
+    <h:body>
+        <ui:decorate template="/app_templates/app_template.xhtml"> 
+            <P>Welcome to House Webpage. You can search for house or a flat
+                </P>
+            <!-- Property Details Controls-->
+            
+            <p:layout style="min-width:500px;min-height:250px;" >
+         
+      <p:layoutUnit position="west" resizable="false" size="700" minSize="700" maxSize="1500"  >
+            
+        <p:panelGrid columns="2" styleClass="noBorders" >
+ 
+                <h:outputText value="Type" /> 
+                <h:outputText value="Flat" /> 
+                
+                <h:outputText value="City" /> 
+                <h:outputText value="Amman" /> 
+                
+                <h:outputText value="Address" /> 
+                <h:outputText value="Abdoun Circle" /> 
+                
+                <h:outputText value="Area SQM" /> 
+                <h:outputText value="150" />
+                
+                <h:outputText value="Price JOD" /> 
+                <h:outputText value="200,000" /> 
+                
+                <h:outputText value="Ads Date" /> 
+                <h:outputText value="5-5-2017" /> 
+                
+                <h:outputText value="Owner Name" /> 
+                <h:outputText value="Ali Ali Ali" /> 
+                
+ 
+</p:panelGrid>
+      
+        
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+        
+        <p:graphicImage name="/images/houses/demo1.jpg"  height="200" />  
+      
+    </p:layoutUnit>
+</p:layout>
+            <!-- Property comments  Table--> 
+            <h:form id="manage_events_form">               
+                <p:dataTable id="manage_events_tbl"
+                             class="dataTable_house"
+                             value="#{manageEventsBean.events}"                    
+                             selection="#{manageEventsBean.selectedEvent}"
+                             rowKey="#{event.eventId}"                    
+                             var="event"   
+                             rows="20"     
+                             rowsPerPageTemplate="1,2,3"
+                             dir="#{langBean.dir}"
+                             emptyMessage="#{msgs.no_events}"
+                             paginator="true"
+                             paginatorPosition="top" 
+                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
+                             >
+
+                    <p:ajax event="rowSelectRadio"
+                            update=":manage_events_form:manage_events_tbl"/>
+
+                    <f:facet name="header" id="header">
+                        Comments on the Property
+                    </f:facet>
+
+                    <p:column selectionMode="single" style="width:5%"/>
+
+                    <p:column headerText="Comment By"
+                              style="width:10%"
+                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
+                              filterMatchMode="contains"
+                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
+                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
+                    </p:column>
+
+                <p:column headerText="Comments"
+                              style="width:40%"
+                              sortBy="#{event.date}">                    
+                        <h:outputText value="#{event.date}"/>  
+                    </p:column>
+                                   <p:column headerText="Comments Date"
+                              style="width:8%"
+                              sortBy="#{event.date}">                    
+                        <h:outputText value="#{event.date}"/>  
+                    </p:column>
+                   
+                <p:column headerText="Owner Reply"
+                              style="width:40%"
+                              sortBy="#{event.date}">                    
+                        <h:outputText value="#{event.date}"/>
+                        
+                    </p:column>
+                                    <p:column headerText="Owner Reply Date"
+                              style="width:10%"
+                              sortBy="#{event.date}">                    
+                        <h:outputText value="#{event.date}"/>
+                        
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:toolbar style="border: none">
+                            <p:toolbarGroup align="#{languageBean.screenLeft}">
+                                <!--   <p:commandButton value="Extra!"
+                                                                             
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+                                                 action="owner" />
+                                                            -->
+                            </p:toolbarGroup>
+                        </p:toolbar>
+                    </f:facet>
+                </p:dataTable>
+ 
+            </h:form>
+        </ui:decorate>
+    </h:body>
+</html>
+
