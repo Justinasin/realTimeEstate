@@ -6,7 +6,7 @@
     <h:form id="ribbon_menu"             
             style="direction:#{langBean.dir}; width:100%">           
         <p:ribbon activeIndex="#{sessionBean.menuIndex}">  
-         
+
             <p:tab title="#{msgs.events}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
@@ -18,7 +18,7 @@
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>
-            
+
             <p:tab title="#{msgs.alumni}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
@@ -30,7 +30,7 @@
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>
-            
+
             <p:tab title="#{msgs.hoffaz}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
@@ -42,32 +42,40 @@
                     </p:commandButton>
                 </p:ribbonGroup>               
             </p:tab>
-            
+
             <p:tab title="#{msgs.houses}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
                     <p:commandButton  value="House" 
-                                       icon="ui-icon-home"
+                                      icon="ui-icon-home"
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(3)}"
                                       action="/houses/houses.xhtml">                         
                     </p:commandButton>
-                    
-                    
+
+
                     <p:commandButton  value="Owner Page" 
                                       styleClass="ribbonButton" 
-                                        icon="ui-icon-pencil"
+                                      icon="ui-icon-pencil"
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(3)}"
                                       action="/houses/owner.xhtml">                         
                     </p:commandButton>
-                    
-                    
-                
+
+                    <p:commandButton  value="Admin Page" 
+                                      styleClass="ribbonButton" 
+                                      icon="ui-icon-computer"
+                                      style="float:#{langBean.styleFloat};"
+                                      actionListener="#{sessionBean.setMenuIndex(3)}"
+                                      action="/houses/admin.xhtml">                         
+                    </p:commandButton>
+
+
+
                 </p:ribbonGroup>               
             </p:tab>
-            
+
             <p:tab title="#{msgs.licensing}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
