@@ -7,11 +7,99 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>House Home</title>
+        <title>Add new</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
+            <P><h2>Fill the required fields</h2></P>
+            <!-- Add New Ads-->
 
+            <p:layout style="min-width:500px;min-height:250px;" >
+
+                <p:layoutUnit position="west" resizable="false" size="700" minSize="700" maxSize="1500"  >
+
+                    <p:panelGrid columns="2" styleClass="noBorders" >
+
+                        <h:outputText value="Type" /> 
+
+                        <p:inputText id="Type"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+
+
+                        <h:outputText value="City" /> 
+                        <p:inputText id="City"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+
+                        <h:outputText value="Address" /> 
+                        <p:inputText id="Address"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+
+                        <h:outputText value="Area SQM" /> 
+                        <p:inputText id="area"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+
+                        <h:outputText value="Price JOD" /> 
+                        <p:inputText id="price"
+                                     value="#{addEditEventBean.placeEn}"
+                                     style="width:250px"
+                                     required="true"
+                                     maxlength="512"
+                                     requiredMessage=" #{msgs.required_msg}">
+                        </p:inputText>
+
+                        <p:commandButton value="Add/Edit"
+                                         icon="ui-icon-plus"                                  
+                                         iconPos="#{langBean.styleFloat}"
+
+                                         style="float:#{langBean.styleFloat}"                                                                                                
+
+                                         action="owner" />
+
+
+                    </p:panelGrid>
+
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+<!--                    <p:commandButton value="Add Image"
+                                     icon="ui-icon-plus"                                  
+                                     iconPos="#{langBean.styleFloat}"
+
+                                     style="float:#{langBean.styleFloat}"                                                                                                
+
+                                     action="owner" />-->
+<h:form enctype="multipart/form-data">
+    <p:growl id="messages" showDetail="true" />
+ 
+    <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
+    <p></p>
+    <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
+</h:form>
+
+                </p:layoutUnit>
+            </p:layout>
+            <!-- Property comments  Table--> 
             <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable_house"
@@ -111,92 +199,7 @@
                     </f:facet>
                 </p:dataTable>
 
-                <p><h2> Most popular advertisements</h2> </p>
 
-                <!--                <h:commandLink action="houses_Details">
-                                    <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
-                                </h:commandLink>
-                                <p:panelGrid columns="2" styleClass="withBorders" style="width: 375px">
-                                    <p:column>
-                                        <h:outputText value="Price"/>
-                                    </p:column>
-                                    <p:column>
-                                        <div align="right">
-                                            <h:outputText value="200,000" style="font-weight:bold"/>
-                                        </div>
-                                    </p:column>
-                
-                                </p:panelGrid> 
-                                <p:panelGrid columns="1" styleClass="noBorders" style="width: 375px">
-                                    <p:column> 
-                                        This is a description of selling property. I'm selling a house in a
-                                        nice area. Next to the house there is a bus station and a shop.
-                                    </p:column>
-                                </p:panelGrid> -->
-
-                <div class="main-content">
-
-                    <div class="just-box">
-                        <h:commandLink action="houses_Details">
-                            <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
-                        </h:commandLink>
-
-                        <p class="box-title">
-                            <span class="box-price">
-                                200,000 Jod
-                            </span>
-                            Price  
-                            <p class="box-desc">
-                                This is a description of selling property. I'm selling a house in a
-                                nice area. Next to the house there is a bus station and a shop.
-
-                            </p>
-
-                        </p>
-
-                    </div>
-                    
-                    <div class="just-box">
-                        <h:commandLink action="houses_Details">
-                            <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
-                        </h:commandLink>
-
-                        <p class="box-title">
-                            <span class="box-price">
-                                150,000 Jod
-                            </span>
-                            Price  
-                            <p class="box-desc">
-                                This is a description of selling property. I'm selling a house in a
-                                nice area. Next to the house there is a bus station and a shop.
-
-                            </p>
-
-                        </p>
-
-                    </div>
-                    
-                     <div class="just-box">
-                        <h:commandLink action="houses_Details">
-                            <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
-                        </h:commandLink>
-
-                        <p class="box-title">
-                            <span class="box-price">
-                                120,000 Jod
-                            </span>
-                            Price  
-                            <p class="box-desc">
-                                This is a description of selling property. I'm selling a house in a
-                                nice area. Next to the house there is a bus station and a shop.
-
-                            </p>
-
-                        </p>
-
-                    </div>
-
-                </div> 
             </h:form>
         </ui:decorate>
     </h:body>

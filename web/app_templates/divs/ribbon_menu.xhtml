@@ -46,7 +46,7 @@
             <p:tab title="#{msgs.houses}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="House" 
+                    <p:commandButton  value="Search" 
                                       icon="ui-icon-home"
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
@@ -72,13 +72,23 @@
                     </p:commandButton>
 
 
+                </p:ribbonGroup>   
 
-                </p:ribbonGroup>               
+                <p:ribbonGroup styleClass="ribbonGroup2"
+                               style="float:#{langBean.styleRight};">
+                    <p:commandButton  value="Add new " 
+                                      icon="ui-icon-home"
+                                      styleClass="ribbonButton" 
+                                      style="float:#{langBean.styleFloat};"
+                                      actionListener="#{sessionBean.setMenuIndex(3)}"
+                                      action="/houses/addNew.xhtml">                         
+                    </p:commandButton>
+                </p:ribbonGroup>
             </p:tab>
 
             <p:tab title="#{msgs.licensing}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
+                               style="float:#{langBean.styleRight};">
                     <p:commandButton  value="#{msgs.licensing}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"

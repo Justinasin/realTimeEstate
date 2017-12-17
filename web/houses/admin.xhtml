@@ -11,9 +11,101 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <P>Welcome to Admin panel. You can delete or edit advertisements <br> :)</br><br>   </br></P>
-            
-            
+            <div class="main-content">
+
+                <div class="just-box">
+                    <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  /><p class="box-title">
+                        <span class="box-price">
+                            200,000 Jod
+                        </span>
+                        Price  
+                        <p class="box-desc">
+                            This is a description of selling property. I'm selling a house in a
+                            nice area. Next to the house there is a bus station and a shop.
+
+                        </p>
+
+                    </p>
+
+                </div>
+                <div class="just-box">
+                    <p:panelGrid columns="2" styleClass="noBorders" >
+
+                        <h:outputText value="Type" /> 
+                        <h:outputText value="Flat" /> 
+
+                        <h:outputText value="City" /> 
+                        <h:outputText value="Amman" /> 
+
+                        <h:outputText value="Address" /> 
+                        <h:outputText value="Abdoun Circle" /> 
+
+                        <h:outputText value="Area SQM" /> 
+                        <h:outputText value="150" />
+
+                        <h:outputText value="Price JOD" /> 
+                        <h:outputText value="200,000" /> 
+
+                        <h:outputText value="Date" /> 
+                        <h:outputText value="2017-05-07" /> 
+
+                        <h:outputText value="Owner Name" /> 
+                        <h:outputText value="Ali Ali Ali (link)" /> 
+                        <h:commandButton value="Approve"/>
+                        <h:commandButton value="Send a notification"/>
+
+
+                    </p:panelGrid>
+                </div>
+            </div><div class="main-content">
+
+                <div class="just-box">
+                    <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  /><p class="box-title">
+                        <span class="box-price">
+                            200,000 Jod
+                        </span>
+                        Price  
+                        <p class="box-desc">
+                            This is a description of selling property. I'm selling a house in a
+                            nice area. Next to the house there is a bus station and a shop.
+
+                        </p>
+
+                    </p>
+
+                </div>
+                <div class="just-box">
+                    <p:panelGrid columns="2" styleClass="noBorders" >
+
+                        <h:outputText value="Type" /> 
+                        <h:outputText value="Flat" /> 
+
+                        <h:outputText value="City" /> 
+                        <h:outputText value="Amman" /> 
+
+                        <h:outputText value="Address" /> 
+                        <h:outputText value="Abdoun Circle" /> 
+
+                        <h:outputText value="Area SQM" /> 
+                        <h:outputText value="150" />
+
+                        <h:outputText value="Price JOD" /> 
+                        <h:outputText value="200,000" /> 
+
+                        <h:outputText value="Date" /> 
+                        <h:outputText value="2017-05-07" /> 
+
+                        <h:outputText value="Owner Name" /> 
+                        <h:outputText value="Ali Ali Ali (link)" /> 
+                        <h:commandButton value="Approve"/>
+                        <h:commandButton value="Send a notification"/>
+
+
+                    </p:panelGrid>
+                </div>
+            </div>
+
+
             <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable_house"
@@ -34,7 +126,7 @@
                             update=":manage_events_form:manage_events_tbl"/>
 
                     <f:facet name="header" id="header">
-                        Houses on Sales!
+                        Search for a property
                     </f:facet>
 
                     <p:column selectionMode="single" style="width:2%"/>
@@ -54,66 +146,73 @@
                               sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
-         <p:column headerText="Address"
+                    <p:column headerText="Address"
                               style="width:10%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
-                    
-        <p:column headerText="Area"
+
+                    <p:column headerText="Area"
                               style="width:5%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
-                    
-                            <p:column headerText="Price"
+
+                    <p:column headerText="Price"
                               style="width:5%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
-                    
-                            <p:column headerText="Ads Date"
+
+                    <p:column headerText="Ads Date"
                               style="width:7%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
-                    
-   
-                             <p:column headerText="Owner Name"
+
+
+                    <p:column headerText="Owner Name"
                               style="width:10%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
                               sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
-                    
-        
+
+
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="Show it!"
-                                                 icon="ui-icon-show"                                  
+                                <p:commandButton value="Edit"
+                                                 icon="ui-icon-pencil"                                  
                                                  iconPos="#{langBean.styleFloat}"
                                                  styleClass="commandButton"
                                                  style="float:#{langBean.styleFloat}"                                                                                                
- 
-                                                 action="houses_Details" />
 
-                                
+                                                 action="owner" />
+
+                                <p:commandButton value="Delete!"
+                                                 icon="ui-icon-minus"                                  
+                                                 iconPos="#{langBean.styleFloat}"
+                                                 styleClass="commandButton"
+                                                 style="float:#{langBean.styleFloat}"                                                                                                
+
+                                                 action="owner" />
+
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>
                 </p:dataTable>
- 
-              
+
+
             </h:form>
         </ui:decorate>
     </h:body>
