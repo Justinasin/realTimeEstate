@@ -16,6 +16,7 @@ public class LangBean implements Serializable {
     private String lang;    
     private String dir;    
     private String styleFloat;
+    private String styleRight;
     private String linkLabel;
     private boolean isEnglish;
     
@@ -23,7 +24,8 @@ public class LangBean implements Serializable {
         locale = "en";
         lang = "en";        
         dir = "ltr";        
-        styleFloat= "left";
+        styleFloat="left";
+        styleRight="right";
         linkLabel = "Arabic";
         isEnglish = true;        
     }
@@ -58,7 +60,15 @@ public class LangBean implements Serializable {
 
     public void setStyleFloat(String styleFloat) {
         this.styleFloat = styleFloat;
-    }        
+    }  
+    
+    public String getStyleRight() {
+        return styleRight;
+    }
+
+    public void setStyleRight(String styleRight) {
+        this.styleRight = styleRight;
+    }  
         
     public boolean getIsEnglish() {
         return isEnglish;
@@ -84,13 +94,15 @@ public class LangBean implements Serializable {
             lang = "en";            
             dir = "ltr";                      
             styleFloat="left";
+            styleRight="right";
             linkLabel = "Arabic";
         } else {                        
             locale = "ar";
             lang = "ar";            
             dir = "rtl";            
             styleFloat= "right";
-            linkLabel = "انجليزي";
+            styleRight="left";
+            linkLabel = "انجليزي(English)";
         }
     }
 }
