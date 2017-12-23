@@ -64,7 +64,8 @@ public class AddEditEventBean implements Serializable{
 
     public ArrayList<EventType> getEventTypes() {
         return eventTypes;
-    }        
+    }
+    
 
     public int getEventTypeId() {
         return eventTypeId;

@@ -83,6 +83,16 @@
                                       actionListener="#{sessionBean.setMenuIndex(3)}"
                                       action="/houses/addNew.xhtml">                         
                     </p:commandButton>
+                    <h:form>
+    <p:growl id="options" showDetail="true"/>
+ 
+    <p:menuButton value="Settings">
+        <p:menuitem value="My information" id="myInformation" update="options" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
+        <p:menuitem value="My advertisements"  update="options" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
+        <p:menuitem value="Admin panel"  update="options" icon="ui-icon-star" outcome="/houses/admin.xhtml"/>
+        <p:separator />
+    </p:menuButton>
+</h:form>
                 </p:ribbonGroup>
             </p:tab>
 
