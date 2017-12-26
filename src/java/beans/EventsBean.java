@@ -7,11 +7,7 @@ import java.util.ArrayList;
 import models.Event;
 import models.EventType;
 
-/**
- *
- * @author Firas.Alhawari
- * 
- */
+
 @Named(value = "eventsBean")
 @SessionScoped
 public class EventsBean implements Serializable {

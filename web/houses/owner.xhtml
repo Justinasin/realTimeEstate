@@ -12,6 +12,7 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <P><h2>My advertisements</h2></P>
+            <h:form>
             <div class="main-content">
 
                 <div class="just-box">
@@ -29,6 +30,7 @@
                     </p>
 
                 </div>
+           
                 <div class="just-box">
                     <p:panelGrid columns="2" styleClass="noBorders" >
 
@@ -61,8 +63,9 @@
                     </p:panelGrid>
                 </div>
             </div>
+            </h:form>
             <!-- Property comments  Table--> 
-            <h:form id="manage_events_form">               
+<!--            <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable_house"
                              value="#{manageEventsBean.events}"                    
@@ -162,7 +165,7 @@
                 </p:dataTable>
 
 
-            </h:form>
+            </h:form>-->
         </ui:decorate>
     </h:body>
 </html>
