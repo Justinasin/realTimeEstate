@@ -55,7 +55,7 @@
                     </p:commandButton>
 
 
-                    <p:commandButton  value="Owner Page" 
+<!--                    <p:commandButton  value="Owner Page" 
                                       styleClass="ribbonButton" 
                                       icon="ui-icon-pencil"
                                       style="float:#{langBean.styleFloat};"
@@ -69,7 +69,7 @@
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(3)}"
                                       action="/houses/admin.xhtml">                         
-                    </p:commandButton>
+                    </p:commandButton>-->
 
 
                 </p:ribbonGroup>   
@@ -88,6 +88,7 @@
  
     <p:menuButton value="Settings">
         <p:menuitem value="My information" id="myInformation" update="options" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
+        <p:menuitem value="Notifications" id="notifications" update="options" icon="ui-icon-wrench" outcome="/houses/notificationPage.xhtml"/>
         <p:menuitem value="My advertisements"  update="options" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
         <p:menuitem value="Admin panel"  update="options" icon="ui-icon-star" outcome="/houses/admin.xhtml"/>
         <p:separator />

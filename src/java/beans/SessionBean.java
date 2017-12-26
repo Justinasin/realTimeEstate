@@ -77,7 +77,7 @@ public class SessionBean implements Serializable {
         }
 
         if (success) {
-            navigate("/first_page");
+            navigate("first_page");
         }
     }
 

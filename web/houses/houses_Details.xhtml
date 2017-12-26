@@ -11,51 +11,53 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <P>Welcome to House Webpage. You can search for house or a flat
-            </P>
-            <!-- Property Details Controls-->
+            <h:form>
+                <!-- Property Details Controls-->
 
-            <p:layout style="min-width:500px;height:360px;" >
+                <p:layout style="min-width:500px;height:360px;" >
 
-                <p:layoutUnit position="west" resizable="false" size="400" minSize="400" maxSize="1500"  >
+                    <p:layoutUnit position="west" resizable="false" size="400" minSize="400" maxSize="1500"  >
 
-                    <p:panelGrid columns="2" styleClass="noBorders" >
+                        <p:panelGrid columns="2" styleClass="noBorders" >
 
-                        <h:outputText value="Type" /> 
-                        <h:outputText value="Flat" /> 
+                            <h:outputText value="Type" /> 
+                            <h:outputText value="Flat" /> 
 
-                        <h:outputText value="City" /> 
-                        <h:outputText value="Amman" /> 
+                            <h:outputText value="City" /> 
+                            <h:outputText value="Amman" /> 
 
-                        <h:outputText value="Address" /> 
-                        <h:outputText value="Abdoun Circle" /> 
+                            <h:outputText value="Address" /> 
+                            <h:outputText value="Abdoun Circle" /> 
 
-                        <h:outputText value="Area SQM" /> 
-                        <h:outputText value="150" />
+                            <h:outputText value="Area SQM" /> 
+                            <h:outputText value="150" />
 
-                        <h:outputText value="Price JOD" /> 
-                        <h:outputText value="200,000" /> 
+                            <h:outputText value="Price JOD" /> 
+                            <h:outputText value="200,000" /> 
 
-                        <h:outputText value="Date" /> 
-                        <h:outputText value="2017-05-07" /> 
+                            <h:outputText value="Date" /> 
+                            <h:outputText value="2017-05-07" /> 
 
-                        <h:outputText value="Owner Name" /> 
-                        <h:outputText value="Ali Ali Ali (link)" /> 
-                        <h:commandButton value="Comment"/>
-                        <h:commandButton value="Write the email"/>
-
-
-                    </p:panelGrid>
+                            <h:outputText value="Owner Name" /> 
+                            <p:link outcome="ownersAdvertisements" value="Abdullah">
+                                <f:param name="productId" value="10" />
+                            </p:link> 
+                            <h:commandButton value="Comment"/>
+                            <h:commandButton value="Write the email"/>
 
 
-                </p:layoutUnit>
+                        </p:panelGrid>
 
-                <p:layoutUnit position="center">
-                    <h:form>
-                        <p:graphicImage name="/images/houses/demo1.jpg"  height="350" />  
-                    </h:form>
-                </p:layoutUnit>
-            </p:layout>
+
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center">
+                        <h:form>
+                            <p:graphicImage name="/images/houses/demo1.jpg"  height="350" />  
+                        </h:form>
+                    </p:layoutUnit>
+                </p:layout>
+            </h:form>
             <!-- Property comments  Table--> 
             <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
