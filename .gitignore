@@ -11,3 +11,6 @@ nbproject/project.xml
 nbproject/faces-config.NavData
 lib/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar
 nbproject/project.properties
+/src/nbproject/private/
+/ADV/nbproject/private/
+/adv/nbproject/private/
