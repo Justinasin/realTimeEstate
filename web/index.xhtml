@@ -23,7 +23,7 @@
                             <p:outputLabel style="color: #0B70BE" value="#{msgs.username}:"/>
                             <p:inputText id="login_username"
                                          maxlength="64"                                         
-                                         value="#{sessionBean.username}"
+                                         value="Login"
                                          style="width:300px"
                                          required="true"
                                          requiredMessage="#{msgs.wrong_username}">
@@ -35,7 +35,7 @@
                                         maxlength="48"                                       
                                         required="true"
                                         requiredMessage="#{msgs.wrong_password}"
-                                        value="#{sessionBean.password}"
+                                        value="Login"
                                         style="width:300px;">          
                                 <p:watermark for="login_password" value="#{msgs.enter_password}"/>                                
                             </p:password>                             

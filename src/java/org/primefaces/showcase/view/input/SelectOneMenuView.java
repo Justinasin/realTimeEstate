@@ -58,5 +58,4 @@ public class SelectOneMenuView {
         this.floors = floors;
     }
  
-    
 }

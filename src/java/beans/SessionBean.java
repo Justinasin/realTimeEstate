@@ -7,11 +7,6 @@ import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-/**
- *
- * @Author: Dr. Firas Al-Hawari
- *
- */
 @Named(value = "sessionBean")
 @SessionScoped
 public class SessionBean implements Serializable {
@@ -19,7 +14,7 @@ public class SessionBean implements Serializable {
     private String password;    
     private Connection connection; 
     private int selectedItemId;     
-    private int menuIndex = 0;
+    private int menuIndex = 3;
 
     public SessionBean() {
     }
@@ -77,7 +72,7 @@ public class SessionBean implements Serializable {
         }
 
         if (success) {
-            navigate("first_page");
+            navigate("/houses/houses_without_login");
         }
     }
 

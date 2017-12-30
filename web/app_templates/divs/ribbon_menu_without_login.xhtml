@@ -51,34 +51,25 @@
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
                                       actionListener="#{sessionBean.setMenuIndex(3)}"
-                                      action="/houses/houses.xhtml">                         
+                                      action="/houses/houses_without_login.xhtml">                         
                     </p:commandButton>
-
 
                 </p:ribbonGroup>   
 
                 <p:ribbonGroup styleClass="ribbonGroup2"
                                style="float:#{langBean.styleRight};">
-                    <p:commandButton  value="Add new" 
-                                      icon="ui-icon-home"
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(3)}"
-                                      action="/houses/addNew.xhtml">                         
+
+                    <p:commandButton  
+                        widgetVar="login"
+                        value="Login" 
+                        oncomplete="PF('login').disable()"
+                        icon="ui-icon-home"
+                        styleClass="ribbonButton" 
+                        style="float:#{langBean.styleFloat};"
+                        actionListener="#{sessionBean.setMenuIndex(3)}"
+                        action="/houses/loginPage.xhtml">                         
                     </p:commandButton>
-                    
-                    <h:form>
-    <p:growl id="options" showDetail="true"/>
- 
-    <p:menuButton value="#{loginBean.username}">
-        <p:menuitem value="My information" id="myInformation" update="options" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
-        <p:menuitem value="Notifications" id="notifications" update="options" icon="ui-icon-info" outcome="/houses/notificationPage.xhtml"/>
-        <p:menuitem value="My advertisements"  update="options" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
-        <p:menuitem value="Admin panel"  update="options" icon="ui-icon-person" outcome="/houses/admin.xhtml"/>
-        <p:menuitem value="Logout" update="options" icon="ui-icon-power" outcome="/houses/houses_without_login" actionListener="#{sessionBean.logout()}"/>
-        <p:separator />
-    </p:menuButton>
-</h:form>
+
                 </p:ribbonGroup>
             </p:tab>
 
