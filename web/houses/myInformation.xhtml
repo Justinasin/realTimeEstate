@@ -18,60 +18,60 @@
                 <p:growl id="growl" sticky="true" showDetail="true"/>
 
                 <p:wizard flowListener="#{userWizard.onFlowProcess}">
-                    <p:tab id="personal" title="Personal">
-                        <p:panel header="Personal Details">
+                    <p:tab id="personal" title="#{msgs.personal}">
+                        <p:panel header="#{msgs.personal_details}">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Firstname: *" />
+                                <h:outputText value="#{msgs.first_name}" />
                                 <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
 
-                                <h:outputText value="Lastname: *" />
+                                <h:outputText value="#{msgs.last_name}" />
                                 <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
 
-                                <h:outputText value="Skip to last: " />
+                                <h:outputText value="#{msgs.skip_to_the_last}" />
                                 <h:selectBooleanCheckbox value="#{userWizard.skip}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
 
-                    <p:tab id="address" title="Address">
-                        <p:panel header="Address Details">
+                    <p:tab id="address" title="#{msgs.address}">
+                        <p:panel header="#{msgs.address_details}">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Street: " />
+                                <h:outputText value="#{msgs.street}" />
                                 <p:inputText value="#{userWizard.user.street}" />
 
-                                <h:outputText value="City: " />
+                                <h:outputText value="#{msgs.city}" />
                                 <p:inputText value="#{userWizard.user.city}" />
 
-                                <h:outputText value="Skip to last: " />
+                                <h:outputText value="#{msgs.skip_to_the_last}" />
                                 <h:selectBooleanCheckbox value="#{userWizard.skip}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
 
-                    <p:tab id="contact" title="Contact">
-                        <p:panel header="Contact Information">
+                    <p:tab id="contact" title="#{msgs.contact}">
+                        <p:panel header="#{msgs.contact_information}">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Email: *" />
+                                <h:outputText value="#{msgs.email_my_information}" />
                                 <p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
 
-                                <h:outputText value="Phone: *" />
+                                <h:outputText value="#{msgs.phone_my_information}" />
                                 <p:inputText value="#{userWizard.user.phone}" required="true" label="Phone"/>
                                 
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
 
-                    <p:tab id="confirm" title="Confirmation">
-                        <p:panel header="Confirmation">
+                    <p:tab id="confirm" title="#{msgs.confirmation}">
+                        <p:panel header="#{msgs.confirmation}">
                             <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <h:outputText value="Firstname: " />
+                                    <h:outputText value="#{msgs.first_name_not_mandatory}" />
                                     <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
 
-                                    <h:outputText value="Lastname: " />
+                                    <h:outputText value="Last name: " />
                                     <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
                                 </h:panelGrid>
 
