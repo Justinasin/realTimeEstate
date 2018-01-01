@@ -10,11 +10,11 @@
         <title>Property Details</title>
     </h:head>
     <h:body>
-        <ui:decorate template="/app_templates/app_template.xhtml"> 
+        <ui:decorate template="/app_templates/app_template_without_login.xhtml"> 
             <h:form>
                 <!-- Property Details Controls-->
 
-                <p:layout style="min-width:500px;height:850px;" >
+                <p:layout style="min-width:500px;height:600px;" >
 
                     <p:layoutUnit position="west" resizable="true" size="420" minSize="420" maxSize="1500"  >
 
@@ -57,7 +57,7 @@
                             <h:outputText value="078578578" style="font-weight:bold"/>
 
                             <h:outputText value="Owner Name" /> 
-                            <p:link outcome="ownersAdvertisements" value="Abdullah" style="font-weight:bold">
+                            <p:link outcome="ownersAdvertisements_without_login" value="Abdullah" style="font-weight:bold">
                                 <f:param name="productId" value="10" />
                             </p:link> 
 
@@ -66,20 +66,7 @@
                                           I'm selling a house in a nice area. 
                                           Next to the house there is a bus station and a shop." 
                                           style="font-weight:bold"/>
-
-                            <h:commandButton value="Comment" action="#{userBean.showComment()}"/>
-                            <h:commandButton value="Write the email" action="#{userBean.showEmail()}"/>
-                        </p:panelGrid>
-                        <p/>
-                        <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfComment()}" >
-                            <p:inputTextarea id="commentArea" rows="8" cols="38"  />
-                            <h:commandButton id="commentButton" value="Comment on property"/>
-                        </p:panelGrid>
-
-                        <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfEmail()}">
-                            <p:inputTextarea id="emailArea" rows="8" cols="38"/>
-                            <h:commandButton id="emailButton"  value="Send the email"/>
-                        </p:panelGrid>
+                            </p:panelGrid>
 
                     </p:layoutUnit>
 
@@ -135,28 +122,10 @@
                         <h:outputText value="#{event.date}"/>  
                     </p:column>
 
-                    <!--                    <p:column headerText="Owner Reply"
-                                                  style="width:40%"
-                                                  sortBy="#{event.date}">                    
-                                            <h:outputText value="#{event.date}"/>
-                    
-                                        </p:column>
-                                        <p:column headerText="Owner Reply Date"
-                                                  style="width:10%"
-                                                  sortBy="#{event.date}">                    
-                                            <h:outputText value="#{event.date}"/>-->
-
-                    <!--</p:column>-->
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <!--   <p:commandButton value="Extra!"
-                                                                             
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 action="owner" />
-                                -->
+                               
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>

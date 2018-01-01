@@ -11,10 +11,10 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <p:layout style="min-width:1200px;max-width:1200px;min-height:900px;max-height:900px">
-                <p:layoutUnit position="north" header="Enter search criteria" size="450">
+            <p:layout style="min-width:1200px;max-width:1200px;min-height:1300px;max-height:1300px">
+                <p:layoutUnit position="north" header="Enter search criteria" size="700">
                     <h:form>
-                        <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank">
+                        <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank">
                             <h:outputLabel for="action" value="Action" style="font-size:15px" /> 
                             <p:selectOneMenu id="action" value="#{SelectOneMenuView.action}" style="width:120px" >
                                 <f:selectItem itemLabel="Select action" itemValue="" />
@@ -41,15 +41,6 @@
                                 <f:selectItem itemLabel="Ma'an" itemValue="Ma'an" />
                             </p:selectOneMenu>
 
-                            <h:outputText value="Area" style="font-size:15px" /> 
-
-                            <h:panelGrid columns="1" style="margin-bottom: 10px">
-                            <h:outputText id="displayRange" value="Between #{sliderView.number1} and #{sliderView.number2}" />
-                            <p:slider for="txt1,txt2" display="displayRange" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="0" maxValue="1000" step="10"/>
-                            </h:panelGrid>
-                            <h:inputHidden id="txt1" value="#{sliderView.number1}" />
-                            <h:inputHidden id="txt2" value="#{sliderView.number2}" />
-
                             <h:outputLabel value="Number of rooms" style="font-size:15px" /> 
                             <p:selectOneMenu id="rooms" value="#{selectOneMenuView.rooms}" style="width:50px">
                                 <f:selectItem itemLabel="Select number" itemValue="" />
@@ -69,29 +60,41 @@
                                 <f:selectItem itemLabel="2" itemValue="2" />
                                 <f:selectItem itemLabel="3" itemValue="3" />
                             </p:selectOneMenu>
-
-                            <h:outputLabel value="Building year (from)" style="font-size:15px" /> 
-                            <p:inputText id="year"
-                                         style="width:150px"
-                                         required="true"/>
-
+                            
                             <h:outputLabel value="Heating system" style="font-size:15px"/>
                             <h:selectManyCheckbox id="heating" required="true">
                                 <f:selectItem itemValue="1" itemLabel="Central" />
                                 <f:selectItem itemValue="2" itemLabel="Gas" />
                                 <f:selectItem itemValue="3" itemLabel="Electricity" />
                             </h:selectManyCheckbox>
+                            
+                            <h:outputText value="Area" style="font-size:15px" /> 
 
-                            <h:outputLabel value="Search by text" style="font-size:15px" /> 
-                            <p:inputTextarea rows="6" cols="33"/>
+                            <h:panelGrid columns="1" style="margin-bottom: 10px">
+                            <h:outputText id="displayRange" value="Between #{sliderView.number1} and #{sliderView.number2}" />
+                            <p:slider for="txt1,txt2" display="displayRange" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="0" maxValue="1000" step="10"/>
+                            </h:panelGrid>
+                            <h:inputHidden id="txt1" value="#{sliderView.number1}" />
+                            <h:inputHidden id="txt2" value="#{sliderView.number2}" />
 
+                            <h:outputLabel value="Building year" style="font-size:15px" /> 
+                            <h:panelGrid columns="1" style="margin-bottom: 10px">
+                            <h:outputText id="displayRange2" value="Between #{sliderView.number5} and #{sliderView.number6}" />
+                                <p:slider for="txt5,txt6" display="displayRange2" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="1980" maxValue="2018" step="1"/>
+                            </h:panelGrid>
+                            <h:inputHidden id="txt5" value="#{sliderView.number5}" />
+                            <h:inputHidden id="txt6" value="#{sliderView.number6}" />
+                            
                             <h:outputLabel value="Price (Jod)" style="font-size:15px" /> 
                             <h:panelGrid columns="1" style="margin-bottom: 10px">
                             <h:outputText id="displayRange1" value="Between #{sliderView.number3} and #{sliderView.number4}" />
-                            <p:slider for="txt3,txt4" display="displayRange" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="0" maxValue="200000" step="1000"/>
+                            <p:slider for="txt3,txt4" display="displayRange1" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="0" maxValue="200000" step="1000"/>
                             </h:panelGrid>
                             <h:inputHidden id="txt3" value="#{sliderView.number3}" />
                             <h:inputHidden id="txt4" value="#{sliderView.number4}" />
+
+                            <h:outputLabel value="Search by text" style="font-size:15px" /> 
+                            <p:inputTextarea rows="6" cols="33"/>
 
                             <p:commandButton value="Search"
                                              icon="ui-icon-check" 
@@ -102,7 +105,7 @@
                     </h:form>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="center">
+                <p:layoutUnit position="center" size="400">
 
                     <p><h2> Most popular advertisements</h2> </p>
 

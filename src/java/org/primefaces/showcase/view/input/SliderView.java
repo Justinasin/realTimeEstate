@@ -14,6 +14,8 @@ public class SliderView {
     private int number2 = 1000;  
     private int number3 = 0;
     private int number4 = 2000000;
+    private int number5 = 1980;
+    private int number6 = 2018;
     
  
     public int getNumber1() {
@@ -46,6 +48,22 @@ public class SliderView {
  
     public void setNumber4(int number4) {
         this.number4 = number4;
+    }
+    
+     public int getNumber5() {
+        return number5;
+    }
+ 
+    public void setNumber5(int number5) {
+        this.number5 = number5;
+    }
+    
+     public int getNumber6() {
+        return number6;
+    }
+ 
+    public void setNumber6(int number6) {
+        this.number6 = number6;
     }
  
     public void onInputChanged(ValueChangeEvent event) {

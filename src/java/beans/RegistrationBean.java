@@ -16,12 +16,11 @@ public class RegistrationBean implements Serializable {
     private String password;
     private String address1;
     private String address2;
-    private Integer phone1;
-    private Integer phone2;
+    private String phone1;
+    private String phone2;
     private String gender;
     private String email;
             
-
     public RegistrationBean() {
     }
     
@@ -73,19 +72,19 @@ public class RegistrationBean implements Serializable {
         this.address2 = address2;
     }
     
-    public Integer getPhone1() {
+    public String getPhone1() {
         return phone1;
     }
 
-    public void setPhone1(Integer phone1) {
+    public void setPhone1(String phone1) {
         this.phone1 = phone1;
     }
     
-    public Integer getPhone2() {
+    public String getPhone2() {
         return phone2;
     }
 
-    public void setPhone2(Integer phone2) {
+    public void setPhone2(String phone2) {
         this.phone2 = phone2;
     }
     
