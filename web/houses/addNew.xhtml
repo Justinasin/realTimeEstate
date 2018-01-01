@@ -48,11 +48,6 @@
                                             style="width:150px"
                                             required="true"/>
 
-                            <h:outputText value="Flat number" /> 
-                            <p:inputText id="flatNumber"
-                                         style="width:150px"
-                                         required="true"/>
-
                             <h:outputText value="Area" /> 
                             <p:inputText id="area"
                                          style="width:150px"
@@ -79,12 +74,12 @@
                             </p:selectOneMenu>
 
                             <h:outputLabel value="Building year" /> 
-                            <p:inputText id="year"
+                            <p:inputText id="year" value="#{selectOneMenuView.buildingYear}"
                                          style="width:150px"
                                          required="true"/>
 
                             <h:outputLabel value="Heating system"/>
-                            <h:selectManyCheckbox id="heating" required="true">
+                            <h:selectManyCheckbox id="heating" required="true" value="#{selectOneMenuView.heatingSystem}">
                                 <f:selectItem itemValue="1" itemLabel="Central" />
                                 <f:selectItem itemValue="2" itemLabel="Gas" />
                                 <f:selectItem itemValue="3" itemLabel="Electricity" />
@@ -95,17 +90,20 @@
 
                             <h:outputLabel value="Price (Jod)" /> 
                             <p:inputText id="price"
+                                         value="#{selectOneMenuView.price}"
                                          style="width:150px"
                                          required="true"/>
 
 
                             <h:outputLabel value="Phone number" /> 
                             <p:inputText id="phoneNumber"
+                                         value="#{selectOneMenuView.phoneNumber}"
                                          style="width:150px"
                                          required="true"/>
 
                             <h:outputLabel value="Email" /> 
                             <p:inputText id="email"
+                                         value="#{selectOneMenuView.email}"
                                          style="width:150px"
                                          required="true"/>
 
