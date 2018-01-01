@@ -72,7 +72,7 @@
 
                             <h:panelGrid columns="1" style="margin-bottom: 10px">
                             <h:outputText id="displayRange" value="Between #{sliderView.number1} and #{sliderView.number2}" />
-                            <p:slider for="txt1,txt2" display="displayRange" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="0" maxValue="1000" step="10"/>
+                            <p:slider for="txt1,txt2" display="displayRange" style="width: 150px" range="true" displayTemplate="#{msgs.between}" minValue="0" maxValue="1000" step="10"/>
                             </h:panelGrid>
                             <h:inputHidden id="txt1" value="#{sliderView.number1}" />
                             <h:inputHidden id="txt2" value="#{sliderView.number2}" />
