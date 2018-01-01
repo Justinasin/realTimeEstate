@@ -1,0 +1,60 @@
+package org.primefaces.showcase.view.input;
+ 
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
+ 
+import org.primefaces.event.SlideEndEvent;
+ 
+@ManagedBean
+public class SliderView {
+    
+    private int number1 = 0;
+    private int number2 = 1000;  
+    private int number3 = 0;
+    private int number4 = 2000000;
+    
+ 
+    public int getNumber1() {
+        return number1;
+    }
+ 
+    public void setNumber1(int number1) {
+        this.number1 = number1;
+    }
+ 
+    public int getNumber2() {
+        return number2;
+    }
+ 
+    public void setNumber2(int number2) {
+        this.number2 = number2;
+    }
+    
+    public int getNumber3() {
+        return number3;
+    }
+ 
+    public void setNumber3(int number3) {
+        this.number3 = number3;
+    }
+    
+    public int getNumber4() {
+        return number4;
+    }
+ 
+    public void setNumber4(int number4) {
+        this.number4 = number4;
+    }
+ 
+    public void onInputChanged(ValueChangeEvent event) {
+        FacesMessage message = new FacesMessage("Input Changed", "Value: " + event.getNewValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    } 
+     
+    public void onSlideEnd(SlideEndEvent event) {
+        FacesMessage message = new FacesMessage("Slide Ended", "Value: " + event.getValue());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    } 
+}

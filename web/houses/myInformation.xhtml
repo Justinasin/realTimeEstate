@@ -23,10 +23,10 @@
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.first_name}" />
-                                <p:inputText value="#{userWizard.user.firstname}" required="true" label="Firstname"/>
+                                <p:inputText value="#{userWizard.user.firstname}" required="true" label="First name"/>
 
                                 <h:outputText value="#{msgs.last_name}" />
-                                <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
+                                <p:inputText value="#{userWizard.user.lastname}" required="true" label="Last name"/>
 
                                 <h:outputText value="#{msgs.skip_to_the_last}" />
                                 <h:selectBooleanCheckbox value="#{userWizard.skip}" />
@@ -38,11 +38,11 @@
                         <p:panel header="#{msgs.address_details}">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="#{msgs.street}" />
-                                <p:inputText value="#{userWizard.user.street}" />
+                                <h:outputText value="#{msgs.address1}: *" />
+                                <p:inputText value="#{registrationBean.address1}" required="true" label="Address 1" />
 
-                                <h:outputText value="#{msgs.city}" />
-                                <p:inputText value="#{userWizard.user.city}" />
+                                <h:outputText value="#{msgs.address2} (optional)" />
+                                <p:inputText value="#{registrationBean.address2}"  label="Address 2"/>
 
                                 <h:outputText value="#{msgs.skip_to_the_last}" />
                                 <h:selectBooleanCheckbox value="#{userWizard.skip}" />
@@ -57,8 +57,11 @@
                                 <h:outputText value="#{msgs.email_my_information}" />
                                 <p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
 
-                                <h:outputText value="#{msgs.phone_my_information}" />
-                                <p:inputText value="#{userWizard.user.phone}" required="true" label="Phone"/>
+                                <h:outputText value="#{msgs.phone_my_information_1}" />
+                                <p:inputText value="#{registrationBean.phone1}" required="true" label="Phone 1"/>
+                                
+                                <h:outputText value="#{msgs.phone_my_information_2} (optional)" />
+                                <p:inputText value="#{registrationBean.phone2}" label="Phone 2"/>
                                 
                             </h:panelGrid>
                         </p:panel>
