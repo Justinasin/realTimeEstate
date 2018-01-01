@@ -17,9 +17,9 @@
 
                 <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                <p:wizard flowListener="#{userWizard.onFlowProcess}">
+                <p:wizard flowListener="#{userWizard.onFlowProcess}" style="float:#{langBean.styleFloat}">
                     <p:tab id="personal" title="#{msgs.personal}">
-                        <p:panel header="#{msgs.personal_details}">
+                        <p:panel header="#{msgs.personal_details}" style="float:#{langBean.styleFloat}">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.first_name}" />
@@ -35,7 +35,7 @@
                     </p:tab>
 
                     <p:tab id="address" title="#{msgs.address}">
-                        <p:panel header="#{msgs.address_details}">
+                        <p:panel header="#{msgs.address_details}" style="float:#{langBean.styleFloat}">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.address1}: *" />
@@ -51,7 +51,7 @@
                     </p:tab>
 
                     <p:tab id="contact" title="#{msgs.contact}">
-                        <p:panel header="#{msgs.contact_information}">
+                        <p:panel header="#{msgs.contact_information}" style="float:#{langBean.styleFloat}">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.email_my_information}" />
@@ -68,7 +68,7 @@
                     </p:tab>
 
                     <p:tab id="confirm" title="#{msgs.confirmation}">
-                        <p:panel header="#{msgs.confirmation}">
+                        <p:panel header="#{msgs.confirmation}" style="float:#{langBean.styleFloat}">
                             <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                                 <h:panelGrid columns="2" columnClasses="label, value">
                                     <h:outputText value="#{msgs.first_name_not_mandatory}" />

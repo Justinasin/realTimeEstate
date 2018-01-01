@@ -46,7 +46,7 @@
             <p:tab title="#{msgs.houses}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
                                style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="Search" 
+                    <p:commandButton  value="#{msgs.search}" 
                                       icon="ui-icon-home"
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
@@ -59,7 +59,7 @@
 
                 <p:ribbonGroup styleClass="ribbonGroup2"
                                style="float:#{langBean.styleRight};">
-                    <p:commandButton  value="Add new" 
+                    <p:commandButton  value="#{msgs.add_new}" 
                                       icon="ui-icon-home"
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
@@ -71,11 +71,11 @@
     <p:growl id="options" showDetail="true"/>
  
     <p:menuButton value="#{loginBean.username}">
-        <p:menuitem value="My information" id="myInformation" update="options" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
-        <p:menuitem value="Notifications" id="notifications" update="options" icon="ui-icon-info" outcome="/houses/notificationPage.xhtml"/>
-        <p:menuitem value="My advertisements"  update="options" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
-        <p:menuitem value="Admin panel"  update="options" icon="ui-icon-person" outcome="/houses/admin.xhtml"/>
-        <p:menuitem value="Logout" update="options" icon="ui-icon-power" outcome="/houses/houses_without_login" actionListener="#{sessionBean.logout()}"/>
+        <p:menuitem value="#{msgs.my_information}" id="myInformation" update="options" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
+        <p:menuitem value="#{msgs.notifications}" id="notifications" update="options" icon="ui-icon-info" outcome="/houses/notificationPage.xhtml"/>
+        <p:menuitem value="#{msgs.my_advertisements}"  update="options" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
+        <p:menuitem value="#{msgs.admin_panel}"  update="options" icon="ui-icon-person" outcome="/houses/admin.xhtml"/>
+        <p:menuitem value="#{msgs.logout}" update="options" icon="ui-icon-power" outcome="/houses/houses_without_login" actionListener="#{sessionBean.logout()}"/>
         <p:separator />
     </p:menuButton>
 </h:form>
