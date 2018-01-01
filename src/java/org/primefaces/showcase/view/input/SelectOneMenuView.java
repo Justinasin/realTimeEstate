@@ -24,7 +24,7 @@ public class SelectOneMenuView {
     private String heatingSystem;
     private String desc;
     private Integer price;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private String email;
     
      
@@ -97,11 +97,11 @@ public class SelectOneMenuView {
         this.price = price;
     }
     
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
  
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     
@@ -112,14 +112,6 @@ public class SelectOneMenuView {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     public int getRooms() {
         return rooms;
