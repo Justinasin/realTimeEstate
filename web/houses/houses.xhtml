@@ -15,9 +15,9 @@
                 <p:layoutUnit position="north" header="Enter search criteria" size="700">
                     <h:form>
                         <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank">
-                            <h:outputLabel for="action" value="Action" style="font-size:15px" /> 
+                            <h:outputLabel for="action" value="#{msgs.action}" style="font-size:15px" /> 
                             <p:selectOneMenu id="action" value="#{SelectOneMenuView.action}" style="width:120px" >
-                                <f:selectItem itemLabel="Select action" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.select_action}" itemValue="" />
                                 <f:selectItem itemLabel="Sale" itemValue="Sale" />
                                 <f:selectItem itemLabel="Rent" itemValue="Rent" />
                             </p:selectOneMenu>
@@ -107,7 +107,7 @@
 
                 <p:layoutUnit position="center" size="400">
 
-                    <p><h2> Most popular advertisements</h2> </p>
+                    <p><h2>#{msgs.most_popular_advertisements}</h2> </p>
 
                     <div class="main-content">
 
