@@ -12,54 +12,54 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form>
-                <p:layout style="min-width:1250px;min-height:800px;max-width:1250px;max-height:800px">
-                    <p:layoutUnit position="west" header="Enter data for new property" resizable="false" size="400" minSize="200" maxSize="400">
+                <p:layout style="min-width:1250px;min-height:800px;max-width:1250px;max-height:800px;">
+                    <p:layoutUnit position="west" header="#{msgs.enter_data_for_new_property}" resizable="false" size="400" minSize="200" maxSize="400">
                         <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
 
-                            <h:outputLabel for="action" value="Action" /> 
+                            <h:outputLabel for="action" value="#{msgs.action}" /> 
                             <p:selectOneMenu id="action" value="#{SelectOneMenuView.action}" style="width:125px">
-                                <f:selectItem itemLabel="Select action" itemValue="" />
-                                <f:selectItem itemLabel="Sale" itemValue="Sale" />
-                                <f:selectItem itemLabel="Rent" itemValue="Rent" />
+                                <f:selectItem itemLabel="#{msgs.select_action}" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.sale}" itemValue="Sale" />
+                                <f:selectItem itemLabel="#{msgs.rent}" itemValue="Rent" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel for="type" value="Type" /> 
+                            <h:outputLabel for="type" value="#{msgs.type}" /> 
                             <p:selectOneMenu id="type" value="#{SelectOneMenuView.type}" style="width:125px">
-                                <f:selectItem itemLabel="Select type" itemValue="" />
-                                <f:selectItem itemLabel="Flat" itemValue="Flat" />
-                                <f:selectItem itemLabel="House" itemValue="House" />
+                                <f:selectItem itemLabel="#{msgs.select_type}" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.flat}" itemValue="Flat" />
+                                <f:selectItem itemLabel="#{msgs.house}" itemValue="House" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel for="city" value="City" />
+                            <h:outputLabel for="city" value="#{msgs.city}" />
                             <p:selectOneMenu id="city" value="#{SelectOneMenuView.city}" style="width:125px">
-                                <f:selectItem itemLabel="Select city" itemValue="" />
-                                <f:selectItem itemLabel="Madaba" itemValue="Madaba" />
-                                <f:selectItem itemLabel="Amman" itemValue="Amman" />
-                                <f:selectItem itemLabel="Irbid" itemValue="Irbid" />
-                                <f:selectItem itemLabel="Aqaba" itemValue="Aqaba" />
-                                <f:selectItem itemLabel="Sahab" itemValue="Sahab" />
-                                <f:selectItem itemLabel="Jerash" itemValue="Jerash" />
-                                <f:selectItem itemLabel="Ma'an" itemValue="Ma'an" />
+                                <f:selectItem itemLabel="#{msgs.select_city}" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.madaba}" itemValue="Madaba" />
+                                <f:selectItem itemLabel="#{msgs.amman}" itemValue="Amman" />
+                                <f:selectItem itemLabel="#{msgs.irbid}" itemValue="Irbid" />
+                                <f:selectItem itemLabel="#{msgs.aqaba}" itemValue="Aqaba" />
+                                <f:selectItem itemLabel="#{msgs.sahab}" itemValue="Sahab" />
+                                <f:selectItem itemLabel="#{msgs.jerash}" itemValue="Jerash" />
+                                <f:selectItem itemLabel="#{msgs.maan}" itemValue="Ma'an" />
                             </p:selectOneMenu>
 
-                            <h:outputText value="Street" /> 
+                            <h:outputText value="#{msgs.street}" /> 
                             <p:inputText    id="street"
                                             style="width:150px"
                                             required="true"/>
 
-                            <h:outputText value="House number" /> 
+                            <h:outputText value="#{msgs.house_number}" /> 
                             <p:inputText    id="houseNumber"
                                             style="width:150px"
                                             required="true"/>
 
-                            <h:outputText value="Area" /> 
+                            <h:outputText value="#{msgs.area}" /> 
                             <p:inputText id="area"
                                          style="width:150px"
                                          required="true"/>
 
-                            <h:outputLabel value="Number of rooms" /> 
+                            <h:outputLabel value="#{msgs.number_of_rooms}" /> 
                             <p:selectOneMenu id="rooms" value="#{selectOneMenuView.rooms}" style="width:50px">
-                                <f:selectItem itemLabel="Select number" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.select_number}" itemValue="" />
                                 <f:selectItem itemLabel="1" itemValue="1" />
                                 <f:selectItem itemLabel="2" itemValue="2" />
                                 <f:selectItem itemLabel="3" itemValue="3" />
@@ -69,49 +69,49 @@
                                 <f:selectItem itemLabel="7" itemValue="7" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel value="Number of floors" /> 
+                            <h:outputLabel value="#{msgs.number_of_floors}" /> 
                             <p:selectOneMenu id="floors" value="#{selectOneMenuView.floors}" style="width:50px">
-                                <f:selectItem itemLabel="Select number" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.select_number}" itemValue="" />
                                 <f:selectItem itemLabel="1" itemValue="1" />
                                 <f:selectItem itemLabel="2" itemValue="2" />
                                 <f:selectItem itemLabel="3" itemValue="3" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel value="Building year" /> 
+                            <h:outputLabel value="#{msgs.building_year}" /> 
                             <p:inputText id="year" value="#{selectOneMenuView.buildingYear}"
                                          style="width:150px"
                                          required="true"/>
 
-                            <h:outputLabel value="Heating system"/>
+                            <h:outputLabel value="#{msgs.heating_system}"/>
                             <h:selectManyCheckbox id="heating" required="true" value="#{selectOneMenuView.heatingSystem}">
-                                <f:selectItem itemValue="1" itemLabel="Central" />
-                                <f:selectItem itemValue="2" itemLabel="Gas" />
-                                <f:selectItem itemValue="3" itemLabel="Electricity" />
+                                <f:selectItem itemValue="1" itemLabel="#{msgs.central}" />
+                                <f:selectItem itemValue="2" itemLabel="#{msgs.gas}" />
+                                <f:selectItem itemValue="3" itemLabel="#{msgs.electricity}" />
                             </h:selectManyCheckbox>
 
-                            <h:outputLabel value="Short description" /> 
+                            <h:outputLabel value="#{msgs.short_description}" /> 
                             <p:inputTextarea rows="6" cols="33"/>
 
-                            <h:outputLabel value="Price (Jod)" /> 
+                            <h:outputLabel value="#{msgs.price}" /> 
                             <p:inputText id="price"
                                          value="#{selectOneMenuView.price}"
                                          style="width:150px"
                                          required="true"/>
 
 
-                            <h:outputLabel value="Phone number" /> 
+                            <h:outputLabel value="#{msgs.phone_number}" /> 
                             <p:inputText id="phoneNumber"
                                          value="#{selectOneMenuView.phoneNumber}"
                                          style="width:150px"
                                          required="true"/>
 
-                            <h:outputLabel value="Email" /> 
+                            <h:outputLabel value="#{msgs.email_my_information}" /> 
                             <p:inputText id="email"
                                          value="#{selectOneMenuView.email}"
                                          style="width:150px"
                                          required="true"/>
 
-                            <p:commandButton value="Submit"
+                            <p:commandButton value="#{msgs.submit}"
                                              icon="ui-icon-check" 
                                              iconPos="#{langBean.styleFloat}"
                                              style="float:#{langBean.styleFloat}"
@@ -119,7 +119,7 @@
                         </p:panelGrid>
                     </p:layoutUnit>
 
-                    <p:layoutUnit position="center" header="Upload photos for new property">
+                    <p:layoutUnit position="center" header="#{msgs.upload_photos_for_new_property}">
 
                         <h:form enctype="multipart/form-data">
                             <p:growl id="messages" showDetail="true" />
@@ -127,7 +127,7 @@
                             <p:fileUpload value="#{fileUploadView.file}" mode="advanced" fileLimit="5" skinSimple="true"
                                                                          multiple="true" sizeLimit="100000000"/>
                             <p></p>
-                            <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="false" />
+                            <p:commandButton value="#{msgs.submit}" ajax="false" actionListener="#{fileUploadView.upload}" disabled="false" />
                         </h:form>
 
                     </p:layoutUnit>

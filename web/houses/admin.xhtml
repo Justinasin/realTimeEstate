@@ -15,205 +15,124 @@
                 <div class="main-content">
 
                     <div class="just-box">
-                        <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  /><p class="box-title">
+                        <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
+                        <p class="box-title">
                             <span class="box-price">
                                 200,000 Jod
                             </span>
                             Price  
+                        </p>
                             <p class="box-desc">
                                 This is a description of selling property. I'm selling a house in a
                                 nice area. Next to the house there is a bus station and a shop.
-
                             </p>
-
-                        </p>
-
+                        <h:commandButton value="#{msgs.approve}"/>
+                        <h:commandButton value="#{msgs.send_notification}"/>
+                        <h:commandButton value="#{msgs.delete}"/>
                     </div>
                     <div class="just-box">
-                        <p:panelGrid columns="2" styleClass="noBorders" >
+                        <p:panelGrid columns="2" styleClass="noBorders">
 
-                            <h:outputText value="Type" /> 
-                            <h:outputText value="Flat" /> 
+                            <h:outputText value="#{msgs.action}" /> 
+                            <h:outputText value="Sale" style="font-weight:bold" /> 
 
-                            <h:outputText value="City" /> 
-                            <h:outputText value="Amman" /> 
+                            <h:outputText value="#{msgs.type}" /> 
+                            <h:outputText value="Flat" style="font-weight:bold" /> 
 
-                            <h:outputText value="Address" /> 
-                            <h:outputText value="Abdoun Circle" /> 
+                            <h:outputText value="#{msgs.city}" /> 
+                            <h:outputText value="Amman" style="font-weight:bold"/> 
 
-                            <h:outputText value="Area SQM" /> 
-                            <h:outputText value="150" />
+                            <h:outputText value="#{msgs.street}" /> 
+                            <h:outputText value="Street name" style="font-weight:bold"/>
 
-                            <h:outputText value="Price JOD" /> 
-                            <h:outputText value="200,000" /> 
+                            <h:outputText value="#{msgs.house_number}" /> 
+                            <h:outputText value="10" style="font-weight:bold"/> 
 
-                            <h:outputText value="Date" /> 
-                            <h:outputText value="2017-05-07" /> 
+                            <h:outputText value="#{msgs.area}" /> 
+                            <h:outputText value="150" style="font-weight:bold"/>
 
-                            <h:outputText value="Owner Name" /> 
-                            <h:outputText value="Ali Ali Ali (link)" /> 
-                            <h:commandButton value="Approve"/>
-                            <h:commandButton value="Send a notification"/>
+                            <h:outputText value="#{msgs.number_of_rooms}" /> 
+                            <h:outputText value="6" style="font-weight:bold"/>
 
+                            <h:outputText value="#{msgs.number_of_floors}" /> 
+                            <h:outputText value="2" style="font-weight:bold"/>
 
-                        </p:panelGrid>
-                    </div>
-                </div><div class="main-content">
+                            <h:outputText value="#{msgs.building_year}" /> 
+                            <h:outputText value="2012" style="font-weight:bold"/>
 
-                    <div class="just-box">
-                        <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  /><p class="box-title">
-                            <span class="box-price">
-                                200,000 Jod
-                            </span>
-                            Price  
-                            <p class="box-desc">
-                                This is a description of selling property. I'm selling a house in a
-                                nice area. Next to the house there is a bus station and a shop.
+                            <h:outputText value="#{msgs.heating_system}" /> 
+                            <h:outputText value="Gas, Electricity" style="font-weight:bold"/>
 
-                            </p>
+                            <h:outputText value="#{msgs.phone}" /> 
+                            <h:outputText value="078578578" style="font-weight:bold"/>
 
-                        </p>
-
-                    </div>
-                    <div class="just-box">
-                        <p:panelGrid columns="2" styleClass="noBorders" >
-
-                            <h:outputText value="Type" /> 
-                            <h:outputText value="Flat" /> 
-
-                            <h:outputText value="City" /> 
-                            <h:outputText value="Amman" /> 
-
-                            <h:outputText value="Address" /> 
-                            <h:outputText value="Abdoun Circle" /> 
-
-                            <h:outputText value="Area SQM" /> 
-                            <h:outputText value="150" />
-
-                            <h:outputText value="Price JOD" /> 
-                            <h:outputText value="200,000" /> 
-
-                            <h:outputText value="Date" /> 
-                            <h:outputText value="2017-05-07" /> 
-
-                            <h:outputText value="Owner Name" /> 
-                            <h:outputText value="Ali Ali Ali (link)" /> 
-                            <h:commandButton value="Approve"/>
-                            <h:commandButton value="Send a notification"/>
-
-
+                            <h:outputText value="#{msgs.owner_name}" /> 
+                            <p:link outcome="ownersAdvertisements" value="Abdullah" style="font-weight:bold">
+                                <f:param name="productId" value="10" />
+                            </p:link>
                         </p:panelGrid>
                     </div>
                 </div>
-            </h:form>
+                <p/>
+                <div class="main-content">
+                    <div class="just-box">
+                        <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  /><p class="box-title">
+                            <span class="box-price">
+                                200,000 Jod
+                            </span>
+                            Price  
+                            <p class="box-desc">
+                                This is a description of selling property. I'm selling a house in a
+                                nice area. Next to the house there is a bus station and a shop.
+                            </p>
+                        </p>
+                        <h:commandButton value="#{msgs.approve}"/>
+                        <h:commandButton value="#{msgs.send_notification}"/>
+                        <h:commandButton value="#{msgs.delete}"/>
+                    </div>
+                    <div class="just-box">
+                        <p:panelGrid columns="2" styleClass="noBorders" >
 
-            <h:form id="manage_events_form">               
-                <p:dataTable id="manage_events_tbl"
-                             class="dataTable_house"
-                             value="#{manageEventsBean.events}"                    
-                             selection="#{manageEventsBean.selectedEvent}"
-                             rowKey="#{event.eventId}"                    
-                             var="event"   
-                             rows="20"     
-                             rowsPerPageTemplate="1,2,3"
-                             dir="#{langBean.dir}"
-                             emptyMessage="#{msgs.no_events}"
-                             paginator="true"
-                             paginatorPosition="top" 
-                             paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
-                             >
+                            <h:outputText value="#{msgs.action}" /> 
+                            <h:outputText value="Sale" style="font-weight:bold" /> 
 
-                    <p:ajax event="rowSelectRadio"
-                            update=":manage_events_form:manage_events_tbl"/>
+                            <h:outputText value="#{msgs.type}" /> 
+                            <h:outputText value="Flat" style="font-weight:bold" /> 
 
-                    <f:facet name="header" id="header">
-                        Search for a property
-                    </f:facet>
+                            <h:outputText value="#{msgs.city}" /> 
+                            <h:outputText value="Amman" style="font-weight:bold"/> 
 
-                    <p:column selectionMode="single" style="width:2%"/>
+                            <h:outputText value="#{msgs.street}" /> 
+                            <h:outputText value="Street name" style="font-weight:bold"/>
 
-                    <p:column headerText="Type"
-                              style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                    </p:column>
+                            <h:outputText value="#{msgs.house_number}" /> 
+                            <h:outputText value="10" style="font-weight:bold"/> 
 
-                    <p:column headerText="City"
-                              style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                    </p:column>
-                    <p:column headerText="Address"
-                              style="width:10%"
-                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                    </p:column>
+                            <h:outputText value="#{msgs.area}" /> 
+                            <h:outputText value="150" style="font-weight:bold"/>
 
-                    <p:column headerText="Area"
-                              style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                    </p:column>
+                            <h:outputText value="#{msgs.number_of_rooms}" /> 
+                            <h:outputText value="6" style="font-weight:bold"/>
 
-                    <p:column headerText="Price"
-                              style="width:5%"
-                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                    </p:column>
+                            <h:outputText value="#{msgs.number_of_floors}" /> 
+                            <h:outputText value="2" style="font-weight:bold"/>
 
-                    <p:column headerText="Ads Date"
-                              style="width:7%"
-                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                    </p:column>
+                            <h:outputText value="#{msgs.building_year}" /> 
+                            <h:outputText value="2012" style="font-weight:bold"/>
 
+                            <h:outputText value="#{msgs.heating_system}" /> 
+                            <h:outputText value="Gas, Electricity" style="font-weight:bold"/>
 
-                    <p:column headerText="Owner Name"
-                              style="width:10%"
-                              filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                              filterMatchMode="contains"
-                              sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                        <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                    </p:column>
+                            <h:outputText value="#{msgs.phone}" /> 
+                            <h:outputText value="078578578" style="font-weight:bold"/>
 
-
-                    <f:facet name="footer">
-                        <p:toolbar style="border: none">
-                            <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <p:commandButton value="Edit"
-                                                 icon="ui-icon-pencil"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-
-                                                 action="owner" />
-
-                                <p:commandButton value="Delete!"
-                                                 icon="ui-icon-minus"                                  
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-
-                                                 action="owner" />
-
-                            </p:toolbarGroup>
-                        </p:toolbar>
-                    </f:facet>
-                </p:dataTable>
-
-
+                            <h:outputText value="#{msgs.owner_name}" /> 
+                            <p:link outcome="ownersAdvertisements" value="Abdullah" style="font-weight:bold">
+                                <f:param name="productId" value="10" />
+                            </p:link>
+                        </p:panelGrid>
+                    </div>
+                </div>
             </h:form>
         </ui:decorate>
     </h:body>

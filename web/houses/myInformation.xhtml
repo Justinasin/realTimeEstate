@@ -19,14 +19,14 @@
 
                 <p:wizard flowListener="#{userWizard.onFlowProcess}" style="float:#{langBean.styleFloat}">
                     <p:tab id="personal" title="#{msgs.personal}">
-                        <p:panel header="#{msgs.personal_details}" style="float:#{langBean.styleFloat}">
+                        <p:panel header="#{msgs.personal_details}" style="float:#{langBean.styleFloat};width:600px">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="#{msgs.first_name}" />
-                                <p:inputText value="#{userWizard.user.firstname}" required="true" label="First name"/>
+                                <h:outputText value="#{msgs.first_name}: *" />
+                                <p:inputText value="#{registrationBean.firstname}" required="true" label="First name"/>
 
-                                <h:outputText value="#{msgs.last_name}" />
-                                <p:inputText value="#{userWizard.user.lastname}" required="true" label="Last name"/>
+                                <h:outputText value="#{msgs.last_name}: *" />
+                                <p:inputText value="#{registrationBean.lastname}" required="true" label="Last name"/>
 
                                 <h:outputText value="#{msgs.skip_to_the_last}" />
                                 <h:selectBooleanCheckbox value="#{userWizard.skip}" />
@@ -35,13 +35,13 @@
                     </p:tab>
 
                     <p:tab id="address" title="#{msgs.address}">
-                        <p:panel header="#{msgs.address_details}" style="float:#{langBean.styleFloat}">
+                        <p:panel header="#{msgs.address_details}" style="float:#{langBean.styleFloat};width:600px">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.address1}: *" />
-                                <p:inputText value="#{registrationBean.address1}" required="true" label="Address 1" />
+                                <p:inputText value="#{registrationBean.address1}" required="true" requiredMessage="Address 1 is required" label="Address 1" />
 
-                                <h:outputText value="#{msgs.address2} (optional)" />
+                                <h:outputText value="#{msgs.address2}: (optional)" />
                                 <p:inputText value="#{registrationBean.address2}"  label="Address 2"/>
 
                                 <h:outputText value="#{msgs.skip_to_the_last}" />
@@ -51,14 +51,14 @@
                     </p:tab>
 
                     <p:tab id="contact" title="#{msgs.contact}">
-                        <p:panel header="#{msgs.contact_information}" style="float:#{langBean.styleFloat}">
+                        <p:panel header="#{msgs.contact_information}" style="float:#{langBean.styleFloat};width:600px">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="#{msgs.email_my_information}" />
-                                <p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
+                                <h:outputText value="#{msgs.email_my_information}: *" />
+                                <p:inputText value="#{registrationBean.email}" required="true" requiredMessage="Email is required" label="Email"/>
 
-                                <h:outputText value="#{msgs.phone_my_information_1}" />
-                                <p:inputText value="#{registrationBean.phone1}" required="true" label="Phone 1"/>
+                                <h:outputText value="#{msgs.phone_my_information_1}: *" />
+                                <p:inputText value="#{registrationBean.phone1}" required="true" requiredMessage="Phone 1 is required" label="Phone 1"/>
                                 
                                 <h:outputText value="#{msgs.phone_my_information_2} (optional)" />
                                 <p:inputText value="#{registrationBean.phone2}" label="Phone 2"/>
@@ -68,37 +68,42 @@
                     </p:tab>
 
                     <p:tab id="confirm" title="#{msgs.confirmation}">
-                        <p:panel header="#{msgs.confirmation}" style="float:#{langBean.styleFloat}">
-                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                        <p:panel header="#{msgs.confirmation}" style="float:#{langBean.styleFloat};width:600px">
+                            <h:panelGrid id="confirmation" columns="1" columnClasses="grid,grid,grid">
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <h:outputText value="#{msgs.first_name_not_mandatory}" />
-                                    <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
+                                    <h:outputText value="#{msgs.first_name}:" />
+                                    <h:outputText value="#{registrationBean.firstname}" styleClass="outputLabel"/>
 
-                                    <h:outputText value="Last name: " />
-                                    <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
+                                    <h:outputText value="#{msgs.last_name}:" />
+                                    <h:outputText value="#{registrationBean.lastname}" styleClass="outputLabel"/>
                                 </h:panelGrid>
 
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <h:outputText value="Street: " />
-                                    <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+                                    <h:outputText value="#{msgs.address1}:" />
+                                    <h:outputText value="#{registrationBean.address1}" styleClass="outputLabel"/>
 
-                                    <h:outputText value="City: " />
-                                    <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+                                    <h:outputText value="#{msgs.address2}:" />
+                                    <h:outputText value="#{registrationBean.address2}" styleClass="outputLabel"/>
                                 </h:panelGrid>
 
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <h:outputText value="Email: " />
-                                    <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+                                    <h:outputText value="#{msgs.email_my_information}:" />
+                                    <h:outputText value="#{registrationBean.email}" styleClass="outputLabel"/>
 
-                                    <h:outputText value="Phone " />
-                                    <h:outputText value="#{userWizard.user.phone}" styleClass="outputLabel"/>
+                                    <h:outputText value="#{msgs.phone_my_information_1}:" />
+                                    <h:outputText value="#{registrationBean.phone1}" styleClass="outputLabel"/>
+                                </h:panelGrid>
+                                    
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="#{msgs.phone_my_information_2}:" />
+                                    <h:outputText value="#{registrationBean.phone2}" styleClass="outputLabel"/>
 
                                     <h:outputText />
                                     <h:outputText />
                                 </h:panelGrid>
                             </h:panelGrid>
 
-                            <p:commandButton value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>
+                            <p:commandButton value="#{msgs.submit}" actionListener="#{registrationBean.save}" update="growl" process="@this"/>
                         </p:panel>
                     </p:tab>
                 </p:wizard>

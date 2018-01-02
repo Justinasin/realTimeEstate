@@ -20,65 +20,65 @@
 
                         <p:panelGrid columns="2" styleClass="noBorders" >
 
-                            <h:outputText value="Action" /> 
+                            <h:outputText value="#{msgs.action}" /> 
                             <h:outputText value="Sale" style="font-weight:bold" /> 
 
-                            <h:outputText value="Type" /> 
+                            <h:outputText value="#{msgs.type}" /> 
                             <h:outputText value="Flat" style="font-weight:bold" /> 
 
-                            <h:outputText value="City" /> 
+                            <h:outputText value="#{msgs.city}" /> 
                             <h:outputText value="Amman" style="font-weight:bold"/> 
 
-                            <h:outputText value="Street" /> 
+                            <h:outputText value="#{msgs.street}" /> 
                             <h:outputText value="Street name" style="font-weight:bold"/>
 
-                            <h:outputText value="House number" /> 
+                            <h:outputText value="#{msgs.house_number}" /> 
                             <h:outputText value="10" style="font-weight:bold"/> 
 
-                            <h:outputText value="Area (sqm)" /> 
+                            <h:outputText value="#{msgs.area}" /> 
                             <h:outputText value="150" style="font-weight:bold"/>
 
-                            <h:outputText value="Number of rooms" /> 
+                            <h:outputText value="#{msgs.number_of_rooms}" /> 
                             <h:outputText value="6" style="font-weight:bold"/>
 
-                            <h:outputText value="Number of floors" /> 
+                            <h:outputText value="#{msgs.number_of_floors}" /> 
                             <h:outputText value="2" style="font-weight:bold"/>
 
-                            <h:outputText value="Building year" /> 
+                            <h:outputText value="#{msgs.building_year}" /> 
                             <h:outputText value="2012" style="font-weight:bold"/>
 
-                            <h:outputText value="Heating system" /> 
+                            <h:outputText value="#{msgs.heating_system}" /> 
                             <h:outputText value="Gas, Electricity" style="font-weight:bold"/>
 
-                            <h:outputText value="Price JOD" /> 
+                            <h:outputText value="#{msgs.price}" /> 
                             <h:outputText value="200,000" style="font-weight:bold;color:red"/> 
 
-                            <h:outputText value="Phone number" /> 
+                            <h:outputText value="#{msgs.phone}" /> 
                             <h:outputText value="078578578" style="font-weight:bold"/>
 
-                            <h:outputText value="Owner Name" /> 
+                            <h:outputText value="#{msgs.owner_name}" /> 
                             <p:link outcome="ownersAdvertisements" value="Abdullah" style="font-weight:bold">
                                 <f:param name="productId" value="10" />
                             </p:link> 
 
-                            <h:outputText value="Short description" /> 
+                            <h:outputText value="#{msgs.short_description}" /> 
                             <h:outputText value="This is a description of selling property. 
                                           I'm selling a house in a nice area. 
                                           Next to the house there is a bus station and a shop." 
                                           style="font-weight:bold"/>
 
-                            <h:commandButton value="Comment" action="#{userBean.showComment()}"/>
-                            <h:commandButton value="Write the email" action="#{userBean.showEmail()}"/>
+                            <h:commandButton value="#{msgs.comment}" action="#{userBean.showComment()}"/>
+                            <h:commandButton value="#{msgs.write_email}" action="#{userBean.showEmail()}"/>
                         </p:panelGrid>
                         <p/>
                         <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfComment()}" >
                             <p:inputTextarea id="commentArea" rows="8" cols="38"  />
-                            <h:commandButton id="commentButton" value="Comment on property"/>
+                            <h:commandButton id="commentButton" value="#{msgs.comment_on_property}"/>
                         </p:panelGrid>
 
                         <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfEmail()}">
                             <p:inputTextarea id="emailArea" rows="8" cols="38"/>
-                            <h:commandButton id="emailButton"  value="Send the email"/>
+                            <h:commandButton id="emailButton"  value="#{msgs.send_the_email}"/>
                         </p:panelGrid>
 
                     </p:layoutUnit>
@@ -90,7 +90,7 @@
                     </p:layoutUnit>
                 </p:layout>
             </h:form>
-            <!-- Property comments  Table--> 
+           
             <h:form id="manage_events_form">               
                 <p:dataTable id="manage_events_tbl"
                              class="dataTable_house"
@@ -111,12 +111,12 @@
                             update=":manage_events_form:manage_events_tbl"/>
 
                     <f:facet name="header" id="header">
-                        Comments on the Property
+                        #{msgs.comments_header}
                     </f:facet>
 
                     <p:column selectionMode="single" style="width:5%"/>
 
-                    <p:column headerText="Comment By"
+                    <p:column headerText="#{msgs.comment_by}"
                               style="width:20%"
                               filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
                               filterMatchMode="contains"
@@ -124,39 +124,20 @@
                         <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
                     </p:column>
 
-                    <p:column headerText="Comments"
+                    <p:column headerText="#{msgs.comments}"
                               style="width:60%"
                               sortBy="#{event.date}">                    
                         <h:outputText value="#{event.date}"/>  
                     </p:column>
-                    <p:column headerText="Comments Date"
+                    <p:column headerText="#{msgs.comments_date}"
                               style="width:20%"
                               sortBy="#{event.date}">                    
                         <h:outputText value="#{event.date}"/>  
                     </p:column>
 
-                    <!--                    <p:column headerText="Owner Reply"
-                                                  style="width:40%"
-                                                  sortBy="#{event.date}">                    
-                                            <h:outputText value="#{event.date}"/>
-                    
-                                        </p:column>
-                                        <p:column headerText="Owner Reply Date"
-                                                  style="width:10%"
-                                                  sortBy="#{event.date}">                    
-                                            <h:outputText value="#{event.date}"/>-->
-
-                    <!--</p:column>-->
                     <f:facet name="footer">
                         <p:toolbar style="border: none">
                             <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                <!--   <p:commandButton value="Extra!"
-                                                                             
-                                                 iconPos="#{langBean.styleFloat}"
-                                                 styleClass="commandButton"
-                                                 style="float:#{langBean.styleFloat}"                                                                                                
-                                                 action="owner" />
-                                -->
                             </p:toolbarGroup>
                         </p:toolbar>
                     </f:facet>

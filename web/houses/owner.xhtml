@@ -34,42 +34,42 @@
                     <div class="just-box">
                         <p:panelGrid columns="2" styleClass="noBorders" >
 
-                            <h:outputText value="Action" /> 
+                            <h:outputText value="#{msgs.action}" /> 
                             <h:outputText value="Sale" style="font-weight:bold" /> 
 
-                            <h:outputText value="Type" /> 
+                            <h:outputText value="#{msgs.type}" /> 
                             <h:outputText value="Flat" style="font-weight:bold" /> 
 
-                            <h:outputText value="City" /> 
+                            <h:outputText value="#{msgs.city}" /> 
                             <h:outputText value="Amman" style="font-weight:bold"/> 
 
-                            <h:outputText value="Street" /> 
+                            <h:outputText value="#{msgs.street}" /> 
                             <h:outputText value="Street name" style="font-weight:bold"/>
 
-                            <h:outputText value="House number" /> 
+                            <h:outputText value="#{msgs.house_number}" /> 
                             <h:outputText value="10" style="font-weight:bold"/> 
 
-                            <h:outputText value="Area (sqm)" /> 
+                            <h:outputText value="#{msgs.area}" /> 
                             <h:outputText value="150" style="font-weight:bold"/>
 
-                            <h:outputText value="Number of rooms" /> 
+                            <h:outputText value="#{msgs.number_of_rooms}" /> 
                             <h:outputText value="6" style="font-weight:bold"/>
 
-                            <h:outputText value="Number of floors" /> 
+                            <h:outputText value="#{msgs.number_of_floors}" /> 
                             <h:outputText value="2" style="font-weight:bold"/>
 
-                            <h:outputText value="Building year" /> 
+                            <h:outputText value="#{msgs.building_year}" /> 
                             <h:outputText value="2012" style="font-weight:bold"/>
 
-                            <h:outputText value="Heating system" /> 
+                            <h:outputText value="#{msgs.heating_system}" /> 
                             <h:outputText value="Gas, Electricity" style="font-weight:bold"/>
 
-                            <h:outputText value="Phone number" /> 
+                            <h:outputText value="#{msgs.phone_number}" /> 
                             <h:outputText value="078578578" style="font-weight:bold"/> 
 
-                            <h:commandButton value="Edit" 
+                            <h:commandButton value="#{msgs.edit}" 
                                              action="addNew.xhtml"/>
-                            <h:commandButton value="View advertisement" 
+                            <h:commandButton value="#{msgs.view_advertisement}" 
                                              action="houses_Details.xhtml"/>
 
 
@@ -77,108 +77,6 @@
                     </div>
                 </div>
             </h:form>
-            <!-- Property comments  Table--> 
-            <!--            <h:form id="manage_events_form">               
-                            <p:dataTable id="manage_events_tbl"
-                                         class="dataTable_house"
-                                         value="#{manageEventsBean.events}"                    
-                                         selection="#{manageEventsBean.selectedEvent}"
-                                         rowKey="#{event.eventId}"                    
-                                         var="event"   
-                                         rows="20"     
-                                         rowsPerPageTemplate="1,2,3"
-                                         dir="#{langBean.dir}"
-                                         emptyMessage="#{msgs.no_events}"
-                                         paginator="true"
-                                         paginatorPosition="top" 
-                                         paginatorTemplate="#{langBean.isEnglish? '{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}' : '{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {PageLinks} {PreviousPageLink} {FirstPageLink}'}"
-                                         >
-            
-                                <p:ajax event="rowSelectRadio"
-                                        update=":manage_events_form:manage_events_tbl"/>
-            
-                                <f:facet name="header" id="header">
-                                    Search for a property
-                                </f:facet>
-            
-                                <p:column selectionMode="single" style="width:2%"/>
-            
-                                <p:column headerText="Type"
-                                          style="width:5%"
-                                          filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                                          filterMatchMode="contains"
-                                          sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                                    <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                                </p:column>
-            
-                                <p:column headerText="City"
-                                          style="width:5%"
-                                          filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                                          filterMatchMode="contains"
-                                          sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                                    <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                                </p:column>
-                                <p:column headerText="Address"
-                                          style="width:10%"
-                                          filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                                          filterMatchMode="contains"
-                                          sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                                    <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                                </p:column>
-            
-                                <p:column headerText="Area"
-                                          style="width:5%"
-                                          filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                                          filterMatchMode="contains"
-                                          sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                                    <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                                </p:column>
-            
-                                <p:column headerText="Price"
-                                          style="width:5%"
-                                          filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                                          filterMatchMode="contains"
-                                          sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                                    <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                                </p:column>
-            
-                                <p:column headerText="Ads Date"
-                                          style="width:7%"
-                                          filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                                          filterMatchMode="contains"
-                                          sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                                    <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                                </p:column>
-            
-            
-                                <p:column headerText="Owner Name"
-                                          style="width:10%"
-                                          filterBy="#{langBean.isEnglish?event.nameEn:event.nameAr}"
-                                          filterMatchMode="contains"
-                                          sortBy="#{langBean.isEnglish?event.nameEn:event.nameAr}">                    
-                                    <h:outputText value="#{langBean.isEnglish?event.nameEn:event.nameAr}"/>  
-                                </p:column>
-            
-            
-                                <f:facet name="footer">
-                                    <p:toolbar style="border: none">
-                                        <p:toolbarGroup align="#{languageBean.screenLeft}">
-                                            <p:commandButton value="Show it!"
-                                                             icon="ui-icon-show"                                  
-                                                             iconPos="#{langBean.styleFloat}"
-                                                             styleClass="commandButton"
-                                                             style="float:#{langBean.styleFloat}"                                                                                                
-            
-                                                             action="houses_Details" />
-            
-            
-                                        </p:toolbarGroup>
-                                    </p:toolbar>
-                                </f:facet>
-                            </p:dataTable>
-            
-            
-                        </h:form>-->
         </ui:decorate>
     </h:body>
 </html>

@@ -2,7 +2,10 @@ package beans;
 
 import javax.inject.Named;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
 @Named(value = "registrationBean")
@@ -22,6 +25,21 @@ public class RegistrationBean implements Serializable {
     private String email;
             
     public RegistrationBean() {
+    }
+    
+    public void save() {        
+        FacesMessage msg = new FacesMessage("Successful", "Thank you, " + getFirstname() + " for submitting information");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        navigate("houses");
+    }
+    
+    public void navigate(String url) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+
+        if (facesContext != null) {
+            NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
+            navigationHandler.handleNavigation(facesContext, null, url + "?faces-redirect=true");
+        }
     }
     
     public String getUsername() {
@@ -103,5 +121,6 @@ public class RegistrationBean implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
     
 }
