@@ -23,6 +23,21 @@ public class RegistrationBean implements Serializable {
     private String phone2;
     private String gender;
     private String email;
+    
+    
+    private String action;
+    private String type;
+    private String city;
+    private Integer houseNumber;
+    private Integer area;
+    private int rooms;
+    private int floors;
+    private Integer buildingYear;
+    private String heatingSystem;
+    private String desc;
+    private Integer price;
+    private String phoneNumber;
+    
             
     public RegistrationBean() {
     }
@@ -30,7 +45,27 @@ public class RegistrationBean implements Serializable {
     public void save() {        
         FacesMessage msg = new FacesMessage("Successful", "Thank you, " + getFirstname() + " for submitting information");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        navigate("loginPage");
+    }
+    
+    public void update() {        
+       
         navigate("houses");
+    }
+    
+    public void add() {        
+       
+        navigate("houses");
+    }
+    
+    public void search_login() {        
+       
+        navigate("searchResult");
+    }
+    
+    public void search_without_login() {        
+       
+        navigate("searchResult_without_login");
     }
     
     public void navigate(String url) {
@@ -120,6 +155,174 @@ public class RegistrationBean implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the action
+     */
+    public String getAction() {
+        return action;
+    }
+
+    /**
+     * @param action the action to set
+     */
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * @return the houseNumber
+     */
+    public Integer getHouseNumber() {
+        return houseNumber;
+    }
+
+    /**
+     * @param houseNumber the houseNumber to set
+     */
+    public void setHouseNumber(Integer houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    /**
+     * @return the area
+     */
+    public Integer getArea() {
+        return area;
+    }
+
+    /**
+     * @param area the area to set
+     */
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    /**
+     * @return the rooms
+     */
+    public int getRooms() {
+        return rooms;
+    }
+
+    /**
+     * @param rooms the rooms to set
+     */
+    public void setRooms(int rooms) {
+        this.rooms = rooms;
+    }
+
+    /**
+     * @return the floors
+     */
+    public int getFloors() {
+        return floors;
+    }
+
+    /**
+     * @param floors the floors to set
+     */
+    public void setFloors(int floors) {
+        this.floors = floors;
+    }
+
+    /**
+     * @return the buildingYear
+     */
+    public Integer getBuildingYear() {
+        return buildingYear;
+    }
+
+    /**
+     * @param buildingYear the buildingYear to set
+     */
+    public void setBuildingYear(Integer buildingYear) {
+        this.buildingYear = buildingYear;
+    }
+
+    /**
+     * @return the heatingSystem
+     */
+    public String getHeatingSystem() {
+        return heatingSystem;
+    }
+
+    /**
+     * @param heatingSystem the heatingSystem to set
+     */
+    public void setHeatingSystem(String heatingSystem) {
+        this.heatingSystem = heatingSystem;
+    }
+
+    /**
+     * @return the desc
+     */
+    public String getDesc() {
+        return desc;
+    }
+
+    /**
+     * @param desc the desc to set
+     */
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    /**
+     * @return the price
+     */
+    public Integer getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    /**
+     * @return the phoneNumber
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * @param phoneNumber the phoneNumber to set
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     

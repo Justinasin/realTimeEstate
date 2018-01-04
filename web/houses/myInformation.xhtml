@@ -103,7 +103,7 @@
                                 </h:panelGrid>
                             </h:panelGrid>
 
-                            <p:commandButton value="#{msgs.submit}" actionListener="#{registrationBean.save}" update="growl" process="@this"/>
+                            <p:commandButton value="#{msgs.submit}" actionListener="#{registrationBean.update()}" update="growl" process="@this"/>
                         </p:panel>
                     </p:tab>
                 </p:wizard>
