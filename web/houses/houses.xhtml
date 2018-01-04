@@ -15,35 +15,35 @@
                 <p:layoutUnit position="north" header="Enter search criteria" size="700">
                     <h:form>
                         <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank">
-                            <h:outputLabel for="action" value="#{msgs.action}" style="font-size:15px" /> 
-                            <p:selectOneMenu id="action" value="#{SelectOneMenuView.action}" style="width:120px" >
+                            <h:outputLabel for="action" value="#{msgs.action}" /> 
+                            <p:selectOneMenu id="action" value="#{registrationBean.action}" style="width:125px">
                                 <f:selectItem itemLabel="#{msgs.select_action}" itemValue="" />
-                                <f:selectItem itemLabel="Sale" itemValue="Sale" />
-                                <f:selectItem itemLabel="Rent" itemValue="Rent" />
+                                <f:selectItem itemLabel="#{msgs.sale}" itemValue="Sale" />
+                                <f:selectItem itemLabel="#{msgs.rent}" itemValue="Rent" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel for="type" value="Type" style="font-size:15px" /> 
-                            <p:selectOneMenu id="type" value="#{SelectOneMenuView.type}" style="width:120px">
-                                <f:selectItem itemLabel="Select type" itemValue="" />
-                                <f:selectItem itemLabel="Flat" itemValue="Flat" />
-                                <f:selectItem itemLabel="House" itemValue="House" />
+                            <h:outputLabel for="type" value="#{msgs.type}" /> 
+                            <p:selectOneMenu id="type" value="#{registrationBean.type}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="#{msgs.select_type}" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.flat}" itemValue="Flat" />
+                                <f:selectItem itemLabel="#{msgs.house}" itemValue="House" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel for="city" value="City" style="font-size:15px" />
-                            <p:selectOneMenu id="city" value="#{SelectOneMenuView.city}" style="width:120px">
-                                <f:selectItem itemLabel="Select city" itemValue="" />
-                                <f:selectItem itemLabel="Madaba" itemValue="Madaba" />
-                                <f:selectItem itemLabel="Amman" itemValue="Amman" />
-                                <f:selectItem itemLabel="Irbid" itemValue="Irbid" />
-                                <f:selectItem itemLabel="Aqaba" itemValue="Aqaba" />
-                                <f:selectItem itemLabel="Sahab" itemValue="Sahab" />
-                                <f:selectItem itemLabel="Jerash" itemValue="Jerash" />
-                                <f:selectItem itemLabel="Ma'an" itemValue="Ma'an" />
+                            <h:outputLabel for="city" value="#{msgs.city}" />
+                            <p:selectOneMenu id="city" value="#{registrationBean.city}" style="width:125px">
+                                <f:selectItem itemLabel="#{msgs.select_city}" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.madaba}" itemValue="1" />
+                                <f:selectItem itemLabel="#{msgs.amman}" itemValue="2" />
+                                <f:selectItem itemLabel="#{msgs.irbid}" itemValue="3" />
+                                <f:selectItem itemLabel="#{msgs.aqaba}" itemValue="4" />
+                                <f:selectItem itemLabel="#{msgs.sahab}" itemValue="5" />
+                                <f:selectItem itemLabel="#{msgs.jerash}" itemValue="6" />
+                                <f:selectItem itemLabel="#{msgs.maan}" itemValue="7" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel value="Number of rooms" style="font-size:15px" /> 
-                            <p:selectOneMenu id="rooms" value="#{selectOneMenuView.rooms}" style="width:50px">
-                                <f:selectItem itemLabel="Select number" itemValue="" />
+                            <h:outputLabel value="#{msgs.number_of_rooms}" /> 
+                            <p:selectOneMenu id="rooms" value="#{registrationBean.rooms}" style="width:50px">
+                                <f:selectItem itemLabel="#{msgs.select_number}" itemValue="" />
                                 <f:selectItem itemLabel="1" itemValue="1" />
                                 <f:selectItem itemLabel="2" itemValue="2" />
                                 <f:selectItem itemLabel="3" itemValue="3" />
@@ -53,68 +53,69 @@
                                 <f:selectItem itemLabel="7" itemValue="7" />
                             </p:selectOneMenu>
 
-                            <h:outputLabel value="Number of floors" style="font-size:15px" /> 
-                            <p:selectOneMenu id="floors" value="#{selectOneMenuView.floors}" style="width:50px">
-                                <f:selectItem itemLabel="Select number" itemValue="" />
+                            <h:outputLabel value="#{msgs.number_of_floors}" style="font-size:15px" /> 
+                            <p:selectOneMenu id="floors" value="#{registrationBean.floors}" style="width:50px">
+                                <f:selectItem itemLabel="#{msgs.select_number}" itemValue="" />
                                 <f:selectItem itemLabel="1" itemValue="1" />
                                 <f:selectItem itemLabel="2" itemValue="2" />
                                 <f:selectItem itemLabel="3" itemValue="3" />
                             </p:selectOneMenu>
-                            
-                            <h:outputLabel value="Heating system" style="font-size:15px"/>
-                            <h:selectManyCheckbox id="heating" required="true">
-                                <f:selectItem itemValue="1" itemLabel="Central" />
-                                <f:selectItem itemValue="2" itemLabel="Gas" />
-                                <f:selectItem itemValue="3" itemLabel="Electricity" />
-                            </h:selectManyCheckbox>
-                            
-                            <h:outputText value="Area" style="font-size:15px" /> 
+
+                            <h:outputLabel for="heatingSystem" value="#{msgs.heating_system}" /> 
+                            <p:selectOneMenu id="heatingSystem" value="#{registrationBean.heatingSystem}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="Select system" itemValue="" />
+                                <f:selectItem itemLabel="#{msgs.gas}" itemValue="1" />
+                                <f:selectItem itemLabel="#{msgs.electricity}" itemValue="2" />
+                                <f:selectItem itemLabel="#{msgs.central}" itemValue="3" />
+                            </p:selectOneMenu>
+
+                            <h:outputText value="#{msgs.area}" style="font-size:15px" /> 
 
                             <h:panelGrid columns="1" style="margin-bottom: 10px">
-                            <h:outputText id="displayRange" value="Between #{sliderView.number1} and #{sliderView.number2}" />
-                            <p:slider for="txt1,txt2" display="displayRange" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="0" maxValue="1000" step="10"/>
+                                <h:outputText id="displayRange" value="Between #{sliderView.number1} and #{sliderView.number2}" />
+                                <p:slider for="txt1,txt2" display="displayRange" style="width: 150px" range="true" displayTemplate="#{msgs.between}" minValue="0" maxValue="1000" step="10"/>
                             </h:panelGrid>
                             <h:inputHidden id="txt1" value="#{sliderView.number1}" />
                             <h:inputHidden id="txt2" value="#{sliderView.number2}" />
 
-                            <h:outputLabel value="Building year" style="font-size:15px" /> 
+                            <h:outputLabel value="#{msgs.building_year}" style="font-size:15px" /> 
                             <h:panelGrid columns="1" style="margin-bottom: 10px">
-                            <h:outputText id="displayRange2" value="Between #{sliderView.number5} and #{sliderView.number6}" />
-                                <p:slider for="txt5,txt6" display="displayRange2" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="1980" maxValue="2018" step="1"/>
+                                <h:outputText id="displayRange2" value="Between #{sliderView.number5} and #{sliderView.number6}" />
+                                <p:slider for="txt5,txt6" display="displayRange2" style="width: 150px" range="true" displayTemplate="#{msgs.between}" minValue="1980" maxValue="2018" step="1"/>
                             </h:panelGrid>
                             <h:inputHidden id="txt5" value="#{sliderView.number5}" />
                             <h:inputHidden id="txt6" value="#{sliderView.number6}" />
-                            
-                            <h:outputLabel value="Price (Jod)" style="font-size:15px" /> 
+
+                            <h:outputLabel value="#{msgs.price}" style="font-size:15px" /> 
                             <h:panelGrid columns="1" style="margin-bottom: 10px">
-                            <h:outputText id="displayRange1" value="Between #{sliderView.number3} and #{sliderView.number4}" />
-                            <p:slider for="txt3,txt4" display="displayRange1" style="width: 150px" range="true" displayTemplate="Between {min} and {max}" minValue="0" maxValue="200000" step="1000"/>
+                                <h:outputText id="displayRange1" value="Between #{sliderView.number3} and #{sliderView.number4}" />
+                                <p:slider for="txt3,txt4" display="displayRange1" style="width: 150px" range="true" displayTemplate="#{msgs.between}" minValue="0" maxValue="200000" step="1000"/>
                             </h:panelGrid>
                             <h:inputHidden id="txt3" value="#{sliderView.number3}" />
                             <h:inputHidden id="txt4" value="#{sliderView.number4}" />
 
-                            <h:outputLabel value="Search by text" style="font-size:15px" /> 
-                            <p:inputTextarea rows="6" cols="33"/>
+                            <h:outputLabel value="#{msgs.search_by_Text}" style="font-size:15px" /> 
+                            <p:inputTextarea rows="6" cols="33" value="#{registrationBean.desc}"/>
 
-                            <p:commandButton value="Search"
-                                             icon="ui-icon-check" 
-                                             iconPos="#{langBean.styleFloat}"
-                                             style="float:#{langBean.styleFloat}"
-                                             action="owner" />
+                            <p:commandButton   value="#{msgs.search}"                                                
+                                                   style="width:260px; height:35px; margin-top:25px; background-color: #428BCA;float:#{langBean.styleFloat}" 
+                                                   ajax="false"
+                                                   action="#{registrationBean.search_login()}" />
                         </p:panelGrid>
                     </h:form>
+
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center" size="400">
 
-                    <p><h2>#{msgs.most_popular_advertisements}</h2> </p>
+                    <p><h2>#{msgs.newest_adversisements}</h2> </p>
 
                     <div class="main-content">
 
                         <div class="just-box">
                             <h:form>
                                 <h:commandLink action="houses_Details.xhtml">
-                                    <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
+                                    <p:graphicImage name="/images/demo1.jpg"  height="250"  />
                                 </h:commandLink>
                             </h:form>
 
@@ -136,7 +137,7 @@
                         <div class="just-box">
                             <h:form>
                                 <h:commandLink action="houses_Details.xhtml">
-                                    <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
+                                    <p:graphicImage name="/images/demo1.jpg"  height="250"  />
                                 </h:commandLink>
                             </h:form>
 
@@ -158,7 +159,7 @@
                         <div class="just-box">
                             <h:form>
                                 <h:commandLink action="houses_Details.xhtml">
-                                    <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  />
+                                    <p:graphicImage name="/images/demo1.jpg"  height="250"  />
                                 </h:commandLink>
                             </h:form>
 
