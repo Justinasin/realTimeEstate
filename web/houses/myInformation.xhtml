@@ -22,6 +22,13 @@
                         <p:panel header="#{msgs.personal_details}" style="float:#{langBean.styleFloat};width:600px">
                             <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="#{msgs.username}: *" />
+                                <p:inputText value="#{registrationBean.username}" required="true" label="User name"/>
+
+                                <h:outputText value="#{msgs.password}: *" />
+                                <p:inputText value="#{registrationBean.password}" required="true" label="Password"/>
+
+                                
                                 <h:outputText value="#{msgs.first_name}: *" />
                                 <p:inputText value="#{registrationBean.firstname}" required="true" label="First name"/>
 
@@ -71,6 +78,9 @@
                         <p:panel header="#{msgs.confirmation}" style="float:#{langBean.styleFloat};width:600px">
                             <h:panelGrid id="confirmation" columns="1" columnClasses="grid,grid,grid">
                                 <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="#{msgs.username}:" />
+                                    <h:outputText value="#{registrationBean.username}" styleClass="outputLabel"/>
+                                    
                                     <h:outputText value="#{msgs.first_name}:" />
                                     <h:outputText value="#{registrationBean.firstname}" styleClass="outputLabel"/>
 

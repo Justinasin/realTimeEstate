@@ -7,75 +7,37 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Add new</title>
+        <title>My advertisements</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <P><h2>My advertisements</h2></P>
             <h:form>
-                <div class="main-content">
+                <ui:repeat value="" var="adv">
+                    <h:panelGrid columns="2" style="width:70%" columnClasses="logo,detail">
+                            <p:graphicImage name="/images/demo1.jpg" style="size:100px" /> 
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="#{msgs.action}" />
+                                <h:outputText value="Sale" style="font-weight: bold"/>
 
-                    <div class="just-box">
-                        <p:graphicImage name="/images/houses/demo1.jpg"  height="250"  /><p class="box-title">
-                            <span class="box-price">
-                                200,000 Jod
-                            </span>
-                            Price  
-                            <p class="box-desc">
-                                This is a description of selling property. I'm selling a house in a
-                                nice area. Next to the house there is a bus station and a shop.
+                                <h:outputText value="#{msgs.type}" />
+                                <h:outputText value="Flat" style="font-weight: bold"/>
 
-                            </p>
+                                <h:outputText value="#{msgs.price}" />
+                                <h:outputText value="200,000" style="font-weight: bold"/>
+                            </h:panelGrid>
 
-                        </p>
+                            <h:panelGrid columns="3" cellpadding="10">
+                                <p:commandButton value="Edit" action="addNew.xhtml" style="width:160px; height:35px"/>
+                                <p:commandButton value="View advertisement" action="houses_Details.xhtml" style="width:160px; height:35px"/>
+                                <p:commandButton value="Delete" style="width:160px; height:35px"/>
+                            </h:panelGrid>
 
-                    </div>
-
-                    <div class="just-box">
-                        <p:panelGrid columns="2" styleClass="noBorders" >
-
-                            <h:outputText value="#{msgs.action}" /> 
-                            <h:outputText value="Sale" style="font-weight:bold" /> 
-
-                            <h:outputText value="#{msgs.type}" /> 
-                            <h:outputText value="Flat" style="font-weight:bold" /> 
-
-                            <h:outputText value="#{msgs.city}" /> 
-                            <h:outputText value="Amman" style="font-weight:bold"/> 
-
-                            <h:outputText value="#{msgs.street}" /> 
-                            <h:outputText value="Street name" style="font-weight:bold"/>
-
-                            <h:outputText value="#{msgs.house_number}" /> 
-                            <h:outputText value="10" style="font-weight:bold"/> 
-
-                            <h:outputText value="#{msgs.area}" /> 
-                            <h:outputText value="150" style="font-weight:bold"/>
-
-                            <h:outputText value="#{msgs.number_of_rooms}" /> 
-                            <h:outputText value="6" style="font-weight:bold"/>
-
-                            <h:outputText value="#{msgs.number_of_floors}" /> 
-                            <h:outputText value="2" style="font-weight:bold"/>
-
-                            <h:outputText value="#{msgs.building_year}" /> 
-                            <h:outputText value="2012" style="font-weight:bold"/>
-
-                            <h:outputText value="#{msgs.heating_system}" /> 
-                            <h:outputText value="Gas, Electricity" style="font-weight:bold"/>
-
-                            <h:outputText value="#{msgs.phone_number}" /> 
-                            <h:outputText value="078578578" style="font-weight:bold"/> 
-
-                            <h:commandButton value="#{msgs.edit}" 
-                                             action="addNew.xhtml"/>
-                            <h:commandButton value="#{msgs.view_advertisement}" 
-                                             action="houses_Details.xhtml"/>
-
-
-                        </p:panelGrid>
-                    </div>
-                </div>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                    <hr />
+                </ui:repeat>
             </h:form>
         </ui:decorate>
     </h:body>
