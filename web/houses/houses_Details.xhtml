@@ -73,8 +73,8 @@
                         </p:panelGrid>
 
                         <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfEmail()}">
-                            <p:inputTextarea id="emailArea" rows="8" cols="38"/>
-                            <h:commandButton id="emailButton"  value="#{msgs.send_the_email}"/>
+                            <p:inputTextarea id="emailArea" rows="8" cols="38" value="#{sendEmail.header}"/>
+                            <h:commandButton id="emailButton"  value="#{msgs.send_the_email}" action="#{sendEmail.sendMail()}"/>
                         </p:panelGrid>
 
                     </p:layoutUnit>
