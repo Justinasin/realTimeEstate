@@ -12,23 +12,27 @@
                 <p:layoutUnit position="center" size="350">
                     <h:form id="login_form">
                         <center>  
+                            <br/><br/>                                    
+
+
+                            <br/>
                             <h:panelGrid id="grid" columns="2" cellspacing="5px" cellpadding="7" style="float:#{langBean.styleFloat}">
                                 <h:outputLabel for="action" value="#{msgs.action}" /> 
-                                <p:selectOneMenu id="action" value="#{registrationBean.action}" style="width:125px">
+                                <p:selectOneMenu id="action" value="#{addNewAdBean.action_id}" style="width:125px">
                                     <f:selectItem itemLabel="#{msgs.select_action}" itemValue="" />
-                                    <f:selectItem itemLabel="#{msgs.sale}" itemValue="Sale" />
-                                    <f:selectItem itemLabel="#{msgs.rent}" itemValue="Rent" />
+                                    <f:selectItem itemLabel="#{msgs.sale}" itemValue="1" />
+                                    <f:selectItem itemLabel="#{msgs.rent}" itemValue="2" />
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="type" value="#{msgs.type}" /> 
-                                <p:selectOneMenu id="type" value="#{registrationBean.type}" style="width:125px" required="true">
+                                <p:selectOneMenu id="type" value="#{addNewAdBean.type_id}" style="width:125px" required="true">
                                     <f:selectItem itemLabel="#{msgs.select_type}" itemValue="" />
-                                    <f:selectItem itemLabel="#{msgs.flat}" itemValue="Flat" />
-                                    <f:selectItem itemLabel="#{msgs.house}" itemValue="House" />
+                                    <f:selectItem itemLabel="#{msgs.flat}" itemValue="1" />
+                                    <f:selectItem itemLabel="#{msgs.house}" itemValue="2" />
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="city" value="#{msgs.city}" />
-                                <p:selectOneMenu id="city" value="#{registrationBean.city}" style="width:125px">
+                                <p:selectOneMenu id="city" value="#{addNewAdBean.city_id}" style="width:125px">
                                     <f:selectItem itemLabel="#{msgs.select_city}" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.madaba}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.amman}" itemValue="2" />
@@ -39,14 +43,20 @@
                                     <f:selectItem itemLabel="#{msgs.maan}" itemValue="7" />
                                 </p:selectOneMenu>
 
+                                <h:outputText value="#{msgs.house_number}" /> 
+                                <p:inputText    id="houseNumber"
+                                                value="#{addNewAdBean.houseNumber}"
+                                                style="width:150px"
+                                                required="true"/>
+
                                 <h:outputText value="#{msgs.area}" /> 
                                 <p:inputText id="area"
-                                             value="#{registrationBean.area}"
+                                             value="#{addNewAdBean.area}"
                                              style="width:150px"
                                              required="true"/>
 
                                 <h:outputLabel value="#{msgs.number_of_rooms}" /> 
-                                <p:selectOneMenu id="rooms" value="#{registrationBean.rooms}" style="width:50px">
+                                <p:selectOneMenu id="rooms" value="#{addNewAdBean.rooms}" style="width:50px">
                                     <f:selectItem itemLabel="#{msgs.select_number}" itemValue="" />
                                     <f:selectItem itemLabel="1" itemValue="1" />
                                     <f:selectItem itemLabel="2" itemValue="2" />
@@ -58,7 +68,7 @@
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel for="heatingSystem" value="#{msgs.heating_system}" /> 
-                                <p:selectOneMenu id="heatingSystem" value="#{registrationBean.heatingSystem}" style="width:125px" required="true">
+                                <p:selectOneMenu id="heatingSystem" value="#{addNewAdBean.heatingSystem_id}" style="width:125px" required="true">
                                     <f:selectItem itemLabel="Select system" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.gas}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.electricity}" itemValue="2" />
@@ -66,37 +76,37 @@
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="#{msgs.building_year}" /> 
-                                <p:inputText id="year" value="#{registrationBean.buildingYear}"
+                                <p:inputText id="year" value="#{addNewAdBean.buildingYear}"
                                              style="width:150px"
                                              required="true"/>
 
 
 
                                 <h:outputLabel value="#{msgs.short_description}" /> 
-                                <p:inputTextarea rows="6" cols="33" value="#{registrationBean.desc}"/>
+                                <p:inputTextarea rows="6" cols="33" value="#{addNewAdBean.desc}"/>
 
                                 <h:outputLabel value="#{msgs.price}" /> 
                                 <p:inputText id="price"
-                                             value="#{registrationBean.price}"
+                                             value="#{addNewAdBean.price}"
                                              style="width:150px"
                                              required="true"/>
 
 
                                 <h:outputLabel value="#{msgs.phone_number}" /> 
                                 <p:inputText id="phoneNumber"
-                                             value="#{registrationBean.phoneNumber}"
+                                             value="#{addNewAdBean.phoneNumber}"
                                              style="width:150px"
                                              required="true"/>
 
                                 <h:outputLabel value="#{msgs.email_my_information}" /> 
                                 <p:inputText id="email"
-                                             value="#{registrationBean.email}"
+                                             value="#{addNewAdBean.email}"
                                              style="width:150px"
                                              required="true"/>
                                 <p:commandButton   value="#{msgs.submit}"                                                
                                                    style="width:260px; height:35px; margin-top:25px; background-color: #428BCA;float:#{langBean.styleFloat}" 
                                                    ajax="false"
-                                                   action="#{registrationBean.add()}" />
+                                                   action="#{addNewAdBean.submitNewAd()}" />
                             </h:panelGrid>
 
 

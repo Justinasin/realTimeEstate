@@ -7,14 +7,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Notifications</title>
+        <title>Houses</title>
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <p:panelGrid columns="1" styleClass="noBorders" >
                 <h:form>
                     <h2>Notifications</h2>
-                    <p:selectBooleanButton id="booleanBtn" onLabel="#{msgs.turn_on}" offLabel="#{msgs.turn_off}" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
+                    <p:selectBooleanButton id="booleanBtn" onLabel="Turned ON" offLabel="Turned OFF" onIcon="ui-icon-check" offIcon="ui-icon-close"/>
                 </h:form>
             </p:panelGrid>
 

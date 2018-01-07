@@ -113,7 +113,7 @@
                                 </h:panelGrid>
                             </h:panelGrid>
 
-                            <p:commandButton value="#{msgs.submit}" actionListener="#{registrationBean.update()}" update="growl" process="@this"/>
+                            <p:commandButton value="#{msgs.submit}" actionListener="#{registrationBean.saveEvent()}" update="growl" process="@this"/>
                         </p:panel>
                     </p:tab>
                 </p:wizard>
@@ -246,6 +246,5 @@
                         nice area. Next to the house there is a bus station and a shop.
                     </p:column>
                 </p:panelGrid> -->
-
 
 

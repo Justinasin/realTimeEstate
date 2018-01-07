@@ -1,31 +1,33 @@
-package org.primefaces.showcase.view.input;
- 
-import beans.AddEditEventBean;
-import beans.LoginBean;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package beans;
+
 import daos.NewAdDao;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.model.SelectItem;
-import javax.faces.model.SelectItemGroup;
+import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import models.NewAds;
- 
-@Named(value = "selectOneMenuView")
-@ManagedBean
+import org.primefaces.showcase.view.input.SelectOneMenuView;
+import javax.faces.event.ActionEvent;
+
+/**
+ *
+ * @author pc
+ */
+@Named(value = "addNewAdBean")
 @ViewScoped
 
-public class SelectOneMenuView implements Serializable  {
-     
+public class AddNewAdBean implements Serializable{
+    
+    
     private int type_id;
     private int action_id;
     private int city_id;
@@ -42,25 +44,26 @@ public class SelectOneMenuView implements Serializable  {
     private int approved;
     private final NewAdDao newAdDao = new NewAdDao();
     
-    public SelectOneMenuView(){}
     
 @Inject
 private LoginBean loginBean;
 
-
-
-
+    
+    public AddNewAdBean() {
+    }
+    
+  
     public void submitNewAd()
     {
         NewAds newAd = new NewAds();
-        try {
+        
         newAd.setType_id(type_id);
         newAd.setAction_id(action_id);
         newAd.setArea(area);
         newAd.setBuildingYear(buildingYear);
         newAd.setCity_id(city_id);
         newAd.setEmail(email);
-        newAd.setFloors(floors);
+        newAd.setFloors(getFloors());
         newAd.setHeatingSystem_id(heatingSystem_id);
         newAd.setHouseNumber(houseNumber);
         newAd.setPhoneNumber(phoneNumber);
@@ -77,9 +80,7 @@ private LoginBean loginBean;
                 Logger.getLogger(SelectOneMenuView.class.getName()).log(Level.SEVERE, null, ex);
             }
             }
-        }catch(Exception ex){
-            Logger.getLogger(AddEditEventBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
         
     }
@@ -280,4 +281,5 @@ private LoginBean loginBean;
         this.approved = approved;
     }
  
+    
 }

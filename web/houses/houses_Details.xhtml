@@ -11,7 +11,7 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <h:form>
+            <h:form id="advDetails">
                 <!-- Property Details Controls-->
 
                 <p:layout style="min-width:500px;height:850px;" >
@@ -21,40 +21,36 @@
                         <p:panelGrid columns="2" styleClass="noBorders" >
 
                             <h:outputText value="#{msgs.action}" /> 
-                            <h:outputText value="Sale" style="font-weight:bold" /> 
+                            <h:outputText value="#{myAds.selectedAd.action}" style="font-weight:bold" /> 
 
                             <h:outputText value="#{msgs.type}" /> 
-                            <h:outputText value="Flat" style="font-weight:bold" /> 
+                            <h:outputText value="#{myAds.selectedAd.type}" style="font-weight:bold" /> 
 
                             <h:outputText value="#{msgs.city}" /> 
-                            <h:outputText value="Amman" style="font-weight:bold"/> 
+                            <h:outputText value="#{myAds.selectedAd.city}" style="font-weight:bold"/> 
 
-                            <h:outputText value="#{msgs.street}" /> 
-                            <h:outputText value="Street name" style="font-weight:bold"/>
 
                             <h:outputText value="#{msgs.house_number}" /> 
-                            <h:outputText value="10" style="font-weight:bold"/> 
+                            <h:outputText value="#{myAds.selectedAd.houseNumber}" style="font-weight:bold"/> 
 
                             <h:outputText value="#{msgs.area}" /> 
-                            <h:outputText value="150" style="font-weight:bold"/>
+                            <h:outputText value="#{myAds.selectedAd.area}" style="font-weight:bold"/>
 
                             <h:outputText value="#{msgs.number_of_rooms}" /> 
-                            <h:outputText value="6" style="font-weight:bold"/>
+                            <h:outputText value="#{myAds.selectedAd.rooms}" style="font-weight:bold"/>
 
-                            <h:outputText value="#{msgs.number_of_floors}" /> 
-                            <h:outputText value="2" style="font-weight:bold"/>
 
                             <h:outputText value="#{msgs.building_year}" /> 
-                            <h:outputText value="2012" style="font-weight:bold"/>
+                            <h:outputText value="#{myAds.selectedAd.buildingYear}" style="font-weight:bold"/>
 
                             <h:outputText value="#{msgs.heating_system}" /> 
-                            <h:outputText value="Gas, Electricity" style="font-weight:bold"/>
+                            <h:outputText value="#{myAds.selectedAd.heatingSystem}" style="font-weight:bold"/>
 
                             <h:outputText value="#{msgs.price}" /> 
-                            <h:outputText value="200,000" style="font-weight:bold;color:red"/> 
+                            <h:outputText value="#{myAds.selectedAd.price}" style="font-weight:bold;color:red"/> 
 
                             <h:outputText value="#{msgs.phone}" /> 
-                            <h:outputText value="078578578" style="font-weight:bold"/>
+                            <h:outputText value="#{myAds.selectedAd.phoneNumber}" style="font-weight:bold"/>
 
                             <h:outputText value="#{msgs.owner_name}" /> 
                             <p:link outcome="ownersAdvertisements" value="Abdullah" style="font-weight:bold">
@@ -147,4 +143,3 @@
         </ui:decorate>
     </h:body>
 </html>
-

@@ -5,7 +5,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">  
     <h:form id="ribbon_menu"             
             style="direction:#{langBean.dir}; width:100%">           
-        <p:ribbon activeIndex="#{sessionBean.menuIndex}">  
+        <p:ribbon activeIndex="#{loginBean.menuIndex}">  
 
             <p:tab title="#{msgs.events}">  
                 <p:ribbonGroup styleClass="ribbonGroup"
@@ -13,7 +13,7 @@
                     <p:commandButton  value="#{msgs.events}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(0)}"
+                                      actionListener="#{loginBean.setMenuIndex(0)}"
                                       action="/events/manage_events.xhtml">                         
                     </p:commandButton>
                 </p:ribbonGroup>               
@@ -25,7 +25,7 @@
                     <p:commandButton  value="#{msgs.alumni}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(1)}"
+                                      actionListener="#{loginBean.setMenuIndex(1)}"
                                       action="/alumni/alumni.xhtml">                         
                     </p:commandButton>
                 </p:ribbonGroup>               
@@ -37,7 +37,7 @@
                     <p:commandButton  value="#{msgs.hoffaz}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(2)}"
+                                      actionListener="#{loginBean.setMenuIndex(2)}"
                                       action="/hoffaz/hoffaz.xhtml">                         
                     </p:commandButton>
                 </p:ribbonGroup>               
@@ -50,7 +50,7 @@
                                       icon="ui-icon-home"
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(3)}"
+                                      actionListener="#{loginBean.setMenuIndex(3)}"
                                       action="/houses/houses_without_login.xhtml">                         
                     </p:commandButton>
 
@@ -66,7 +66,7 @@
                         icon="ui-icon-home"
                         styleClass="ribbonButton" 
                         style="float:#{langBean.styleFloat};"
-                        actionListener="#{sessionBean.setMenuIndex(3)}"
+                        actionListener="#{loginBean.setMenuIndex(3)}"
                         action="/houses/loginPage.xhtml">                         
                     </p:commandButton>
 
@@ -80,7 +80,7 @@
                     <p:commandButton  value="#{msgs.licensing}" 
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(4)}"
+                                      actionListener="#{loginBean.setMenuIndex(4)}"
                                       action="/licensing/licensing.xhtml">                         
                     </p:commandButton>
                 </p:ribbonGroup>               

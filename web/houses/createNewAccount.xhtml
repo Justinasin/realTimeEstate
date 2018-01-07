@@ -13,120 +13,101 @@
                     <h:form id="login_form">
                         <center>  
                             <br/><br/>                                    
-                            <p:fieldset  style="width:910px;
-                                         height: 620px;
+                            <p:fieldset  style="width: 410px;
+                                         height: 820px;
                                          box-shadow:9px 0 4px -4px #cccccc, -8px 0 5px -4px #cccccc;">                        
-
+                                <h:panelGrid style="text-align: left">
+                                    <p:messages id="messages"/> 
+                                </h:panelGrid>                       
                                 <br/>
-                                <h:panelGrid id="grid" columns="3" cellspacing="5px" cellpadding="7" style="float:#{langBean.styleFloat}">
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.username}: *"/>
-                                    <p:inputText id="username"
-                                                 maxlength="64"                                         
+                                <h:panelGrid columns="1" cellspacing="10px">
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.username}:"/>
+                                    <p:inputText maxlength="64"                                         
                                                  value="#{registrationBean.username}"
-                                                 style="width:300px;font-weight:bold;float:#{langBean.styleFloat}"
+                                                 style="width:300px;font-weight:bold"
                                                  required="true"
                                                  requiredMessage="#{msgs.please_enter}">
                                     </p:inputText>
-                                    <p:message for="username" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.password}: *"/>
-                                    <p:password id="password"
-                                                maxlength="48"     
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.password}:"/>
+                                    <p:password maxlength="48"                                       
                                                 required="true"
-                                                requiredMessage="Password is required" feedback="true"
+                                                requiredMessage="#{msgs.please_enter}"
                                                 value="#{registrationBean.password}"
-                                                style="width:300px;font-weight:bold;float:#{langBean.styleFloat}">          
+                                                style="width:300px;font-weight:bold">          
                                     </p:password> 
-                                    <p:message for="password" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.first_name}: *"/>
-                                    <p:inputText id="fname"
-                                                 maxlength="64"                                         
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.first_name_not_mandatory}"/>
+                                    <p:inputText maxlength="64"                                         
                                                  value="#{registrationBean.firstname}"
-                                                 style="width:300px;float:#{langBean.styleFloat}"
+                                                 style="width:300px"
                                                  required="true"
                                                  requiredMessage="#{msgs.please_enter}">
                                     </p:inputText>
-                                    <p:message for="fname" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.last_name}: *"/>
-                                    <p:inputText id="lname"
-                                                 maxlength="64"                                         
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.last_name_not_mandatory}"/>
+                                    <p:inputText maxlength="64"                                         
                                                  value="#{registrationBean.lastname}"
-                                                 style="width:300px;float:#{langBean.styleFloat}"
+                                                 style="width:300px"
                                                  required="true"
-                                                 requiredMessage="#{msgs.please_enter}" styleClass="error">
+                                                 requiredMessage="#{msgs.please_enter}">
                                     </p:inputText>
-                                    <p:message for="lname" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.gender}:"/>
-                                    <p:selectOneMenu id="gender" value="#{registrationBean.gender}" required="true" requiredMessage="#{msgs.please_enter}" style="width:276px;float:#{langBean.styleFloat}">
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.gender}:"/>
+                                    <p:selectOneMenu id="gender" value="#{registrationBean.gender_id}" required="true" style="width:300px">
                                         <f:selectItem itemLabel="Select gender" itemValue="" />
-                                        <f:selectItem itemLabel="Male" itemValue="Male" />
-                                        <f:selectItem itemLabel="Female" itemValue="Female" />
+                                        <f:selectItem itemLabel="Male" itemValue="1" />
+                                        <f:selectItem itemLabel="Female" itemValue="2" />
                                     </p:selectOneMenu>
-                                    <p:message for="gender" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.address1}:"/>
-                                    <p:inputText id="address1"
-                                                 maxlength="64"                                         
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.address1}:"/>
+                                    <p:inputText maxlength="64"                                         
                                                  value="#{registrationBean.address1}"
-                                                 style="width:300px;float:#{langBean.styleFloat}"
+                                                 style="width:300px"
                                                  required="true"
                                                  requiredMessage="#{msgs.please_enter}">
                                     </p:inputText>
-                                    <p:message for="address1" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.address2}: (optional)"/>
-                                    <p:inputText id="address2"
-                                                 maxlength="64"                                         
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.address2}: (optional)"/>
+                                    <p:inputText maxlength="64"                                         
                                                  value="#{registrationBean.address2}"
-                                                 style="width:300px;float:#{langBean.styleFloat}">
+                                                 style="width:300px"
+                                                 required="true"
+                                                 requiredMessage="#{msgs.please_enter}">
                                     </p:inputText>
-                                    <p:message for="address2" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.phone_my_information_1}: *"/>
-                                    <p:inputText id="phone1"
-                                                 maxlength="64"      
-                                                 validatorMessage="Please enter correct phone number"
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.phone_my_information_not_mandatory_1}"/>
+                                    <p:inputText maxlength="64"                                         
                                                  value="#{registrationBean.phone1}"
-                                                 style="width:300px;float:#{langBean.styleFloat}"
+                                                 style="width:300px"
                                                  required="true"
                                                  requiredMessage="#{msgs.please_enter}">
-                                        <f:validateRegex pattern="^[0-9-+]+" />
                                     </p:inputText>
-                                    <p:message for="phone1" />
 
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.phone_my_information_2}: (optional)"/>
-                                    <p:inputText id="phone2"
-                                                 maxlength="64"                                         
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.phone_my_information_not_mandatory_2} (optional)"/>
+                                    <p:inputText maxlength="64"                                         
                                                  value="#{registrationBean.phone2}"
-                                                 style="width:300px;float:#{langBean.styleFloat}"
-                                                 required="false"
-                                                 requiredMessage="#{msgs.please_enter}">
-                                    </p:inputText>
-                                    <p:message for="phone2" />
-
-                                    <p:outputLabel style="color: #0B70BE;float:#{langBean.styleFloat}" value="#{msgs.email}"/>
-                                    <p:inputText id="email"
-                                                 validatorMessage="Please enter correct email"
-                                                 maxlength="64"                                         
-                                                 value="#{registrationBean.email}"
-                                                 style="width:300px;float:#{langBean.styleFloat}"
+                                                 style="width:300px"
                                                  required="true"
                                                  requiredMessage="#{msgs.please_enter}">
-                                        <f:validateRegex
-                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                     </p:inputText>
-                                    <p:message for="email" />
-                                    <p:commandButton   value="#{msgs.create_new}"                                                
-                                                       style="width:260px; height:35px; margin-top:25px; background-color: #428BCA;float:#{langBean.styleFloat}" 
-                                                       ajax="false"
-                                                       action="#{registrationBean.save()}" />
+
+                                    <p:outputLabel style="color: #0B70BE" value="#{msgs.email}"/>
+                                    <p:inputText maxlength="64"                                         
+                                                 value="#{registrationBean.email}"
+                                                 style="width:300px"
+                                                 required="true"
+                                                 requiredMessage="#{msgs.please_enter}">
+                                    </p:inputText>
+
                                 </h:panelGrid>
+
+                                <p:commandButton   value="#{msgs.create_new}"                                                
+                                                   style="width:260px; height:35px; margin-top:25px; background-color: #428BCA;" 
+                                                   ajax="false"
+                                                   actionListener="#{registrationBean.saveEvent()}" 
+                                                    />                                                         
                             </p:fieldset> 
-
-
                         </center>
                     </h:form>
                 </p:layoutUnit>

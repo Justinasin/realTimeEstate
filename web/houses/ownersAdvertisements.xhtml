@@ -12,31 +12,34 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
            <P><h2>#{loginBean.username} advertisements</h2></P>
-            <h:form>
-                <ui:repeat value="" var="adv">
+           
+                <ui:repeat value="#{myAds.fetchUsersAds()}" var="allAds">
                     <h:panelGrid columns="2" style="width:70%" columnClasses="logo,detail">
                             <p:graphicImage name="/images/demo1.jpg" style="size:100px" /> 
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText value="#{msgs.action}" />
-                                <h:outputText value="Sale" style="font-weight: bold"/>
+                                <h:outputText value="#{allAds.action}" style="font-weight: bold"/>
 
                                 <h:outputText value="#{msgs.type}" />
-                                <h:outputText value="Flat" style="font-weight: bold"/>
+                                <h:outputText value="#{allAds.type}" style="font-weight: bold"/>
 
                                 <h:outputText value="#{msgs.price}" />
-                                <h:outputText value="200,000" style="font-weight: bold"/>
+                                <h:outputText value="#{allAds.price}" style="font-weight: bold"/>
                             </h:panelGrid>
 
                             <h:panelGrid columns="1" cellpadding="10">
-                                <p:commandButton value="View advertisement" action="houses_Details.xhtml" style="width:160px; height:35px"/>
+                                <h:form>
+                                    <p:commandButton action="houses_Details.xhtml" value="View advertisement"  style="width:160px; height:35px">
+                                    <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
+                                </p:commandButton>
+                                </h:form>
                             </h:panelGrid>
                         </p:outputPanel>
                     </h:panelGrid>
                     <hr />
                 </ui:repeat>
-            </h:form>
+           
         </ui:decorate>
     </h:body>
 </html>
-
