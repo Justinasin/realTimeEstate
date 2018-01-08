@@ -17,17 +17,17 @@ import javax.inject.Inject;
 import models.NewAds;
 import org.primefaces.showcase.view.input.SelectOneMenuView;
 import javax.faces.event.ActionEvent;
+import models.AllAds;
+import models.UpdateAds;
 
-/**
- *
- * @author pc
- */
+
 @Named(value = "updateAdBean")
 @ViewScoped
 
 public class UpdateAdBean implements Serializable{
     
     
+    private int adv_id;
     private int type_id;
     private int action_id;
     private int city_id;
@@ -42,49 +42,43 @@ public class UpdateAdBean implements Serializable{
     private String phoneNumber;
     private String email;
     private int approved;
-    private final NewAdDao newAdDao = new NewAdDao();
-    
-    
-@Inject
-private LoginBean loginBean;
-
+    private final NewAdDao updateAdDao = new NewAdDao();
+    private AllAds selectedAd = new AllAds();
     
     public UpdateAdBean() {
     }
     
   
-    public void updateAd()
+    public void submitNewAd()
     {
-        NewAds newAd = new NewAds();
+        UpdateAds updateAd = new UpdateAds();
         
-        newAd.setType_id(type_id);
-        newAd.setAction_id(action_id);
-        newAd.setArea(area);
-        newAd.setBuildingYear(buildingYear);
-        newAd.setCity_id(city_id);
-        newAd.setEmail(email);
-        newAd.setFloors(getFloors());
-        newAd.setHeatingSystem_id(heatingSystem_id);
-        newAd.setHouseNumber(houseNumber);
-        newAd.setPhoneNumber(phoneNumber);
-        newAd.setPrice(price);
-        newAd.setRooms(rooms);
-        newAd.setDesc(desc);
+        updateAd.setType_id(type_id);
+        updateAd.setAction_id(action_id);
+        updateAd.setArea(area);
+        updateAd.setBuildingYear(buildingYear);
+        updateAd.setCity_id(city_id);
+        updateAd.setEmail(email);
+        updateAd.setFloors(getFloors());
+        updateAd.setHeatingSystem_id(heatingSystem_id);
+        updateAd.setHouseNumber(houseNumber);
+        updateAd.setPhoneNumber(phoneNumber);
+        updateAd.setPrice(price);
+        updateAd.setRooms(rooms);
+        updateAd.setDesc(desc);
         
-        if (loginBean.getSelectedItemId() > 0) {
-                //UsersDao.updateEvent(user);
-            } else {
+        
             try {
-                newAdDao.insertNewAd(newAd, loginBean.getUsername());
+                updateAdDao.updateAd(updateAd, selectedAd);
             } catch (Exception ex) {
                 Logger.getLogger(SelectOneMenuView.class.getName()).log(Level.SEVERE, null, ex);
             }
-            }
+            
         
         
         
     }
-
+    
     /**
      * @return the type_id
      */
@@ -280,6 +274,47 @@ private LoginBean loginBean;
     public void setApproved(int approved) {
         this.approved = approved;
     }
+
+    /**
+     * @return the adv_id
+     */
+    public int getAdv_id() {
+        return adv_id;
+    }
+
+    /**
+     * @param adv_id the adv_id to set
+     */
+    public void setAdv_id(int adv_id) {
+        this.adv_id = adv_id;
+    }
+    
+    
+    
+    public void updateAd()
+    {
+        
+    }
+
+    /**
+     * @return the selectedAd
+     */
+    public AllAds getSelectedAd() {
+        return selectedAd;
+    }
+
+    /**
+     * @param selectedAd the selectedAd to set
+     */
+    public void setSelectedAd(AllAds selectedAd) {
+        this.selectedAd = selectedAd;
+    }
+
+    /**
+     * @return the allAds
+     */
+    
+   
  
     
 }

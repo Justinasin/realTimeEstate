@@ -226,16 +226,12 @@ public class NewAds {
         this.approved = approved;
     }
 
-    /**
-     * @return the adv_id
-     */
+   
     public int getAdv_id() {
         return adv_id;
     }
 
-    /**
-     * @param adv_id the adv_id to set
-     */
+   
     public void setAdv_id(int adv_id) {
         this.adv_id = adv_id;
     }

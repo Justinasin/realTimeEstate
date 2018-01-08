@@ -30,12 +30,13 @@
 
                         <h:panelGrid columns="3" cellpadding="10">
                             <h:form>
-                                <p:commandButton value="Edit" action="editAdvertisement.xhtml" actionListener="#{myAds.setSelectedAd(allAds)}" style="width:160px; height:35px">
+                                <p:commandButton value="Edit" action="editAdvertisement.xhtml" actionListener="#{myAds.setSelectedAd(allAds)}" style="width:220px; height:35px">
                                     <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
+                                    <f:setPropertyActionListener target="#{updateAdBean.selectedAd}" value="#{allAds}" />
                                 </p:commandButton>
                             </h:form>
                             <h:form>
-                                <p:commandButton actionListener="#{myAds.setSelectedAd(allAds)}" value="View advertisement" action="houses_Details.xhtml" style="width:160px; height:35px">
+                                <p:commandButton value="View advertisement" action="houses_Details.xhtml" style="width:160px; height:35px">
                                     <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
                                 </p:commandButton>
                             </h:form>

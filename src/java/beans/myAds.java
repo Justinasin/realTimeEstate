@@ -13,7 +13,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import models.AllAds;
 
@@ -29,10 +28,11 @@ public class myAds implements Serializable{
     private ArrayList<AllAds> usersAdsList = new ArrayList<AllAds>();
     private AllAds selectedAd = new AllAds();
     private final AdsDao adsDao = new AdsDao();
-    
+    private int adv_id;
     
     @Inject
 private LoginBean loginBean;
+   
 
 
     /**
@@ -102,5 +102,16 @@ private LoginBean loginBean;
     public void setSelectedAd(AllAds selectedAd) {
         this.selectedAd = selectedAd;
     }
+    
+   
+    
+    public int getAdv_ID(){
+        return adv_id;
+    }
+    
+    public void setAdv_ID(int adv_id){
+        this.adv_id = selectedAd.getAdv_id();
+    }
+    
     
 }
