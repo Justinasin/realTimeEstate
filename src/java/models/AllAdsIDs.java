@@ -1,38 +1,23 @@
-package org.primefaces.showcase.view.input;
- 
-import beans.AddEditEventBean;
-import beans.LoginBean;
-import daos.NewAdDao;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.model.SelectItem;
-import javax.faces.model.SelectItemGroup;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-import models.NewAds;
- 
-@Named(value = "selectOneMenuView")
-@ManagedBean
-@ViewScoped
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package models;
 
-public class SelectOneMenuView implements Serializable  {
-     
+/**
+ *
+ * @author pc
+ */
+public class AllAdsIDs {
+    
+    private int adv_id;
     private int type_id;
     private int action_id;
     private int city_id;
     private String houseNumber;
     private String area;
     private String rooms;
-    private String floors;
     private String buildingYear;
     private int heatingSystem_id;
     private String desc;
@@ -40,49 +25,6 @@ public class SelectOneMenuView implements Serializable  {
     private String phoneNumber;
     private String email;
     private int approved;
-    private final NewAdDao newAdDao = new NewAdDao();
-    
-    public SelectOneMenuView(){}
-    
-@Inject
-private LoginBean loginBean;
-
-
-
-
-    public void submitNewAd()
-    {
-        NewAds newAd = new NewAds();
-        try {
-        newAd.setType_id(type_id);
-        newAd.setAction_id(action_id);
-        newAd.setArea(area);
-        newAd.setBuildingYear(buildingYear);
-        newAd.setCity_id(city_id);
-        newAd.setEmail(email);
-        newAd.setFloors(floors);
-        newAd.setHeatingSystem_id(heatingSystem_id);
-        newAd.setHouseNumber(houseNumber);
-        newAd.setPhoneNumber(phoneNumber);
-        newAd.setPrice(price);
-        newAd.setRooms(rooms);
-        newAd.setDesc(desc);
-        
-        if (loginBean.getSelectedItemId() > 0) {
-                //UsersDao.updateEvent(user);
-            } else {
-            try {
-                newAdDao.insertNewAd(newAd, loginBean.getUsername());
-            } catch (Exception ex) {
-                Logger.getLogger(SelectOneMenuView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            }
-        }catch(Exception ex){
-            Logger.getLogger(AddEditEventBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-    }
 
     /**
      * @return the type_id
@@ -168,19 +110,7 @@ private LoginBean loginBean;
         this.rooms = rooms;
     }
 
-    /**
-     * @return the floors
-     */
-    public String getFloors() {
-        return floors;
-    }
 
-    /**
-     * @param floors the floors to set
-     */
-    public void setFloors(String floors) {
-        this.floors = floors;
-    }
 
     /**
      * @return the buildingYear
@@ -217,9 +147,7 @@ private LoginBean loginBean;
         return desc;
     }
 
-    /**
-     * @param desc the desc to set
-     */
+    
     public void setDesc(String desc) {
         this.desc = desc;
     }
@@ -279,5 +207,19 @@ private LoginBean loginBean;
     public void setApproved(int approved) {
         this.approved = approved;
     }
- 
+
+    /**
+     * @return the adv_id
+     */
+    public int getAdv_id() {
+        return adv_id;
+    }
+
+    /**
+     * @param adv_id the adv_id to set
+     */
+    public void setAdv_id(int adv_id) {
+        this.adv_id = adv_id;
+    }
+    
 }

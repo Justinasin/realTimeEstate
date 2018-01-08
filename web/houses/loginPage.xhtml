@@ -42,13 +42,15 @@
                                     </p:password>                             
                                 </h:panelGrid>
 
-                                <p:link outcome="/houses/createNewAccount.xhtml" value="#{msgs.dont_have_acc}">
+                                <p:link outcome="/houses/createNewAccount.xhtml" value="Don't have an account? Create new account">
                                 </p:link>
 
                                 <p:commandButton   value="#{msgs.login}"                                                
                                                    style="width:130px; height:35px; margin-top:25px; background-color: #428BCA;" 
                                                    ajax="false"
-                                                   action="#{loginBean.login()}" />                                                         
+                                                   action="#{loginBean.login()}"
+                                                   actionListener="#{registrationBean.init()}"
+                                                   />                                                         
                             </p:fieldset> 
                         </center>
                     </h:form>

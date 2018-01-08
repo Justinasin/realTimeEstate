@@ -3,96 +3,109 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">  
-    <h:form id="ribbon_menu"             
-            style="direction:#{langBean.dir}; width:100%">           
-        <p:ribbon activeIndex="#{sessionBean.menuIndex}">  
 
-            <p:tab title="#{msgs.events}">  
-                <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.events}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(0)}"
-                                      action="/events/manage_events.xhtml">                         
+
+    <p:ribbon activeIndex="#{loginBean.menuIndex}">  
+
+        <p:tab title="#{msgs.events}">  
+            <p:ribbonGroup styleClass="ribbonGroup"
+                           style="float:#{langBean.styleFloat};">
+                <p:commandButton  value="#{msgs.events}" 
+                                  styleClass="ribbonButton" 
+                                  style="float:#{langBean.styleFloat};"
+                                  actionListener="#{loginBean.setMenuIndex(0)}"
+                                  action="/events/manage_events.xhtml">                         
+                </p:commandButton>
+            </p:ribbonGroup>               
+        </p:tab>
+
+        <p:tab title="#{msgs.alumni}">  
+            <p:ribbonGroup styleClass="ribbonGroup"
+                           style="float:#{langBean.styleFloat};">
+                <p:commandButton  value="#{msgs.alumni}" 
+                                  styleClass="ribbonButton" 
+                                  style="float:#{langBean.styleFloat};"
+                                  actionListener="#{loginBean.setMenuIndex(1)}"
+                                  action="/alumni/alumni.xhtml">                         
+                </p:commandButton>
+            </p:ribbonGroup>               
+        </p:tab>
+
+        <p:tab title="#{msgs.hoffaz}">  
+            <p:ribbonGroup styleClass="ribbonGroup"
+                           style="float:#{langBean.styleFloat};">
+                <p:commandButton  value="#{msgs.hoffaz}" 
+                                  styleClass="ribbonButton" 
+                                  style="float:#{langBean.styleFloat};"
+                                  actionListener="#{loginBean.setMenuIndex(2)}"
+                                  action="/hoffaz/hoffaz.xhtml">                         
+                </p:commandButton>
+            </p:ribbonGroup>               
+        </p:tab>
+
+
+        <p:tab title="#{msgs.houses}">  
+            <p:ribbonGroup styleClass="ribbonGroup"
+                           style="float:#{langBean.styleFloat};">
+                <p:commandButton  value="#{msgs.search}" 
+                                  icon="ui-icon-home"
+                                  styleClass="ribbonButton" 
+                                  style="float:#{langBean.styleFloat};"
+                                  actionListener="#{loginBean.setMenuIndex(3)}"
+                                  action="/houses/houses.xhtml">                         
+                </p:commandButton>
+
+
+            </p:ribbonGroup>   
+
+            <p:ribbonGroup styleClass="ribbonGroup2"
+                           style="float:#{langBean.styleRight};">
+                <h:panelGrid columns="2">
+                    <p:commandButton  
+                        widgetVar="login"
+                        value="Login" 
+                        oncomplete="PF('login').disable()"
+                        icon="ui-icon-home"
+                        styleClass="ribbonButton" 
+                        style="float:#{langBean.styleFloat};"
+                        actionListener="#{loginBean.setMenuIndex(3)}"
+                        action="/houses/loginPage.xhtml"
+                        rendered="#{loginBean.username eq null}">                         
                     </p:commandButton>
-                </p:ribbonGroup>               
-            </p:tab>
-
-            <p:tab title="#{msgs.alumni}">  
-                <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.alumni}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(1)}"
-                                      action="/alumni/alumni.xhtml">                         
-                    </p:commandButton>
-                </p:ribbonGroup>               
-            </p:tab>
-
-            <p:tab title="#{msgs.hoffaz}">  
-                <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.hoffaz}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(2)}"
-                                      action="/hoffaz/hoffaz.xhtml">                         
-                    </p:commandButton>
-                </p:ribbonGroup>               
-            </p:tab>
-
-            <p:tab title="#{msgs.houses}">  
-                <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleFloat};">
-                    <p:commandButton  value="#{msgs.search}" 
+                    <p:commandButton  value="#{msgs.add_new}"
                                       icon="ui-icon-home"
                                       styleClass="ribbonButton" 
                                       style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(3)}"
-                                      action="/houses/houses.xhtml">                         
+                                      actionListener="#{loginBean.setMenuIndex(3)}"
+                                      action="/houses/addNew.xhtml" rendered="#{loginBean.username ne null}">                         
                     </p:commandButton>
 
+                    <h:form id="options">
+                        <p:menuButton value="#{loginBean.username}" rendered="#{loginBean.username ne null}">
+                            <p:menuitem value="#{msgs.my_information}" id="myInformation" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
+                            <p:menuitem value="#{msgs.notifications}" id="notifications" icon="ui-icon-info" outcome="/houses/notificationPage.xhtml"/>
+                            <p:menuitem value="#{msgs.my_advertisements}" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
+                            <p:menuitem value="#{msgs.admin_panel}" rendered="#{loginBean.username eq 'Justinas'}"  update="options" icon="ui-icon-person" outcome="/houses/admin.xhtml"/>
+                            <p:menuitem value="#{msgs.logout}" icon="ui-icon-power" actionListener="#{loginBean.logout()}" action="houses_without_login.xhtml"/>
+                            <p:separator />
+                        </p:menuButton>
+                    </h:form>
+                </h:panelGrid>
+            </p:ribbonGroup>
+        </p:tab>
 
-                </p:ribbonGroup>   
+        <p:tab title="#{msgs.licensing}">  
+            <p:ribbonGroup styleClass="ribbonGroup"
+                           style="float:#{langBean.styleRight};">
+                <p:commandButton  value="#{msgs.licensing}" 
+                                  styleClass="ribbonButton" 
+                                  style="float:#{langBean.styleFloat};"
+                                  actionListener="#{loginBean.setMenuIndex(4)}"
+                                  action="/licensing/licensing.xhtml">                         
+                </p:commandButton>
+            </p:ribbonGroup>               
+        </p:tab>
 
-                <p:ribbonGroup styleClass="ribbonGroup2"
-                               style="float:#{langBean.styleRight};">
-                    <p:commandButton  value="#{msgs.add_new}" 
-                                      icon="ui-icon-home"
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(3)}"
-                                      action="/houses/addNew.xhtml">                         
-                    </p:commandButton>
-                    
-                    <h:form>
-    <p:growl id="options" showDetail="true"/>
- 
-    <p:menuButton value="#{loginBean.username}">
-        <p:menuitem value="#{msgs.my_information}" id="myInformation" update="options" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
-        <p:menuitem value="#{msgs.notifications}" id="notifications" update="options" icon="ui-icon-info" outcome="/houses/notificationPage.xhtml"/>
-        <p:menuitem value="#{msgs.my_advertisements}"  update="options" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
-        <p:menuitem value="#{msgs.admin_panel}"  update="options" icon="ui-icon-person" outcome="/houses/admin.xhtml"/>
-        <p:menuitem value="#{msgs.logout}" update="options" icon="ui-icon-power" outcome="/houses/houses_without_login" actionListener="#{sessionBean.logout()}"/>
-        <p:separator />
-    </p:menuButton>
-</h:form>
-                </p:ribbonGroup>
-            </p:tab>
+    </p:ribbon>
 
-            <p:tab title="#{msgs.licensing}">  
-                <p:ribbonGroup styleClass="ribbonGroup"
-                               style="float:#{langBean.styleRight};">
-                    <p:commandButton  value="#{msgs.licensing}" 
-                                      styleClass="ribbonButton" 
-                                      style="float:#{langBean.styleFloat};"
-                                      actionListener="#{sessionBean.setMenuIndex(4)}"
-                                      action="/licensing/licensing.xhtml">                         
-                    </p:commandButton>
-                </p:ribbonGroup>               
-            </p:tab>
-        </p:ribbon>
-    </h:form>
 </ui:composition>

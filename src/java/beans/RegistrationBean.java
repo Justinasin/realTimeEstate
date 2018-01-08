@@ -1,16 +1,26 @@
 package beans;
 
+import daos.EventsDao;
+import daos.UsersDao;
 import javax.inject.Named;
 import java.io.Serializable;
-import javax.faces.application.FacesMessage;
-import javax.faces.application.NavigationHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import models.Credentials;
+import models.Event;
+import models.Users;
+
 
 @Named(value = "registrationBean")
 @ManagedBean
 @ViewScoped
+
+
+
 public class RegistrationBean implements Serializable {
     
     private String username;
@@ -21,60 +31,41 @@ public class RegistrationBean implements Serializable {
     private String address2;
     private String phone1;
     private String phone2;
-    private String gender;
+    private int gender_id;
     private String email;
-    
-    
-    private String action;
-    private String type;
-    private String city;
-    private Integer houseNumber;
-    private Integer area;
-    private int rooms;
-    private int floors;
-    private Integer buildingYear;
-    private String heatingSystem;
-    private String desc;
-    private Integer price;
-    private String phoneNumber;
-    
+    private final UsersDao usersDao = new UsersDao();
             
-    public RegistrationBean() {
-    }
-    
-    public void save() {        
-        FacesMessage msg = new FacesMessage("Successful", "Thank you, " + getFirstname() + " for submitting information");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        navigate("loginPage");
-    }
-    
-    public void update() {        
-       
-        navigate("houses");
-    }
-    
-    public void add() {        
-       
-        navigate("houses");
-    }
-    
-    public void search_login() {        
-       
-        navigate("searchResult");
-    }
-    
-    public void search_without_login() {        
-       
-        navigate("searchResult_without_login");
-    }
-    
-    public void navigate(String url) {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
+@Inject
+private LoginBean loginBean;
+@PostConstruct
+    public void init(){                
+        try {
 
-        if (facesContext != null) {
-            NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
-            navigationHandler.handleNavigation(facesContext, null, url + "?faces-redirect=true");
+            int selected = loginBean.getSelectedItemId();
+            String userName = loginBean.getUsername();
+
+            Users user = usersDao.getUser(userName);
+
+            firstname = user.getFirstName();
+            lastname = user.getLastName();
+            phone1 = user.getPhoneNumber1();
+            phone2 = user.getPhoneNumber2();
+            address1 = user.getAddress1();
+            address2 = user.getAddress2();
+            email = user.getEmail();
+            username = userName;
+            password = loginBean.getPassword();
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(AddEditEventBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+
+
+
+    public RegistrationBean() {
     }
     
     public String getUsername() {
@@ -141,12 +132,12 @@ public class RegistrationBean implements Serializable {
         this.phone2 = phone2;
     }
     
-    public String getGender() {
-        return gender;
+    public int getGender_id() {
+        return gender_id;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender_id(int gender_id) {
+        this.gender_id = gender_id;
     }
     
     public String getEmail() {
@@ -156,174 +147,58 @@ public class RegistrationBean implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
+    public void saveEvent() {
+        try {
+            Users user = new Users();
+            
+            user.setFirstName(firstname);
+            user.setLastName(lastname);
+            //user.getUserId();
+            user.setGender_id(gender_id);
+            user.setAddress1(address1);
+            user.setAddress2(address2);
+            user.setUserName(username);
+            user.setPassword(password);
+            user.setPhoneNumber1(phone1);
+            user.setPhoneNumber2(phone2);
+            
+            if (loginBean.getUsername()!= null) {
+                usersDao.updateUser(user);
+            } else {
+                usersDao.insertUser(user);
+                
+                
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AddEditEventBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    /**
-     * @return the action
-     */
-    public String getAction() {
-        return action;
+        //sessionBean.navigate("manage_events");
     }
-
-    /**
-     * @param action the action to set
-     */
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
-     * @return the city
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * @param city the city to set
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
-     * @return the houseNumber
-     */
-    public Integer getHouseNumber() {
-        return houseNumber;
-    }
-
-    /**
-     * @param houseNumber the houseNumber to set
-     */
-    public void setHouseNumber(Integer houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
-    /**
-     * @return the area
-     */
-    public Integer getArea() {
-        return area;
-    }
-
-    /**
-     * @param area the area to set
-     */
-    public void setArea(Integer area) {
-        this.area = area;
-    }
-
-    /**
-     * @return the rooms
-     */
-    public int getRooms() {
-        return rooms;
-    }
-
-    /**
-     * @param rooms the rooms to set
-     */
-    public void setRooms(int rooms) {
-        this.rooms = rooms;
-    }
-
-    /**
-     * @return the floors
-     */
-    public int getFloors() {
-        return floors;
-    }
-
-    /**
-     * @param floors the floors to set
-     */
-    public void setFloors(int floors) {
-        this.floors = floors;
-    }
-
-    /**
-     * @return the buildingYear
-     */
-    public Integer getBuildingYear() {
-        return buildingYear;
-    }
-
-    /**
-     * @param buildingYear the buildingYear to set
-     */
-    public void setBuildingYear(Integer buildingYear) {
-        this.buildingYear = buildingYear;
-    }
-
-    /**
-     * @return the heatingSystem
-     */
-    public String getHeatingSystem() {
-        return heatingSystem;
-    }
-
-    /**
-     * @param heatingSystem the heatingSystem to set
-     */
-    public void setHeatingSystem(String heatingSystem) {
-        this.heatingSystem = heatingSystem;
-    }
-
-    /**
-     * @return the desc
-     */
-    public String getDesc() {
-        return desc;
-    }
-
-    /**
-     * @param desc the desc to set
-     */
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    /**
-     * @return the price
-     */
-    public Integer getPrice() {
-        return price;
-    }
-
-    /**
-     * @param price the price to set
-     */
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    /**
-     * @return the phoneNumber
-     */
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    /**
-     * @param phoneNumber the phoneNumber to set
-     */
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
+    
+    
+//    public void updateUser()
+//    {
+//        try
+//        {
+//            String userName = loginBean.getUsername();
+//
+//            Users user = usersDao.getUser(userName);
+//
+//            firstname = user.getFirstName();
+//            lastname = user.getLastName();
+//            phone1 = user.getPhoneNumber1();
+//            phone2 = user.getPhoneNumber2();
+//            address1 = user.getAddress1();
+//            address2 = user.getAddress2();
+//            email = user.getEmail();
+//            username = userName;
+//            password = loginBean.getPassword();
+//        }catch (Exception ex) {
+//            Logger.getLogger(AddEditEventBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    //}
     
 }
