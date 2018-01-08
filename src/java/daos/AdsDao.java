@@ -49,9 +49,10 @@ public class AdsDao extends ConnectionDao {
         AllAdsIDs allAdsIDs = new AllAdsIDs();
         AllAds allAds = new AllAds();
         
+        allAdsIDs.setAdv_id(rs.getInt("AD_ID"));
         allAdsIDs.setAction_id(rs.getInt("ACTION_ID"));
         allAdsIDs.setType_id(rs.getInt("TYPE_ID"));
-        //allAdsIDs.setCity_id(rs.getInt("CITY_ID"));
+        allAdsIDs.setCity_id(rs.getInt("CITY_ID"));
         allAdsIDs.setHeatingSystem_id(rs.getInt("HEATING_SYSTEM_ID"));
         allAdsIDs.setArea(rs.getString("AREA"));
         allAdsIDs.setBuildingYear(rs.getString("BUILDING_YEAR"));
@@ -123,7 +124,7 @@ public class AdsDao extends ConnectionDao {
             allAds.setHeatingSystem(rs.getString("HEATING_SYSTEM_TYPE"));
         }
 
-        
+        allAds.setAdv_id(allAdsIDs.getAdv_id());
         allAds.setBuildingYear(allAdsIDs.getBuildingYear());
         allAds.setDesc(allAdsIDs.getDesc());
         allAds.setEmail(allAdsIDs.getEmail());
@@ -165,6 +166,7 @@ public class AdsDao extends ConnectionDao {
             rs = ps.executeQuery();           
 
             while (rs.next()) {
+                
                 usersAd = prepareAdsObject(rs);
                 usersAds.add(usersAd);
             }

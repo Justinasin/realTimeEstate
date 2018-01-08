@@ -1,6 +1,7 @@
 package daos;
 
-import beans.SessionBean;
+
+import beans.LoginBean;
 import java.io.Serializable;
 import java.sql.Connection;
 import javax.faces.context.FacesContext;
@@ -8,11 +9,7 @@ import java.sql.DriverManager;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-/**
- *
- * Author: Dr. Firas Al-Hawari
- *
- */
+
 public class ConnectionDao implements Serializable {
     private DataSource dataSource;
     private String oracleUrl;
@@ -20,7 +17,8 @@ public class ConnectionDao implements Serializable {
     private String databasePassword;
     private final String oracleDriver;    
     private final boolean useConnectionPool = false;
-    private final SessionBean sessionBean;
+
+    private final LoginBean loginBean;
     
     public ConnectionDao() {
         oracleDriver = "oracle.jdbc.driver.OracleDriver";
@@ -33,19 +31,19 @@ public class ConnectionDao implements Serializable {
         }
 
         FacesContext context = FacesContext.getCurrentInstance();
-        sessionBean = (SessionBean) context.getELContext().getELResolver().getValue(
-                                         context.getELContext(), null, "sessionBean");
+        loginBean = (LoginBean) context.getELContext().getELResolver().getValue(
+                                         context.getELContext(), null, "loginBean");
     }
 
     public Connection getConnection() throws Exception {
         Connection connection = null;
 
-        if (sessionBean != null) {
-            connection = sessionBean.getConnection();
+        if (loginBean != null) {
+            connection = loginBean.getConnection();
 
             if (connection == null || connection.isClosed()) {
                 connection = openSessionConnection();
-                sessionBean.setConnection(connection);                
+                loginBean.setConnection(connection);                
             }
         }
         
@@ -55,12 +53,12 @@ public class ConnectionDao implements Serializable {
     }
 
     public void closeConnection() throws Exception {
-        if (sessionBean != null) {
-            Connection connection = sessionBean.getConnection();
+        if (loginBean != null) {
+            Connection connection = loginBean.getConnection();
 
             if (connection != null) {
                 connection.close();
-                sessionBean.setConnection(null);
+                loginBean.setConnection(null);
             }
         }
     }
@@ -68,7 +66,7 @@ public class ConnectionDao implements Serializable {
     private Connection openSessionConnection() throws Exception {
         Connection connection = null;
 
-        if (sessionBean != null) {
+        if (loginBean != null) {
             if (useConnectionPool) {
                 dataSource = (DataSource) new InitialContext().lookup("jdbc/Housing");
                 connection = dataSource.getConnection();

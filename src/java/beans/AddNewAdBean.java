@@ -27,7 +27,7 @@ import javax.faces.event.ActionEvent;
 
 public class AddNewAdBean implements Serializable{
     
-    
+    private int adv_id;
     private int type_id;
     private int action_id;
     private int city_id;
@@ -47,6 +47,7 @@ public class AddNewAdBean implements Serializable{
     
 @Inject
 private LoginBean loginBean;
+private myAds myAds;
 
     
     public AddNewAdBean() {
@@ -82,6 +83,31 @@ private LoginBean loginBean;
             }
         
         
+        
+    }
+    
+    public void updateAdd(){
+        NewAds updateAd = new NewAds();
+        updateAd
+        updateAd.setType_id(type_id);
+        updateAd.setAction_id(action_id);
+        updateAd.setArea(area);
+        updateAd.setBuildingYear(buildingYear);
+        updateAd.setCity_id(city_id);
+        updateAd.setEmail(email);
+        updateAd.setFloors(getFloors());
+        updateAd.setHeatingSystem_id(heatingSystem_id);
+        updateAd.setHouseNumber(houseNumber);
+        updateAd.setPhoneNumber(phoneNumber);
+        updateAd.setPrice(price);
+        updateAd.setRooms(rooms);
+        updateAd.setDesc(desc);
+        
+        try {
+                newAdDao.updateAd(updateAd, myAds.getSelectedAd().getAdv_id());
+            } catch (Exception ex) {
+                Logger.getLogger(SelectOneMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
     }
 
@@ -279,6 +305,20 @@ private LoginBean loginBean;
      */
     public void setApproved(int approved) {
         this.approved = approved;
+    }
+
+    /**
+     * @return the adv_id
+     */
+    public int getAdv_id() {
+        return adv_id;
+    }
+
+    /**
+     * @param adv_id the adv_id to set
+     */
+    public void setAdv_id(int adv_id) {
+        this.adv_id = adv_id;
     }
  
     

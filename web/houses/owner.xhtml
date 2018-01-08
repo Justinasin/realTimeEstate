@@ -12,35 +12,41 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <P><h2>My advertisements</h2></P>
-            <h:form>
-                <ui:repeat value="#{myAds.fetchUsersAds()}" var="allAds">
-                    <h:panelGrid columns="2" style="width:70%" columnClasses="logo,detail">
-                            <p:graphicImage name="/images/demo1.jpg" style="size:100px" /> 
-                        <p:outputPanel>
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="#{msgs.action}" />
-                                <h:outputText value="#{allAds.action}" style="font-weight: bold"/>
 
-                                <h:outputText value="#{msgs.type}" />
-                                <h:outputText value="#{allAds.type}" style="font-weight: bold"/>
+            <ui:repeat value="#{myAds.fetchUsersAds()}" var="allAds">
+                <h:panelGrid columns="2" style="width:70%" columnClasses="logo,detail">
+                    <p:graphicImage name="/images/demo1.jpg" style="size:100px" /> 
+                    <p:outputPanel>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="#{msgs.action}" />
+                            <h:outputText value="#{allAds.action}" style="font-weight: bold"/>
 
-                                <h:outputText value="#{msgs.price}" />
-                                <h:outputText value="#{allAds.price}" style="font-weight: bold"/>
-                            </h:panelGrid>
+                            <h:outputText value="#{msgs.type}" />
+                            <h:outputText value="#{allAds.type}" style="font-weight: bold"/>
 
-                            <h:panelGrid columns="3" cellpadding="10">
-                                <p:commandButton value="Edit" action="addNew.xhtml" style="width:160px; height:35px"/>
+                            <h:outputText value="#{msgs.price}" />
+                            <h:outputText value="#{allAds.price}" style="font-weight: bold"/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3" cellpadding="10">
+                            <h:form>
+                                <p:commandButton value="Edit" action="editAdvertisement.xhtml" actionListener="#{myAds.setSelectedAd(allAds)}" style="width:160px; height:35px">
+                                    <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
+                                </p:commandButton>
+                            </h:form>
+                            <h:form>
                                 <p:commandButton actionListener="#{myAds.setSelectedAd(allAds)}" value="View advertisement" action="houses_Details.xhtml" style="width:160px; height:35px">
                                     <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
                                 </p:commandButton>
-                                <p:commandButton value="Delete" style="width:160px; height:35px"/>
-                            </h:panelGrid>
+                            </h:form>
+                            <p:commandButton value="Delete" style="width:160px; height:35px"/>
+                        </h:panelGrid>
 
-                        </p:outputPanel>
-                    </h:panelGrid>
-                    <hr />
-                </ui:repeat>
-            </h:form>
+                    </p:outputPanel>
+                </h:panelGrid>
+                <hr />
+            </ui:repeat>
+
         </ui:decorate>
     </h:body>
 </html>

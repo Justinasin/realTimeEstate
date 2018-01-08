@@ -3,21 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package beans;
+
+import daos.NewAdDao;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import models.NewAds;
+import org.primefaces.showcase.view.input.SelectOneMenuView;
+import javax.faces.event.ActionEvent;
 
 /**
  *
  * @author pc
  */
-public class AllAdsIDs {
+@Named(value = "updateAdBean")
+@ViewScoped
+
+public class UpdateAdBean implements Serializable{
     
-    private int adv_id;
+    
     private int type_id;
     private int action_id;
     private int city_id;
     private String houseNumber;
     private String area;
     private String rooms;
+    private String floors;
     private String buildingYear;
     private int heatingSystem_id;
     private String desc;
@@ -25,6 +42,48 @@ public class AllAdsIDs {
     private String phoneNumber;
     private String email;
     private int approved;
+    private final NewAdDao newAdDao = new NewAdDao();
+    
+    
+@Inject
+private LoginBean loginBean;
+
+    
+    public UpdateAdBean() {
+    }
+    
+  
+    public void updateAd()
+    {
+        NewAds newAd = new NewAds();
+        
+        newAd.setType_id(type_id);
+        newAd.setAction_id(action_id);
+        newAd.setArea(area);
+        newAd.setBuildingYear(buildingYear);
+        newAd.setCity_id(city_id);
+        newAd.setEmail(email);
+        newAd.setFloors(getFloors());
+        newAd.setHeatingSystem_id(heatingSystem_id);
+        newAd.setHouseNumber(houseNumber);
+        newAd.setPhoneNumber(phoneNumber);
+        newAd.setPrice(price);
+        newAd.setRooms(rooms);
+        newAd.setDesc(desc);
+        
+        if (loginBean.getSelectedItemId() > 0) {
+                //UsersDao.updateEvent(user);
+            } else {
+            try {
+                newAdDao.insertNewAd(newAd, loginBean.getUsername());
+            } catch (Exception ex) {
+                Logger.getLogger(SelectOneMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        
+        
+        
+    }
 
     /**
      * @return the type_id
@@ -110,7 +169,19 @@ public class AllAdsIDs {
         this.rooms = rooms;
     }
 
+    /**
+     * @return the floors
+     */
+    public String getFloors() {
+        return floors;
+    }
 
+    /**
+     * @param floors the floors to set
+     */
+    public void setFloors(String floors) {
+        this.floors = floors;
+    }
 
     /**
      * @return the buildingYear
@@ -147,7 +218,9 @@ public class AllAdsIDs {
         return desc;
     }
 
-    
+    /**
+     * @param desc the desc to set
+     */
     public void setDesc(String desc) {
         this.desc = desc;
     }
@@ -207,19 +280,6 @@ public class AllAdsIDs {
     public void setApproved(int approved) {
         this.approved = approved;
     }
-
-    /**
-     * @return the adv_id
-     */
-    public int getAdv_id() {
-        return adv_id;
-    }
-
-    /**
-     * @param adv_id the adv_id to set
-     */
-    public void setAdv_id(int adv_id) {
-        this.adv_id = adv_id;
-    }
+ 
     
 }

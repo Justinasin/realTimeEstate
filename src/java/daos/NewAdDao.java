@@ -95,5 +95,10 @@ public class NewAdDao extends ConnectionDao {
                 conn.setAutoCommit(true);
             }
         } 
-    }   
+    }
+    
+     public void updateAd(NewAds newAd, String userName) throws Exception
+    {
+        
+    }
 }

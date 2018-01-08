@@ -11,7 +11,7 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-            <h:form id="advDetails">
+            <h:form>
                 <!-- Property Details Controls-->
 
                 <p:layout style="min-width:500px;height:850px;" >
@@ -58,9 +58,7 @@
                             </p:link> 
 
                             <h:outputText value="#{msgs.short_description}" /> 
-                            <h:outputText value="This is a description of selling property. 
-                                          I'm selling a house in a nice area. 
-                                          Next to the house there is a bus station and a shop." 
+                            <h:outputText value="#{myAds.selectedAd.desc}" 
                                           style="font-weight:bold"/>
 
                             <h:commandButton value="#{msgs.comment}" action="#{userBean.showComment()}"/>

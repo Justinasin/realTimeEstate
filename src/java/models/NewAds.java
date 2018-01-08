@@ -11,6 +11,7 @@ package models;
  */
 public class NewAds {
     
+    private int adv_id;
     private int type_id;
     private int action_id;
     private int city_id;
@@ -223,6 +224,20 @@ public class NewAds {
      */
     public void setApproved(int approved) {
         this.approved = approved;
+    }
+
+    /**
+     * @return the adv_id
+     */
+    public int getAdv_id() {
+        return adv_id;
+    }
+
+    /**
+     * @param adv_id the adv_id to set
+     */
+    public void setAdv_id(int adv_id) {
+        this.adv_id = adv_id;
     }
     
     

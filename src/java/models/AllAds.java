@@ -11,6 +11,7 @@ package models;
  */
 public class AllAds {
     
+    private int adv_id;
     private String type;
     private String action;
     private String city;
@@ -61,9 +62,6 @@ public class AllAds {
         return city;
     }
 
-    /**
-     * @param city_id the city_id to set
-     */
     public void setCity(String city) {
         this.city = city;
     }
@@ -208,6 +206,20 @@ public class AllAds {
      */
     public void setHeatingSystem(String heatingSystem) {
         this.heatingSystem = heatingSystem;
+    }
+
+    /**
+     * @return the adv_id
+     */
+    public int getAdv_id() {
+        return adv_id;
+    }
+
+    /**
+     * @param adv_id the adv_id to set
+     */
+    public void setAdv_id(int adv_id) {
+        this.adv_id = adv_id;
     }
     
 }

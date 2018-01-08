@@ -10,10 +10,11 @@ import javax.inject.Named;
 @Named(value = "loginBean")
 @SessionScoped
 public class LoginBean implements Serializable {
+
     private String username;
-    private String password;    
-    private Connection connection; 
-    private int selectedItemId;     
+    private String password;
+    private Connection connection;
+    private int selectedItemId;
     private int menuIndex = 3;
 
     public LoginBean() {
@@ -49,7 +50,7 @@ public class LoginBean implements Serializable {
 
     public void setSelectedItemId(int selectedItemId) {
         this.selectedItemId = selectedItemId;
-    }    
+    }
 
     public int getMenuIndex() {
         return menuIndex;
@@ -61,6 +62,8 @@ public class LoginBean implements Serializable {
 
     public void login() throws Exception {
         FacesContext facesContext = FacesContext.getCurrentInstance();
+
+//login validation//
         boolean success = true;
 
         try {

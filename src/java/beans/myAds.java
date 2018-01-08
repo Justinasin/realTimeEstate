@@ -49,6 +49,7 @@ private LoginBean loginBean;
     
     public ArrayList<AllAds> fetchUsersAds() throws Exception
     {
+        usersAdsList.clear();
         String userName = loginBean.getUsername();
         return usersAdsList = adsDao.fetchUsersAds(userName);
     }
