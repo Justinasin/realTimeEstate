@@ -5,6 +5,7 @@
  */
 package beans;
 
+import daos.AdsDao;
 import daos.NewAdDao;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 import models.NewAds;
 import org.primefaces.showcase.view.input.SelectOneMenuView;
 import javax.faces.event.ActionEvent;
+import models.AllAds;
 import models.UpdateAds;
 
 /**
@@ -44,8 +46,9 @@ public class AddNewAdBean implements Serializable{
     private String email;
     private int approved;
     private final NewAdDao newAdDao = new NewAdDao();
+    private final AdsDao adsDao = new AdsDao();
     
-    
+    private AllAds deletedAd = new AllAds();
     
 @Inject
 private LoginBean loginBean;
@@ -85,6 +88,14 @@ private LoginBean loginBean;
             }
         
         
+        
+    }
+    
+    
+    public void deleteAd() throws Exception
+    {
+        int id = deletedAd.getAdv_id();
+        adsDao.deleteAd(id);
         
     }
     
@@ -303,6 +314,20 @@ private LoginBean loginBean;
     public void updateAd()
     {
         
+    }
+
+    /**
+     * @return the deletedAd
+     */
+    public AllAds getDeletedAd() {
+        return deletedAd;
+    }
+
+    /**
+     * @param deletedAd the deletedAd to set
+     */
+    public void setDeletedAd(AllAds deletedAd) {
+        this.deletedAd = deletedAd;
     }
    
  

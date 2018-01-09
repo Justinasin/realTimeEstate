@@ -1,11 +1,14 @@
 package beans;
 
+import daos.UsersDao;
 import java.io.Serializable;
 import java.sql.Connection;
+import java.util.ArrayList;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import models.Credentials;
 
 @Named(value = "loginBean")
 @SessionScoped
@@ -16,7 +19,26 @@ public class LoginBean implements Serializable {
     private Connection connection;
     private int selectedItemId;
     private int menuIndex = 3;
+    ArrayList<Credentials> credentialsList = new ArrayList<Credentials>();
+//    private  UsersDao usersDao = new UsersDao();
 
+//    public void init() throws Exception
+//    {
+////        boolean success = true;
+////        credentialsList = usersDao.validateUser(username, password);
+////        
+////        for(Credentials c: credentialsList)
+////        {
+////            if (username.equals(c.getUserName()) && password.equals(c.getPassword())) {
+////                success = true;
+////            }
+////            else
+////            {
+////                success = false;
+////            }
+////        }
+//    }
+    
     public LoginBean() {
     }
 
@@ -62,9 +84,21 @@ public class LoginBean implements Serializable {
 
     public void login() throws Exception {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-
-//login validation//
-        boolean success = true;
+        UsersDao usersDao = new UsersDao();
+        boolean success = false;
+        credentialsList.clear();
+        credentialsList = usersDao.validateUser(username, password);
+        
+        for(Credentials c: credentialsList)
+        {
+            if (username.equals(c.getUserName()) && password.equals(c.getPassword())) {
+                success = true;
+           }
+            else
+            {
+                success = false;
+            }
+        }
 
         try {
 
@@ -75,7 +109,12 @@ public class LoginBean implements Serializable {
         }
 
         if (success) {
-            navigate("houses");
+            navigate("/houses/houses");
+            
+        }
+        else
+        {
+            navigate("/houses/houses_without_login");
         }
     }
 

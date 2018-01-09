@@ -11,7 +11,7 @@
     </h:head>
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
-           <P><h2>#{loginBean.username} advertisements</h2></P>
+            <P><h2>#{searchBean.fetchUser()}</h2></P>
            
                 <ui:repeat value="#{myAds.fetchUsersAds()}" var="allAds">
                     <h:panelGrid columns="2" style="width:70%" columnClasses="logo,detail">
