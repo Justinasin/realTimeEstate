@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -22,7 +23,7 @@ import models.UpdateAds;
 
 
 @Named(value = "updateAdBean")
-@ViewScoped
+@SessionScoped
 
 public class UpdateAdBean implements Serializable{
     
@@ -53,6 +54,7 @@ public class UpdateAdBean implements Serializable{
     {
         UpdateAds updateAd = new UpdateAds();
         
+        int id = selectedAd.getAdv_id();
         updateAd.setType_id(type_id);
         updateAd.setAction_id(action_id);
         updateAd.setArea(area);
@@ -69,7 +71,7 @@ public class UpdateAdBean implements Serializable{
         
         
             try {
-                updateAdDao.updateAd(updateAd, selectedAd);
+                updateAdDao.updateAd(updateAd, id);
             } catch (Exception ex) {
                 Logger.getLogger(SelectOneMenuView.class.getName()).log(Level.SEVERE, null, ex);
             }

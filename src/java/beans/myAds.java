@@ -59,6 +59,7 @@ private LoginBean loginBean;
         return allAdsList = adsDao.getAllAds();
     }
     
+    
 
 
     /**

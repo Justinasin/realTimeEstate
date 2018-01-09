@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 import javax.jms.Message;
 import models.Users;
 import beans.RegistrationBean;
+import java.util.ArrayList;
+import models.Credentials;
 
 /**
  *
@@ -282,4 +284,72 @@ public class UsersDao extends ConnectionDao {
 //        }
 //        return false;
 //    }
+    
+    
+    public String fetchUser(int advert_id) throws Exception
+    {
+        String ownersName = null;
+        int owners_id = 0;
+        Connection connection = getConnection();
+        String sql = "SELECT USER_ID FROM ADS WHERE AD_ID = ?";
+        
+        PreparedStatement ps;
+        ps = connection.prepareStatement(sql);
+        ps.setInt(1, advert_id);
+        
+        ResultSet rs;
+        
+        rs = ps.executeQuery();
+        
+        while(rs.next())
+        {
+            owners_id = rs.getInt("USER_ID");
+        }
+        
+        sql = null;
+        ps = null;
+        rs = null;
+        sql = "SELECT USERNAME FROM CREDENTIALS WHERE USER_ID = ?";
+        ps = connection.prepareStatement(sql);
+        ps.setInt(1, owners_id);
+        
+        rs = ps.executeQuery();
+        
+        while (rs.next())
+        {
+            ownersName = rs.getString("USERNAME");
+        }
+        return ownersName;
+    }
+    
+    public ArrayList<Credentials> validateUser(String userName, String password) throws Exception
+    {
+        ArrayList<Credentials> credentialsList = new ArrayList<Credentials>();
+        Connection connection = getConnection();
+        String sql = "SELECT * FROM CREDENTIALS WHERE USERNAME = ? AND PASSWORD = ?";
+        PreparedStatement ps;
+        ps = connection.prepareStatement(sql);
+        
+        ps.setString(1, userName);
+        ps.setString(2, password);
+        
+        ResultSet rs;
+        rs = ps.executeQuery();
+        
+        while(rs.next())
+        {
+            credentialsList.add(populateCredentials(rs));
+        }
+        return credentialsList;
+    }
+    
+    public Credentials populateCredentials(ResultSet rs) throws SQLException
+    {
+        Credentials credentials = new Credentials();
+        credentials.setUserName(rs.getString("USERNAME"));
+        credentials.setPassword(rs.getString("PASSWORD"));
+        
+        return credentials;
+        
+    }
 }

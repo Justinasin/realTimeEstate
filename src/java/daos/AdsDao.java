@@ -320,4 +320,26 @@ public class AdsDao extends ConnectionDao {
         return allAds;
     }
     
+    public void deleteAd(int id) throws Exception
+    {
+        Connection connection = getConnection();
+        PreparedStatement ps;
+        String sql = "DELETE FROM COMMENTS WHERE AD_ID = ?";
+        ps = connection.prepareStatement(sql);
+        ps.setInt(1, id);
+        
+        ps.executeUpdate();
+        sql = null;
+        ps = null;
+        sql = "DELETE FROM ADS WHERE AD_ID = ?";
+
+        ps = connection.prepareStatement(sql);
+        
+        ps.setInt(1, id);
+        
+        ps.executeUpdate();
+        
+        ps.close();
+    }
+    
 }

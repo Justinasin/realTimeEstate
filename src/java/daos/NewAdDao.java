@@ -88,7 +88,7 @@ public class NewAdDao extends ConnectionDao {
         }
     }
 
-    public void updateAd(UpdateAds updateAd,AllAds selectedAd) throws Exception {
+    public void updateAd(UpdateAds updateAd,int id) throws Exception {
          boolean c = true;
         Connection connection = getConnection();
 
@@ -104,7 +104,7 @@ public class NewAdDao extends ConnectionDao {
                 + "EMAIL = ?,"
                 + "TYPE_ID = ?,"
                 + "PRICE = ?"
-                + "WHERE AREA =? AND PROPERTY_NUMBER =? AND BUILDING_YEAR =? AND PRICE =?";
+                + "WHERE AD_ID = ?";
 
         try {
             PreparedStatement ps;
@@ -125,10 +125,7 @@ public class NewAdDao extends ConnectionDao {
             ps.setString(10, updateAd.getEmail());
             ps.setInt(11, updateAd.getType_id());
             ps.setString(12, updateAd.getPrice());
-            ps.setString(13, selectedAd.getArea());
-            ps.setString(14, selectedAd.getHouseNumber());
-            ps.setString(15, selectedAd.getBuildingYear());
-            ps.setString(16, selectedAd.getPrice());
+            ps.setInt(13, id);
 
             ps.executeUpdate();
             ps.close();
