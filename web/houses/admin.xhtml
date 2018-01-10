@@ -9,7 +9,7 @@
     <h:head>
         <title>Admin panel</title>
     </h:head>
-    <h:body>
+    <h:body rendered="#{loginBean.username eq 'admin'}">
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form id="form">
                 <p:carousel value="#{myAds.fetchAds()}" headerText="Admin panel" var="adv" itemStyle="text-align:center" responsive="true" rendered="#{searchBean.search() ne null}">
