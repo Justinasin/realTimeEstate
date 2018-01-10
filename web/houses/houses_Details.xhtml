@@ -56,8 +56,8 @@
                             <h:outputText value="#{myAds.selectedAd.desc}" 
                                           style="font-weight:bold"/>
 
-                            <h:commandButton value="#{msgs.comment}" action="#{userBean.showComment()}"/>
-                            <h:commandButton value="#{msgs.write_email}" action="#{userBean.showEmail()}"/>
+                            <h:commandButton value="#{msgs.comment}" action="#{userBean.showComment()}" rendered="#{loginBean.username ne null}"/>
+                            <h:commandButton value="#{msgs.write_email}" action="#{userBean.showEmail()}" rendered="#{loginBean.username ne null}"/>
                         </p:panelGrid>
                         <p/>
                         <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfComment()}" >
