@@ -11,28 +11,25 @@
             <p:layout style="min-width:1200px;max-width:1200px;min-height:900px;max-height:900px">
                 <p:layoutUnit position="center" size="350">
                     <h:form id="login_form">
-                        <center>  
-                            <br/><br/>                                    
-
-
-                            <br/>
-                            <h:panelGrid id="grid" columns="2" cellspacing="5px" cellpadding="7" style="float:#{langBean.styleFloat}">
+                            <h:panelGrid id="grid" columns="3" cellspacing="5px" cellpadding="7" style="float:#{langBean.styleFloat}">
                                 <h:outputLabel for="action" value="#{msgs.action}" /> 
-                                <p:selectOneMenu id="action" value="#{addNewAdBean.action_id}" style="width:125px" >
+                                <p:selectOneMenu id="action" value="#{addNewAdBean.action_id}" style="width:125px" required="true" requiredMessage="#{msgs.please_enter}">
                                     <f:selectItem itemLabel="#{msgs.select_action}" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.sale}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.rent}" itemValue="2" />
                                 </p:selectOneMenu>
+                                <p:message for="action"/>
 
                                 <h:outputLabel for="type" value="#{msgs.type}" /> 
-                                <p:selectOneMenu id="type" value="#{addNewAdBean.type_id}" style="width:125px" >
+                                <p:selectOneMenu id="type" value="#{addNewAdBean.type_id}" style="width:125px" required="true" requiredMessage="#{msgs.please_enter}">
                                     <f:selectItem itemLabel="#{msgs.select_type}" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.flat}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.house}" itemValue="2" />
                                 </p:selectOneMenu>
+                                <p:message for="type"/>
 
                                 <h:outputLabel for="city" value="#{msgs.city}" />
-                                <p:selectOneMenu id="city" value="#{addNewAdBean.city_id}" style="width:125px" >
+                                <p:selectOneMenu id="city" value="#{addNewAdBean.city_id}" style="width:125px" required="true" requiredMessage="#{msgs.please_enter}">
                                     <f:selectItem itemLabel="#{msgs.select_city}" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.madaba}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.amman}" itemValue="2" />
@@ -42,19 +39,34 @@
                                     <f:selectItem itemLabel="#{msgs.jerash}" itemValue="6" />
                                     <f:selectItem itemLabel="#{msgs.maan}" itemValue="7" />
                                 </p:selectOneMenu>
+                                <p:message for="city"/>
 
                                 <h:outputText value="#{msgs.house_number}" /> 
                                 <p:inputText    id="houseNumber"
                                                 value="#{addNewAdBean.houseNumber}"
-                                                style="width:150px"/>
+                                                style="width:150px"
+                                                required="true" 
+                                                requiredMessage="#{msgs.please_enter}"
+                                                validatorMessage="House number is not valid, please enter correct number with only digits">
+                                    <f:validateLength minimum="2" maximum="10"/>
+                                    <f:validateRegex pattern="\d*(.\d+)?"/>
+                                </p:inputText>
+                                <p:message for="houseNumber"/>
 
                                 <h:outputText value="#{msgs.area}" /> 
                                 <p:inputText id="area"
                                              value="#{addNewAdBean.area}"
-                                             style="width:150px"/>
+                                             style="width:150px"
+                                             required="true" 
+                                             requiredMessage="#{msgs.please_enter}"
+                                             validatorMessage="Area number is not valid, please enter correct number with only digits">
+                                    <f:validateLength minimum="2" maximum="10"/>
+                                    <f:validateRegex pattern="\d*(.\d+)?"/>
+                                </p:inputText>
+                                <p:message for="area"/>
 
                                 <h:outputLabel value="#{msgs.number_of_rooms}" /> 
-                                <p:selectOneMenu id="rooms" value="#{addNewAdBean.rooms}" style="width:50px">
+                                <p:selectOneMenu id="rooms" value="#{addNewAdBean.rooms}" style="width:50px" required="true" requiredMessage="#{msgs.please_enter}">
                                     <f:selectItem itemLabel="#{msgs.select_number}" itemValue="" />
                                     <f:selectItem itemLabel="1" itemValue="1" />
                                     <f:selectItem itemLabel="2" itemValue="2" />
@@ -64,50 +76,78 @@
                                     <f:selectItem itemLabel="6" itemValue="6" />
                                     <f:selectItem itemLabel="7" itemValue="7" />
                                 </p:selectOneMenu>
-                                
+                                <p:message for="rooms"/>
+
                                 <h:outputLabel for="heatingSystem" value="#{msgs.heating_system}" /> 
-                                <p:selectOneMenu id="heatingSystem" value="#{addNewAdBean.heatingSystem_id}" style="width:125px">
+                                <p:selectOneMenu id="heatingSystem" value="#{addNewAdBean.heatingSystem_id}" style="width:125px" required="true" requiredMessage="#{msgs.please_enter}">
                                     <f:selectItem itemLabel="Select system" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.gas}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.electricity}" itemValue="2" />
                                     <f:selectItem itemLabel="#{msgs.central}" itemValue="3" />
                                 </p:selectOneMenu>
-                                
+                                <p:message for="heatingSystem"/>
+
                                 <h:outputLabel value="#{msgs.building_year}" /> 
                                 <p:inputText id="year" value="#{addNewAdBean.buildingYear}"
-                                             style="width:150px"/>
-
+                                             style="width:150px"
+                                             required="true" 
+                                             requiredMessage="#{msgs.please_enter}"
+                                             validatorMessage="Building year is not valid, please enter correct number with only digits">
+                                    <f:validateLength minimum="4" maximum="10"/>
+                                    <f:validateRegex pattern="\d*(.\d+)?"/>
+                                </p:inputText>
+                                <p:message for="year"/>
 
 
                                 <h:outputLabel value="#{msgs.short_description}" /> 
-                                <p:inputTextarea rows="6" cols="33" value="#{addNewAdBean.desc}"/>
+                                <p:inputTextarea id="desc" rows="6" cols="33" value="#{addNewAdBean.desc}" required="true" requiredMessage="#{msgs.please_enter}">
+                                    <f:validateLength minimum="4" maximum="100"/>
+                                </p:inputTextarea>
+                                <p:message for="desc"/>
 
                                 <h:outputLabel value="#{msgs.price}" /> 
                                 <p:inputText id="price"
                                              value="#{addNewAdBean.price}"
-                                             style="width:150px"/>
+                                             style="width:150px"
+                                             required="true" 
+                                             requiredMessage="#{msgs.please_enter}"
+                                             validatorMessage="Price number is not valid, please enter correct number with only digits">
+                                    <f:validateLength minimum="4" maximum="10"/>
+                                    <f:validateRegex pattern="\d*(.\d+)?"/>
+                                </p:inputText>
+                                <p:message for="price"/>
 
 
                                 <h:outputLabel value="#{msgs.phone_number}" /> 
                                 <p:inputText id="phoneNumber"
                                              value="#{addNewAdBean.phoneNumber}"
-                                             style="width:150px"/>
+                                             style="width:150px"
+                                             required="true"
+                                             requiredMessage="#{msgs.please_enter}"
+                                             validatorMessage="Phone     is not valid, please enter correct number with only digits">
+                                    <f:validateLength minimum="2" maximum="10"/>
+                                    <f:validateRegex pattern="\d*(.\d+)?"/>
+                                </p:inputText>
+                                <p:message for="phoneNumber"/>
 
                                 <h:outputLabel value="#{msgs.email_my_information}" /> 
                                 <p:inputText id="email"
                                              value="#{addNewAdBean.email}"
-                                             style="width:150px"/>
-                                
+                                             style="width:150px"
+                                             required="true"
+                                             requiredMessage="#{msgs.please_enter}"
+                                             validatorMessage="Email is not valid, please enter correct email, e.g. justinasin@gmail.com">
+                                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                                </p:inputText>
+                                <p:message for="email"/>
+
                                 <p:commandButton   value="#{msgs.submit}"                                                
                                                    style="width:260px; height:35px; margin-top:25px; background-color: #428BCA;float:#{langBean.styleFloat}" 
                                                    ajax="false"
                                                    actionListener="#{addNewAdBean.submitNewAd()}" 
-                                                   action="/houses/houses.xhtml"/>
+                                                   action="houses/houses.xhtml"/>
                             </h:panelGrid>
 
-
-
-                        </center>
                     </h:form>
                 </p:layoutUnit>
             </p:layout>

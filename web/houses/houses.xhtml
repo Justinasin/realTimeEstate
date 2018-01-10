@@ -9,7 +9,7 @@
     <h:head>
         <title>Houses</title>
     </h:head>
-    <h:body>
+    <h:body rendered="#{loginBean.username ne null}">
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <p:layout style="min-width:1200px;max-width:1200px;min-height:600px;max-height:600px">
                 <p:layoutUnit position="north" header="Enter search criteria" size="150" style="align-content: center">
@@ -57,30 +57,30 @@
 
                 <p:layoutUnit position="center" size="400">
                     <h:form id="search">
-                        <p:carousel value="#{searchBean.search()}" headerText="Search result" var="allAds" itemStyle="text-align:center" responsive="true">
+                        <p:carousel value="#{searchBean.search()}" headerText="Search result" var="allAds" itemStyle="text-align:center" responsive="true" rendered="#{searchBean.search() ne null}">
                             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                                 <f:facet name="header">
-                                    <h:commandLink action="houses_Details.xhtml">
+                                    <h:commandLink action="houses_Details.xhtml" actionListener="#{searchBean.fetchUser()}">
                                         <p:graphicImage name="images/demo1.jpg" height="80"/>
-                                        <f:setPropertyActionListener target="#{searchBean.fetchUser()}" value="#{allAds}" />
                                     </h:commandLink>
                                 </f:facet>
 
                                 <h:outputText value="#{msgs.action}" /> 
-                                <h:outputText value="#{allAds.action}" style="font-weight:bold" /> 
-
+                                <h:outputText value="#{allAds.action}" style="font-weight:bold" />
                                 
+                                <h:outputText value="#{msgs.city}" /> 
+                                <h:outputText value="#{allAds.city}" style="font-weight:bold" />
+                                
+                                <h:outputText value="#{msgs.type}" /> 
+                                <h:outputText value="#{allAds.type}" style="font-weight:bold" />
 
+                                <h:outputText value="#{msgs.area}" /> 
+                                <h:outputText value="#{allAds.area}" style="font-weight:bold" />
+                                
                                 <h:outputText value="#{msgs.price}" /> 
                                 <h:outputText value="#{allAds.price}" style="font-weight:bold"/> 
 
-
-
-
-                                <h:outputText value="#{msgs.owner_name}" /> 
-                                <p:link outcome="ownersAdvertisements" value="#{searchBean.fetchUser()}" style="font-weight:bold">
-                                    <f:param name="productId" value="10" />
-                                </p:link>
+                                
                             </p:panelGrid>
                         </p:carousel>
                     </h:form>

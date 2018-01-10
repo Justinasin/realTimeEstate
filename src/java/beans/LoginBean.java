@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -20,24 +21,7 @@ public class LoginBean implements Serializable {
     private int selectedItemId;
     private int menuIndex = 3;
     ArrayList<Credentials> credentialsList = new ArrayList<Credentials>();
-//    private  UsersDao usersDao = new UsersDao();
 
-//    public void init() throws Exception
-//    {
-////        boolean success = true;
-////        credentialsList = usersDao.validateUser(username, password);
-////        
-////        for(Credentials c: credentialsList)
-////        {
-////            if (username.equals(c.getUserName()) && password.equals(c.getPassword())) {
-////                success = true;
-////            }
-////            else
-////            {
-////                success = false;
-////            }
-////        }
-//    }
     
     public LoginBean() {
     }
@@ -114,7 +98,12 @@ public class LoginBean implements Serializable {
         }
         else
         {
-            navigate("/houses/houses_without_login");
+            FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Incorrect Username and Passowrd",
+							"Please enter correct username and Password"));
+            //navigate("/houses/loginPage");
         }
     }
 
