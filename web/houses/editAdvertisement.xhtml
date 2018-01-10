@@ -18,21 +18,21 @@
                             <br/>
                             <h:panelGrid id="grid" columns="2" cellspacing="5px" cellpadding="7" style="float:#{langBean.styleFloat}">
                                 <h:outputLabel for="action" value="#{msgs.action}" /> 
-                                <p:selectOneMenu id="action" value="#{updateAdBean.action_id}" style="width:125px" >
+                                <p:selectOneMenu id="action" value="#{updateAdBean.action_id}" style="width:125px" required="true" requiredMessage="#{msgs.please_enter}">
                                     <f:selectItem itemLabel="#{msgs.select_action}" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.sale}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.rent}" itemValue="2" />
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="type" value="#{msgs.type}" /> 
-                                <p:selectOneMenu id="type" value="#{updateAdBean.type_id}" style="width:125px" >
+                                <p:selectOneMenu id="type" value="#{updateAdBean.type_id}" style="width:125px" required="true" requiredMessage="#{msgs.please_enter}">
                                     <f:selectItem itemLabel="#{msgs.select_type}" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.flat}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.house}" itemValue="2" />
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="city" value="#{msgs.city}" />
-                                <p:selectOneMenu id="city" value="#{updateAdBean.city_id}" style="width:125px" >
+                                <p:selectOneMenu id="city" value="#{updateAdBean.city_id}" style="width:125px" required="true" requiredMessage="#{msgs.please_enter}" >
                                     <f:selectItem itemLabel="#{msgs.select_city}" itemValue="" />
                                     <f:selectItem itemLabel="#{msgs.madaba}" itemValue="1" />
                                     <f:selectItem itemLabel="#{msgs.amman}" itemValue="2" />
