@@ -10,7 +10,7 @@
         <title>Property Details</title>
     </h:head>
     <h:body>
-        <ui:decorate template="/app_templates/app_template.xhtml"> 
+        <ui:decorate template="/app_templates/app_template_without_login.xhtml"> 
             <h:form>
                 <!-- Property Details Controls-->
 
@@ -56,20 +56,8 @@
                             <h:outputText value="#{myAds.selectedAd.desc}" 
                                           style="font-weight:bold"/>
 
-                            <h:commandButton value="#{msgs.comment}" action="#{userBean.showComment()}"/>
-                            <h:commandButton value="#{msgs.write_email}" action="#{userBean.showEmail()}"/>
                         </p:panelGrid>
-                        <p/>
-                        <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfComment()}" >
-                            <p:inputTextarea value="#{commentsBean.commentText}" id="commentArea" rows="8" cols="38"  />
-                            <h:commandButton id="commentButton" value="#{msgs.comment_on_property}" actionListener="#{commentsBean.postComment()}"/>
-                        </p:panelGrid>
-
-                        <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfEmail()}">
-                            <p:inputTextarea id="emailArea" rows="8" cols="38" value="#{sendEmail.header}"/>
-                            <h:commandButton id="emailButton"  value="#{msgs.send_the_email}" action="#{sendEmail.sendMail()}"/>
-                        </p:panelGrid>
-
+                        
                     </p:layoutUnit>
 
                     <p:layoutUnit position="center">

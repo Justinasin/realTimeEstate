@@ -106,9 +106,7 @@ private LoginBean loginBean;
         return selectedEmailAd;
     }
 
-    /**
-     * @param selectedCommentAd the selectedCommentAd to set
-     */
+    
     public void setSelectedEmailAd(AllAds selectedEmailAd) {
         this.selectedEmailAd = selectedEmailAd;
     }
