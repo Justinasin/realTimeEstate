@@ -48,8 +48,7 @@
                         <h:outputText value="#{adv.phoneNumber}" style="font-weight:bold"/>
 
                     </p:panelGrid>
-                    <p:panelGrid columns="2" style="width:100%;margin:10px 0px" layout="grid" styleClass="ui-panelgrid-blank">
-                        <p:commandButton widgetVar="approve" value="Approve" oncomplete="PF('approve').disable()"/>
+                    <p:panelGrid columns="1" style="width:100%;margin:10px 0px" layout="grid" styleClass="ui-panelgrid-blank">
                         <p:commandButton actionListener="#{addNewAdBean.deleteAd()}" value="Delete" style="width:160px; height:35px" ajax="false">
                             <f:setPropertyActionListener target="#{addNewAdBean.deletedAd}" value="#{adv}" />
                         </p:commandButton>
