@@ -86,10 +86,10 @@ private LoginBean loginBean;
             }
         });
 
-        try {
+        try {//EmailAdd
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("aaa@aaa.lt"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(EmailAdd));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("justinasin@gmail.com"));
             message.setSubject("Real Estate Project");
             message.setText( loginBean.getUsername() + " send you the message from " + " with text: \n" + header);
             Transport.send(message);

@@ -12,12 +12,12 @@
     <h:body rendered="#{loginBean.username ne null}">
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form>
-                <p:growl id="growl" sticky="true" showDetail="true"/>
-                <p:wizard flowListener="#{userWizard.onFlowProcess}" style="float:#{langBean.styleFloat}">
-                    <p:tab id="personal" title="#{msgs.personal}">
-                        <p:panel header="#{msgs.personal_details}" style="float:#{langBean.styleFloat};width:600px">
-                            <p:messages />
-
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+            <p:wizard flowListener="#{userWizard.onFlowProcess}" style="float:#{langBean.styleFloat}">
+                <p:tab id="personal" title="#{msgs.personal}">
+                    <p:panel header="#{msgs.personal_details}" style="float:#{langBean.styleFloat};width:600px">
+                        <p:messages />
+                        <h:form>
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.username}: *" />
                                 <p:inputText value="#{registrationBean.username}" required="true" label="User name"/>
@@ -35,14 +35,14 @@
                                 <h:outputText value="#{msgs.skip_to_the_last}" />
                                 <h:selectBooleanCheckbox value="#{userWizard.skip}" />
                             </h:panelGrid>
+                        </h:form>
+                    </p:panel>
+                </p:tab>
 
-                        </p:panel>
-                    </p:tab>
-
-                    <p:tab id="address" title="#{msgs.address}">
-                        <p:panel header="#{msgs.address_details}" style="float:#{langBean.styleFloat};width:600px">
-                            <p:messages />
-
+                <p:tab id="address" title="#{msgs.address}">
+                    <p:panel header="#{msgs.address_details}" style="float:#{langBean.styleFloat};width:600px">
+                        <p:messages />
+                        <h:form>
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.address1}: *" />
                                 <p:inputText value="#{registrationBean.address1}" required="true" requiredMessage="Address 1 is required" label="Address 1" />
@@ -53,14 +53,14 @@
                                 <h:outputText value="#{msgs.skip_to_the_last}" />
                                 <h:selectBooleanCheckbox value="#{userWizard.skip}" />
                             </h:panelGrid>
+                        </h:form>
+                    </p:panel>
+                </p:tab>
 
-                        </p:panel>
-                    </p:tab>
-
-                    <p:tab id="contact" title="#{msgs.contact}">
-                        <p:panel header="#{msgs.contact_information}" style="float:#{langBean.styleFloat};width:600px">
-                            <p:messages />
-
+                <p:tab id="contact" title="#{msgs.contact}">
+                    <p:panel header="#{msgs.contact_information}" style="float:#{langBean.styleFloat};width:600px">
+                        <p:messages />
+                        <h:form>
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="#{msgs.email_my_information}: *" />
                                 <p:inputText value="#{registrationBean.email}" required="true" requiredMessage="Email is required" label="Email"/>
@@ -72,13 +72,13 @@
                                 <p:inputText value="#{registrationBean.phone2}" label="Phone 2"/>
 
                             </h:panelGrid>
+                        </h:form>
+                    </p:panel>
+                </p:tab>
 
-                        </p:panel>
-                    </p:tab>
-
-                    <p:tab id="confirm" title="#{msgs.confirmation}">
-                        <p:panel header="#{msgs.confirmation}" style="float:#{langBean.styleFloat};width:600px">
-
+                <p:tab id="confirm" title="#{msgs.confirmation}">
+                    <p:panel header="#{msgs.confirmation}" style="float:#{langBean.styleFloat};width:600px">
+                        <h:form>
                             <h:panelGrid id="confirmation" columns="1" columnClasses="grid,grid,grid">
                                 <h:panelGrid columns="2" columnClasses="label, value">
                                     <h:outputText value="#{msgs.username}:" />
@@ -112,12 +112,12 @@
                                     <h:outputText value="#{registrationBean.phone2}" styleClass="outputLabel"/>
 
                                 </h:panelGrid>
-                                <p:commandButton value="#{msgs.submit}" ajax="false" actionListener="#{registrationBean.saveEvent()}" action="/houses/houses.xhtml" update="growl" process="@this"/>
                             </h:panelGrid>
-                           
-                        </p:panel>
-                    </p:tab>
-                </p:wizard>
+                            <p:commandButton value="#{msgs.submit}" actionListener="#{registrationBean.saveEvent()}" update="growl" process="@this"/>
+                        </h:form>
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
             </h:form>
         </ui:decorate>
     </h:body>   
