@@ -28,8 +28,8 @@ import models.UpdateAds;
 @Named(value = "addNewAdBean")
 @ViewScoped
 
-public class AddNewAdBean implements Serializable{
-    
+public class AddNewAdBean implements Serializable {
+
     private int adv_id;
     private int type_id;
     private int action_id;
@@ -47,22 +47,18 @@ public class AddNewAdBean implements Serializable{
     private int approved;
     private final NewAdDao newAdDao = new NewAdDao();
     private final AdsDao adsDao = new AdsDao();
-    
+
     private AllAds deletedAd = new AllAds();
-    
-@Inject
-private LoginBean loginBean;
 
+    @Inject
+    private LoginBean loginBean;
 
-    
     public AddNewAdBean() {
     }
-    
-  
-    public void submitNewAd()
-    {
+
+    public void submitNewAd() {
         NewAds newAd = new NewAds();
-        
+
         newAd.setType_id(type_id);
         newAd.setAction_id(action_id);
         newAd.setArea(area);
@@ -76,29 +72,25 @@ private LoginBean loginBean;
         newAd.setPrice(price);
         newAd.setRooms(rooms);
         newAd.setDesc(desc);
-        
+
         if (loginBean.getSelectedItemId() > 0) {
-                //UsersDao.updateEvent(user);
-            } else {
+            //UsersDao.updateEvent(user);
+        } else {
             try {
                 newAdDao.insertNewAd(newAd, loginBean.getUsername());
             } catch (Exception ex) {
                 Logger.getLogger(SelectOneMenuView.class.getName()).log(Level.SEVERE, null, ex);
             }
-            }
-        
-        
-        
+        }
+
     }
-    
-    
-    public void deleteAd() throws Exception
-    {
+
+    public void deleteAd() throws Exception {
         int id = deletedAd.getAdv_id();
         adsDao.deleteAd(id);
-        
+
     }
-    
+
     /**
      * @return the type_id
      */
@@ -308,12 +300,9 @@ private LoginBean loginBean;
     public void setAdv_id(int adv_id) {
         this.adv_id = adv_id;
     }
-    
-    
-    
-    public void updateAd()
-    {
-        
+
+    public void updateAd() {
+
     }
 
     /**
@@ -329,7 +318,5 @@ private LoginBean loginBean;
     public void setDeletedAd(AllAds deletedAd) {
         this.deletedAd = deletedAd;
     }
-   
- 
-    
+
 }

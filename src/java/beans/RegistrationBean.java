@@ -33,6 +33,7 @@ public class RegistrationBean implements Serializable {
     private String phone2;
     private int gender_id;
     private String email;
+    private int userId;
     private final UsersDao usersDao = new UsersDao();
             
 @Inject
@@ -47,6 +48,7 @@ private LoginBean loginBean;
             Users user = usersDao.getUser(userName);
 
             firstname = user.getFirstName();
+            userId = user.getUserId();
             lastname = user.getLastName();
             phone1 = user.getPhoneNumber1();
             phone2 = user.getPhoneNumber2();
@@ -163,6 +165,7 @@ private LoginBean loginBean;
             user.setPassword(password);
             user.setPhoneNumber1(phone1);
             user.setPhoneNumber2(phone2);
+            user.setEmail(email);
             
             if (loginBean.getUsername()!= null) {
                 usersDao.updateUser(user);
@@ -200,5 +203,19 @@ private LoginBean loginBean;
 //            Logger.getLogger(AddEditEventBean.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     //}
+
+    /**
+     * @return the userId
+     */
+    public int getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
     
 }

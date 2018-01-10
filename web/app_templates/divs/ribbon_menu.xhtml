@@ -74,7 +74,6 @@
                     <h:form id="options">
                         <p:menuButton value="#{loginBean.username}">
                             <p:menuitem value="#{msgs.my_information}" id="myInformation" icon="ui-icon-wrench" outcome="/houses/myInformation.xhtml"/>
-                            <p:menuitem value="#{msgs.notifications}" id="notifications" icon="ui-icon-info" outcome="/houses/notificationPage.xhtml"/>
                             <p:menuitem value="#{msgs.my_advertisements}" icon="ui-icon-home" outcome="/houses/owner.xhtml"/>
                             <p:menuitem value="#{msgs.admin_panel}" rendered="#{loginBean.username eq 'admin'}"  update="options" icon="ui-icon-person" outcome="/houses/admin.xhtml"/>
                             <p:menuitem value="#{msgs.logout}" icon="ui-icon-power" actionListener="#{loginBean.logout()}" action="houses_without_login.xhtml"/>

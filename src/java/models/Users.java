@@ -74,9 +74,6 @@ public class Users implements Serializable {
         return gender_id;
     }
 
-    /**
-     * @param gender the gender to set
-     */
     public void setGender_id(int gender_id) {
         this.gender_id = gender_id;
     }
