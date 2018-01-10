@@ -49,7 +49,7 @@
 
                     </p:panelGrid>
                     <p:panelGrid columns="1" style="width:100%;margin:10px 0px" layout="grid" styleClass="ui-panelgrid-blank">
-                        <p:commandButton actionListener="#{addNewAdBean.deleteAd()}" value="Delete" style="width:160px; height:35px" ajax="false">
+                        <p:commandButton action="manage_adv.xhtml" value="Manage advertisement" style="width:250px; height:40px;" ajax="false">
                             <f:setPropertyActionListener target="#{addNewAdBean.deletedAd}" value="#{adv}" />
                         </p:commandButton>
                     </p:panelGrid>

@@ -62,6 +62,7 @@ public class AdsDao extends ConnectionDao {
         allAdsIDs.setPhoneNumber(rs.getString("PHONE_NUMBER"));
         allAdsIDs.setPrice(rs.getString("PRICE"));
         allAdsIDs.setRooms(rs.getString("NUMBER_OF_ROOMS"));
+        allAdsIDs.setApproved(rs.getInt("APPROVED"));
         
         Connection connection = getConnection();
         
@@ -339,6 +340,40 @@ public class AdsDao extends ConnectionDao {
         ps.executeUpdate();
         
         ps.close();
+    }
+    
+    //APPROVE
+    
+    public void adminAdApproveAdDao(int id) throws Exception {
+        boolean c = true;
+        Connection connection = getConnection();
+
+        String sql = "UPDATE ADS SET APPROVED = 1 WHERE AD_ID = ?";
+
+        try {
+            PreparedStatement ps;
+            connection.setAutoCommit(false);
+
+            ps = connection.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            ps.executeUpdate();
+            ps.close();
+            connection.commit();
+
+        } catch (SQLException ex) {
+            c = false;
+        } finally {
+            if (!c) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsersDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                connection.setAutoCommit(true);
+            }
+        }
     }
     
 }

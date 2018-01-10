@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -26,7 +27,7 @@ import models.UpdateAds;
  * @author pc
  */
 @Named(value = "addNewAdBean")
-@ViewScoped
+@SessionScoped
 
 public class AddNewAdBean implements Serializable {
 
@@ -89,6 +90,14 @@ public class AddNewAdBean implements Serializable {
         int id = deletedAd.getAdv_id();
         adsDao.deleteAd(id);
 
+    }
+    
+    //APPROVE
+    
+    public void adminAdApprove() throws Exception
+    {
+        int id = deletedAd.getAdv_id();
+        adsDao.adminAdApproveAdDao(id);
     }
     
 
