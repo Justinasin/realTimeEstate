@@ -11,8 +11,8 @@
             <p:layout style="min-width:1200px;max-width:1200px;min-height:900px;max-height:900px">
                 <p:layoutUnit position="center" size="350">
                     <h:form id="login_form">
-                        <p:fieldset  style="width: 8510px;
-                                     height: 820px;
+                        <p:fieldset  style="width: 900px;
+                                     height: 700px;
                                      box-shadow:9px 0 4px -4px #cccccc, -8px 0 5px -4px #cccccc;">                        
                             <br/>
                             <h:panelGrid columns="3" cellspacing="10px">
@@ -29,6 +29,7 @@
 
                                 <p:outputLabel for="pass" style="color: #0B70BE" value="#{msgs.password}:"/>
                                 <p:password id="pass"
+                                            feedback="true"
                                             maxlength="48"                                       
                                             required="true"
                                             requiredMessage="#{msgs.please_enter}"

@@ -70,8 +70,8 @@
 
             <h:form id="manage_events_form">               
                 <p:dataTable var="comment" value="#{commentsBean.fetchComments()}">
-    <p:column headerText="User">
-        <h:outputText value="#{comment.commenterName}" />
+    <p:column headerText="User" style="text-align: center">
+        <h:outputText value="#{comment.commenterName}" style="color: #428BCA"/>
     </p:column>
  
     <p:column headerText="Comment">

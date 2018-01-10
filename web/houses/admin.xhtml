@@ -12,7 +12,7 @@
     <h:body rendered="#{loginBean.username eq 'admin'}">
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form id="form">
-                <p:carousel value="#{myAds.fetchAds()}" headerText="Admin panel" var="adv" itemStyle="text-align:center" responsive="true" rendered="#{searchBean.search() ne null}">
+                <p:carousel value="#{myAds.fetchAds()}" headerText="Admin panel" var="adv" itemStyle="text-align:center" responsive="true">
                     <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                         <f:facet name="header">
                             <h:commandLink action="houses_Details.xhtml">

@@ -18,7 +18,7 @@
 
                     <p:layoutUnit position="west" resizable="true" size="420" minSize="420" maxSize="1500"  >
 
-                        <p:panelGrid columns="2" styleClass="noBorders" >
+                        <p:panelGrid columns="2" styleClass="noBorders">
 
                             <h:outputText value="#{msgs.action}" /> 
                             <h:outputText value="#{myAds.selectedAd.action}" style="font-weight:bold" /> 
@@ -61,12 +61,16 @@
                         </p:panelGrid>
                         <p/>
                         <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfComment()}" >
-                            <p:inputTextarea value="#{commentsBean.commentText}" id="commentArea" rows="8" cols="38"  />
+                            <p:inputTextarea value="#{commentsBean.commentText}" id="commentArea" rows="8" cols="38">
+                                <p:watermark for="commentArea" value="Enter comment here"/>
+                            </p:inputTextarea>
                             <h:commandButton id="commentButton" value="#{msgs.comment_on_property}" actionListener="#{commentsBean.postComment()}"/>
                         </p:panelGrid>
 
                         <p:panelGrid columns="1" styleClass="noBorders" rendered="#{userBean.getStatusOfEmail()}">
-                            <p:inputTextarea id="emailArea" rows="8" cols="38" value="#{sendEmail.header}"/>
+                            <p:inputTextarea id="emailArea" rows="8" cols="38" value="#{sendEmail.header}">
+                            <p:watermark for="emailArea" value="Enter email text here"/>
+                            </p:inputTextarea>
                             <h:commandButton id="emailButton"  value="#{msgs.send_the_email}" action="#{sendEmail.sendMail()}"/>
                         </p:panelGrid>
 
@@ -82,8 +86,8 @@
 
             <h:form id="manage_events_form">               
                 <p:dataTable var="comment" value="#{commentsBean.fetchComments()}">
-    <p:column headerText="User">
-        <h:outputText value="#{comment.commenterName}" />
+    <p:column headerText="User" style="text-align: center">
+        <h:outputText value="#{comment.commenterName}" style="color: #428BCA"/>
     </p:column>
  
     <p:column headerText="Comment">
