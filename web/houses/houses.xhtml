@@ -60,27 +60,30 @@
                         <p:carousel value="#{searchBean.search()}" headerText="Search result" var="allAds" itemStyle="text-align:center" responsive="true" rendered="#{searchBean.search() ne null}">
                             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                                 <f:facet name="header">
-                                    <h:commandLink action="houses_Details.xhtml" actionListener="#{searchBean.fetchUser()}">
+                                    <h:commandLink action="houses_Details.xhtml">
                                         <p:graphicImage name="images/demo1.jpg" height="80"/>
+                                        <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
+                                        <f:setPropertyActionListener target="#{commentsBean.selectedCommentAd}" value="#{allAds}" />
+                                        <f:setPropertyActionListener target="#{sendEmail.selectedEmailAd}" value="#{allAds}" />
                                     </h:commandLink>
                                 </f:facet>
 
                                 <h:outputText value="#{msgs.action}" /> 
                                 <h:outputText value="#{allAds.action}" style="font-weight:bold" />
-                                
+
                                 <h:outputText value="#{msgs.city}" /> 
                                 <h:outputText value="#{allAds.city}" style="font-weight:bold" />
-                                
+
                                 <h:outputText value="#{msgs.type}" /> 
                                 <h:outputText value="#{allAds.type}" style="font-weight:bold" />
 
                                 <h:outputText value="#{msgs.area}" /> 
                                 <h:outputText value="#{allAds.area}" style="font-weight:bold" />
-                                
+
                                 <h:outputText value="#{msgs.price}" /> 
                                 <h:outputText value="#{allAds.price}" style="font-weight:bold"/> 
 
-                                
+
                             </p:panelGrid>
                         </p:carousel>
                     </h:form>
