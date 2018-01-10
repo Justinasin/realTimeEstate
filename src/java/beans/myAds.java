@@ -44,6 +44,7 @@ private LoginBean loginBean;
     
     public ArrayList<AllAds> fetchAds() throws Exception
     {
+        allAdsList.clear();
         return allAdsList = adsDao.getAllAds();
     }
     
@@ -55,7 +56,7 @@ private LoginBean loginBean;
     }
     
     public ArrayList<AllAds> fetchAds(String cityName, String action_type, String type) throws Exception
-    {
+    {   
         return allAdsList = adsDao.getAllAds();
     }
     

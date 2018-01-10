@@ -83,8 +83,9 @@ public class UsersDao extends ConnectionDao {
             sql = null;
 
             sql = "INSERT INTO ADDRESSES (USER_ID,"
-                    + "ADDRESS)"
-                    + "VALUES ((SELECT MAX(USER_ID) FROM USERS),?)";
+                    + "ADDRESS,"
+                    + "ADDRESS_ID)"
+                    + "VALUES ((SELECT MAX(USER_ID) FROM USERS),?,1)";
 
             ps = connection.prepareStatement(sql);
 
@@ -94,8 +95,9 @@ public class UsersDao extends ConnectionDao {
             sql = null;
 
             sql = "INSERT INTO ADDRESSES (USER_ID,"
-                    + "ADDRESS)"
-                    + "VALUES ((SELECT MAX(USER_ID) FROM USERS),?)";
+                    + "ADDRESS,"
+                    + "ADDRESS_ID)"
+                    + "VALUES ((SELECT MAX(USER_ID) FROM USERS),?,2)";
 
             ps = connection.prepareStatement(sql);
 
@@ -157,7 +159,10 @@ public class UsersDao extends ConnectionDao {
             ps.setInt(1, user_id);
 
             rs = ps.executeQuery();
-            user.setPhoneNumber1(rs.getString("PHONE_NUMBER"));
+            while (rs.next()) {
+               user.setPhoneNumber1(rs.getString("PHONE_NUMBER"));
+            }
+            
 
             sql = null;
             rs = null;
@@ -166,7 +171,10 @@ public class UsersDao extends ConnectionDao {
             ps.setInt(1, user_id);
 
             rs = ps.executeQuery();
-            user.setPhoneNumber2(rs.getString("PHONE_NUMBER"));
+            
+            while (rs.next()) {
+               user.setPhoneNumber2(rs.getString("PHONE_NUMBER"));
+            }
 
             sql = null;
             rs = null;
@@ -175,7 +183,10 @@ public class UsersDao extends ConnectionDao {
             ps.setInt(1, user_id);
 
             rs = ps.executeQuery();
-            user.setAddress1(rs.getString("ADDRESS"));
+            while (rs.next()) {
+               user.setAddress1(rs.getString("ADDRESS"));
+            }
+            
 
             sql = null;
             rs = null;
@@ -184,7 +195,10 @@ public class UsersDao extends ConnectionDao {
             ps.setInt(1, user_id);
 
             rs = ps.executeQuery();
-            user.setAddress2(rs.getString("ADDRESS"));
+            while (rs.next()) {
+               user.setAddress2(rs.getString("ADDRESS"));
+            }
+            
 
             ps.close();
 

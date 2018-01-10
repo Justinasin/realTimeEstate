@@ -12,7 +12,7 @@
     <h:body>
         <ui:decorate template="/app_templates/app_template.xhtml"> 
             <h:form id="form">
-                <p:carousel value="" headerText="Admin panel" var="advertisement" itemStyle="text-align:center" responsive="true" rendered="#{searchBean.search() ne null}">
+                <p:carousel value="#{myAds.fetchAds()}" headerText="Admin panel" var="adv" itemStyle="text-align:center" responsive="true" rendered="#{searchBean.search() ne null}">
                     <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                         <f:facet name="header">
                             <h:commandLink action="houses_Details.xhtml">
@@ -21,40 +21,38 @@
                         </f:facet>
 
                         <h:outputText value="#{msgs.action}" /> 
-                        <h:outputText value="Sale" style="font-weight:bold" /> 
+                        <h:outputText value="#{adv.action}" style="font-weight:bold" /> 
 
                         <h:outputText value="#{msgs.type}" /> 
-                        <h:outputText value="Flat" style="font-weight:bold" /> 
+                        <h:outputText value="#{adv.type}" style="font-weight:bold" /> 
 
                         <h:outputText value="#{msgs.city}" /> 
-                        <h:outputText value="Amman" style="font-weight:bold"/> 
+                        <h:outputText value="#{adv.city}" style="font-weight:bold"/> 
 
                         <h:outputText value="#{msgs.area}" /> 
-                        <h:outputText value="150" style="font-weight:bold"/>
+                        <h:outputText value="#{adv.area}" style="font-weight:bold"/>
+
+                        <h:outputText value="#{msgs.price}" /> 
+                        <h:outputText value="#{adv.price}" style="font-weight:bold"/>
 
                         <h:outputText value="#{msgs.number_of_rooms}" /> 
-                        <h:outputText value="6" style="font-weight:bold"/>
-
-                        <h:outputText value="#{msgs.number_of_floors}" /> 
-                        <h:outputText value="2" style="font-weight:bold"/>
+                        <h:outputText value="#{adv.rooms}" style="font-weight:bold"/>
 
                         <h:outputText value="#{msgs.building_year}" /> 
-                        <h:outputText value="2012" style="font-weight:bold"/>
+                        <h:outputText value="#{adv.buildingYear}" style="font-weight:bold"/>
 
                         <h:outputText value="#{msgs.heating_system}" /> 
-                        <h:outputText value="Gas" style="font-weight:bold"/>
+                        <h:outputText value="#{adv.buildingYear}" style="font-weight:bold"/>
 
                         <h:outputText value="#{msgs.phone_number}" /> 
-                        <h:outputText value="078578578" style="font-weight:bold"/>
+                        <h:outputText value="#{adv.phoneNumber}" style="font-weight:bold"/>
 
-                        <h:outputText value="#{msgs.owner_name}" /> 
-                        <p:link outcome="ownersAdvertisements" value="#{loginBean.username}" style="font-weight:bold">
-                            <f:param name="productId" value="10" />
-                        </p:link>
                     </p:panelGrid>
                     <p:panelGrid columns="2" style="width:100%;margin:10px 0px" layout="grid" styleClass="ui-panelgrid-blank">
                         <p:commandButton widgetVar="approve" value="Approve" oncomplete="PF('approve').disable()"/>
-                        <p:commandButton value="Delete"/>
+                        <p:commandButton actionListener="#{addNewAdBean.deleteAd()}" value="Delete" style="width:160px; height:35px" ajax="false">
+                            <f:setPropertyActionListener target="#{addNewAdBean.deletedAd}" value="#{adv}" />
+                        </p:commandButton>
                     </p:panelGrid>
                 </p:carousel>
             </h:form>

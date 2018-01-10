@@ -33,7 +33,7 @@
                                 <p:commandButton value="Edit" action="editAdvertisement.xhtml" actionListener="#{myAds.setSelectedAd(allAds)}" style="width:220px; height:35px">
                                     <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
                                     <f:setPropertyActionListener target="#{updateAdBean.selectedAd}" value="#{allAds}" />
-                                    
+
                                 </p:commandButton>
                             </h:form>
                             <h:form>
@@ -41,13 +41,13 @@
                                     <f:setPropertyActionListener target="#{myAds.selectedAd}" value="#{allAds}" />
                                     <f:setPropertyActionListener target="#{commentsBean.selectedCommentAd}" value="#{allAds}" />
                                     <f:setPropertyActionListener target="#{sendEmail.selectedEmailAd}" value="#{allAds}" />
-                                    
+
                                 </p:commandButton>
                             </h:form>
                             <h:form>
                                 <p:commandButton actionListener="#{addNewAdBean.deleteAd()}" value="Delete" style="width:160px; height:35px" ajax="false">
                                     <f:setPropertyActionListener target="#{addNewAdBean.deletedAd}" value="#{allAds}" />
-                            </p:commandButton>
+                                </p:commandButton>
                             </h:form>
                         </h:panelGrid>
 

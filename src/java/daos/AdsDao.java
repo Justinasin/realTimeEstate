@@ -163,7 +163,7 @@ public class AdsDao extends ConnectionDao {
 
             while (rs.next()) {
                 
-                usersAd = prepareAdsObject(rs);
+                    usersAd = prepareAdsObject(rs);
                 usersAds.add(usersAd);
             }
             
