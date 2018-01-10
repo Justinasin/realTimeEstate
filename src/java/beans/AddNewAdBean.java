@@ -90,6 +90,7 @@ public class AddNewAdBean implements Serializable {
         adsDao.deleteAd(id);
 
     }
+    
 
     /**
      * @return the type_id
